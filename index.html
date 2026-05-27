@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA 2026 Fantasy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg2: #f5f5f3; --bg3: #eeecea;
+      --text: #1a1a1a; --text2: #666; --text3: #999;
+      --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.22);
+      --blue-bg: #e6f1fb; --blue-text: #0c447c;
+      --green-bg: #eaf3de; --green-text: #27500a;
+      --red-bg: #fcebeb; --red-text: #791f1f;
+      --amber-bg: #faeeda; --amber-text: #633806;
+      --purple-bg: #eeedfe; --purple-text: #3c3489;
+      --radius: 8px; --radius-lg: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1e; --bg2: #2c2c2e; --bg3: #3a3a3c;
+        --text: #f2f2f7; --text2: #aeaeb2; --text3: #636366;
+        --border: rgba(255,255,255,0.12); --border2: rgba(255,255,255,0.22);
+        --blue-bg: #0c447c; --blue-text: #b5d4f4;
+        --green-bg: #27500a; --green-text: #c0dd97;
+        --red-bg: #791f1f; --red-text: #f7c1c1;
+        --amber-bg: #633806; --amber-text: #fac775;
+        --purple-bg: #3c3489; --purple-text: #cecbf6;
+      }
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .container { max-width: 820px; margin: 0 auto; padding: 1.5rem 1rem; }
+    h1 { font-size: 22px; font-weight: 600; margin-bottom: 1.5rem; }
+    h2 { font-size: 18px; font-weight: 600; margin-bottom: 1rem; }
+    h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1rem; }
+    .btn { background: transparent; border: 0.5px solid var(--border2); border-radius: var(--radius); padding: 7px 14px; font-size: 14px; cursor: pointer; color: var(--text); font-family: inherit; transition: background 0.15s; }
+    .btn:hover { background: var(--bg2); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-primary { background: var(--blue-bg); color: var(--blue-text); border-color: transparent; }
+    .btn-sm { padding: 4px 10px; font-size: 13px; }
+    .btn-danger { background: var(--red-bg); color: var(--red-text); border-color: transparent; }
+    input[type=text], select {
+      width: 100%; padding: 8px 10px; border: 0.5px solid var(--border2); border-radius: var(--radius);
+      font-size: 14px; background: var(--bg); color: var(--text); font-family: inherit; margin-bottom: 8px;
+    }
+    .tab-bar { display: flex; gap: 2px; margin-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .tab { padding: 8px 14px; font-size: 14px; cursor: pointer; border: none; background: transparent; color: var(--text2); font-family: inherit; border-bottom: 2px solid transparent; margin-bottom: -0.5px; }
+    .tab.active { color: var(--text); font-weight: 600; border-bottom-color: var(--text); }
+    .notice { font-size: 13px; padding: 8px 12px; background: var(--bg2); border-radius: var(--radius); margin-bottom: 1rem; color: var(--text2); }
+    .notice-success { background: var(--green-bg); color: var(--green-text); }
+    .notice-warn { background: var(--amber-bg); color: var(--amber-text); }
+    .notice-danger { background: var(--red-bg); color: var(--red-text); }
+    .notice-info { background: var(--blue-bg); color: var(--blue-text); }
+    .team-btn { text-align: left; width: 100%; padding: 5px 8px; margin-bottom: 3px; font-size: 13px; border-radius: var(--radius); border: 0.5px solid var(--border); background: var(--bg); cursor: pointer; color: var(--text); font-family: inherit; }
+    .team-btn:hover:not(:disabled) { background: var(--blue-bg); color: var(--blue-text); border-color: transparent; }
+    .team-btn:disabled { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+    .group-label { font-size: 10px; font-weight: 700; color: var(--text3); margin-bottom: 4px; letter-spacing: 0.07em; text-transform: uppercase; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 10px; }
+    .player-card { background: var(--bg2); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 8px; }
+    .player-card.active { border: 1.5px solid var(--blue-text); background: var(--blue-bg); }
+    .tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 99px; margin: 2px; background: var(--bg3); color: var(--text2); }
+    .score-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: var(--radius); margin-bottom: 5px; background: var(--bg2); }
+    .score-row.gold { background: var(--purple-bg); color: var(--purple-text); }
+    .section-label { font-size: 11px; font-weight: 700; color: var(--text3); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+    .dot-green { background: #639922; }
+    .dot-red { background: #e24b4a; }
+    .dot-gray { background: var(--text3); }
+    .last-updated { font-size: 12px; color: var(--text3); margin-bottom: 1rem; }
+    .lock-banner { background: var(--amber-bg); color: var(--amber-text); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 1rem; font-size: 13px; font-weight: 600; }
+    #pat-warning { display: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+    <h1>FIFA 2026 Fantasy</h1>
+    <div style="font-size:13px;color:var(--text2)" id="last-updated-header"></div>
+  </div>
+  <div id="app"></div>
+  <div style="margin-top:2rem;text-align:right">
+    <button class="btn btn-sm btn-danger" onclick="resetDraft()">Reset draft</button>
+  </div>
+</div>
+
+<script>
+const REPO_OWNER = 'picturedots';
+const REPO_NAME  = 'world-cup-2026-fantasy';
+const BRANCH     = 'main';
+
+const GROUPS = {
+  A:['Mexico','South Africa','South Korea','Czechia'],
+  B:['Canada','Bosnia and Herzegovina','Qatar','Switzerland'],
+  C:['Brazil','Morocco','Haiti','Scotland'],
+  D:['United States','Paraguay','Australia','Türkiye'],
+  E:['Germany','Curaçao','Ivory Coast','Ecuador'],
+  F:['Netherlands','Japan','Sweden','Tunisia'],
+  G:['Belgium','Egypt','Iran','New Zealand'],
+  H:['Spain','Cape Verde','Saudi Arabia','Uruguay'],
+  I:['France','Senegal','Iraq','Norway'],
+  J:['Argentina','Algeria','Austria','Jordan'],
+  K:['Portugal','DR Congo','Uzbekistan','Colombia'],
+  L:['England','Croatia','Ghana','Panama']
+};
+
+const ALL_TEAMS = [];
+const TEAM_GROUP = {};
+Object.entries(GROUPS).forEach(([g,ts]) => { ts.forEach(t => { ALL_TEAMS.push(t); TEAM_GROUP[t] = g; }); });
+
+let draft = { locked: false, players: [], draftOrder: [], ownership: {}, draftComplete: false };
+let gamestate = { points: {}, ownership: {}, matchLog: [], bonusesAwarded: {}, processedMatchIds: [], lastUpdated: null };
+let tab = 'scores';
+let pat = localStorage.getItem('fifa26_pat') || '';
+
+// --- GitHub API helpers ---
+
+async function ghFetch(path, options = {}) {
+  const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/${path}`, {
+    ...options,
+    headers: {
+      'Authorization': `Bearer ${pat}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      ...(options.headers || {})
+    }
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `GitHub API error ${res.status}`);
+  }
+  return res.json();
+}
+
+async function getFile(path) {
+  const data = await ghFetch(`contents/${path}?ref=${BRANCH}`);
+  return { content: JSON.parse(atob(data.content.replace(/\n/g, ''))), sha: data.sha };
+}
+
+async function putFile(path, content, sha, message) {
+  await ghFetch(`contents/${path}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      message,
+      content: btoa(JSON.stringify(content, null, 2)),
+      sha,
+      branch: BRANCH
+    })
+  });
+}
+
+async function loadData() {
+  try {
+    const [d, g] = await Promise.all([getFile('data/draft.json'), getFile('data/gamestate.json')]);
+    draft = d.content; draft._sha = d.sha;
+    gamestate = g.content; gamestate._sha = g.sha;
+  } catch(e) {
+    showMsg('app-msg', 'Could not load game data. Check your PAT and repo settings.', 'danger');
+  }
+}
+
+// --- Draft helpers ---
+
+function getPlayerTeams(pid) { return ALL_TEAMS.filter(t => (draft.ownership[t] === pid)); }
+function getPlayerGroups(pid) { return new Set(getPlayerTeams(pid).map(t => TEAM_GROUP[t])); }
+function canPick(pid, team) {
+  const myG = getPlayerGroups(pid);
+  const tG = TEAM_GROUP[team];
+  if (!myG.has(tG)) return true;
+  const rem = ALL_TEAMS.filter(t => !draft.ownership[t]);
+  const otherG = new Set(rem.map(t => TEAM_GROUP[t]));
+  otherG.delete(tG);
+  return otherG.size === 0;
+}
+function playerName(pid) { return draft.players.find(p => p.id === pid)?.name || pid; }
+function effectiveOwnership() {
+  return Object.keys(gamestate.ownership).length > 0 ? gamestate.ownership : draft.ownership;
+}
+
+// --- Render ---
+
+function render() {
+  const a = document.getElementById('app');
+  if (!pat) { renderPATSetup(a); return; }
+  if (!draft.draftComplete) renderDraft(a);
+  else renderTournament(a);
+
+  const lu = gamestate.lastUpdated ? new Date(gamestate.lastUpdated).toLocaleString() : 'Never';
+  document.getElementById('last-updated-header').textContent = `Last synced: ${lu}`;
+}
+
+function renderPATSetup(a) {
+  a.innerHTML = `
+    <div class="card">
+      <h2>GitHub setup</h2>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:1rem">Enter a GitHub Personal Access Token with <strong>repo</strong> write access. This is stored only in your browser.</p>
+      <div class="section-label">Personal Access Token</div>
+      <input type="text" id="pat-input" placeholder="ghp_..." value="${pat}" />
+      <button class="btn btn-primary" onclick="savePAT()">Save and load game</button>
+    </div>
+    <div class="notice notice-info" style="font-size:13px">
+      To create a token: GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → select <strong>repo</strong> scope.
+    </div>`;
+}
+
+function savePAT() {
+  pat = document.getElementById('pat-input').value.trim();
+  localStorage.setItem('fifa26_pat', pat);
+  init();
+}
+
+function renderDraft(a) {
+  const totalPicks = draft.players.length * 6;
+  const done = draft.draftIndex >= totalPicks || draft.draftComplete;
+  const idx = draft.draftIndex || 0;
+  const currentPid = done ? null : draft.draftOrder[idx % draft.draftOrder.length];
+  const round = Math.floor(idx / draft.players.length) + 1;
+
+  let html = ``;
+
+  if (draft.locked && !draft.draftComplete) {
+    html += `<div class="lock-banner">Draft is being saved...</div>`;
+  }
+
+  const draftTabActive = tab === 'draft' || tab === 'scores';
+  html += `<div class="tab-bar">
+    <button class="tab ${draftTabActive ? 'active' : ''}" onclick="setTab('draft')">Draft board</button>
+    <button class="tab ${tab === 'rosters' ? 'active' : ''}" onclick="setTab('rosters')">Rosters</button>
+    <button class="tab ${tab === 'setup' ? 'active' : ''}" onclick="setTab('setup')">Players</button>
+  </div>`;
+
+  if (tab === 'setup') {
+    html += renderPlayerSetup();
+  } else if (tab === 'rosters') {
+    html += renderRosters();
+  } else {
+    if (!done) {
+      html += `<div class="notice notice-info">Round ${round} &middot; Pick ${idx + 1} of ${totalPicks} — <strong>${playerName(currentPid)}</strong>'s turn</div>`;
+      html += `<div class="grid">`;
+      Object.entries(GROUPS).forEach(([g, teams]) => {
+        html += `<div class="card" style="padding:10px 12px"><div class="group-label">Group ${g}</div>`;
+        teams.forEach(t => {
+          const taken = draft.ownership[t] !== undefined;
+          const allowed = !taken && canPick(currentPid, t);
+          const owner = taken ? playerName(draft.ownership[t]) : '';
+          html += `<button class="team-btn" ${taken || !allowed ? 'disabled' : ''} onclick="pickTeam('${t}','${currentPid}')"
+            title="${taken ? 'Owned by ' + owner : (!allowed ? 'You already have a team in Group ' + g : '')}">
+            ${t}${taken ? ` <span style="font-size:11px;opacity:0.6">(${owner})</span>` : ''}
+          </button>`;
+        });
+        html += `</div>`;
+      });
+      html += `</div>`;
+    } else {
+      html += `<div class="notice notice-success">Draft complete! The GitHub Action will now keep scores updated every 6 hours.</div>`;
+      html += `<button class="btn btn-primary" onclick="completeDraft()">Lock draft and start tournament</button>`;
+    }
+  }
+
+  a.innerHTML = html;
+}
+
+function renderPlayerSetup() {
+  if (draft.draftOrder.length > 0) {
+    return `<div class="notice notice-warn">Draft order already set. Remove all players to restart.</div>` + renderRosters();
+  }
+  let html = `<div class="card"><h2>Add players</h2>
+    <div id="player-list" style="margin-bottom:12px">` +
+    draft.players.map((p,i) => `<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--border)">
+      <span style="font-size:14px">${p.name}</span>
+      <button class="btn btn-sm" onclick="removePlayer(${i})">Remove</button>
+    </div>`).join('') +
+    `</div>
+    <input type="text" id="pname" placeholder="Player name..." />
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-primary" onclick="addPlayer()">Add player</button>
+      ${draft.players.length >= 2 ? `<button class="btn" onclick="randomOrder()">Randomize order</button>` : ''}
+    </div>
+  </div>`;
+
+  if (draft.draftOrder.length) {
+    html += `<div class="card"><h3>Draft order</h3>` +
+      draft.draftOrder.map((pid,i) => `<div style="padding:4px 0;font-size:14px"><span style="color:var(--text3);margin-right:8px">${i+1}.</span>${playerName(pid)}</div>`).join('') +
+      `${draft.players.length >= 2 ? `<button class="btn btn-primary" style="margin-top:12px" onclick="startDraft()">Start draft</button>` : ''}
+    </div>`;
+  }
+
+  html += `<div id="app-msg"></div>`;
+  return html;
+}
+
+function renderRosters() {
+  const order = draft.draftOrder.length ? draft.draftOrder : draft.players.map(p => p.id);
+  return order.map((pid, i) => {
+    const teams = getPlayerTeams(pid);
+    const isCur = !draft.draftComplete && draft.draftOrder[draft.draftIndex % draft.draftOrder.length] === pid;
+    return `<div class="player-card${isCur ? ' active' : ''}">
+      <div style="font-weight:600;font-size:14px">${i+1}. ${playerName(pid)} <span style="font-size:12px;font-weight:400;color:var(--text2)">(${teams.length}/6)</span></div>
+      <div style="margin-top:6px">${teams.length ? teams.map(t => `<span class="tag">${t}</span>`).join('') : '<span style="font-size:12px;color:var(--text3)">No picks yet</span>'}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderTournament(a) {
+  let html = `<div class="tab-bar">
+    <button class="tab ${tab==='scores'?'active':''}" onclick="setTab('scores')">Standings</button>
+    <button class="tab ${tab==='rosters'?'active':''}" onclick="setTab('rosters')">Rosters</button>
+    <button class="tab ${tab==='log'?'active':''}" onclick="setTab('log')">Match log</button>
+  </div>`;
+
+  if (tab === 'scores') html += renderStandings();
+  else if (tab === 'rosters') html += renderTournamentRosters();
+  else if (tab === 'log') html += renderLog();
+
+  a.innerHTML = html;
+}
+
+function renderStandings() {
+  const own = effectiveOwnership();
+  const sorted = draft.players.slice().sort((a,b) => (gamestate.points[b.id]||0) - (gamestate.points[a.id]||0));
+  let html = `<div class="notice" style="font-size:12px">Standings update automatically every 6 hours via GitHub Actions. Refresh to see the latest.</div>`;
+  sorted.forEach((p, i) => {
+    const pts = gamestate.points[p.id] || 0;
+    const teams = ALL_TEAMS.filter(t => own[t] === p.id);
+    html += `<div class="score-row${i===0?' gold':''}">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:16px;font-weight:700;width:24px;color:${i===0?'inherit':'var(--text3)'}">${i+1}</span>
+        <div>
+          <div style="font-weight:600;font-size:15px">${p.name}</div>
+          <div style="font-size:12px;opacity:0.65;margin-top:2px">${teams.map(t=>`<span style="margin-right:4px">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:22px;font-weight:700">${pts}</div>
+        <div style="font-size:11px;opacity:0.6">pts</div>
+      </div>
+    </div>`;
+  });
+  return html;
+}
+
+function renderTournamentRosters() {
+  const own = effectiveOwnership();
+  return draft.players.map((p, i) => {
+    const teams = ALL_TEAMS.filter(t => own[t] === p.id);
+    const pts = gamestate.points[p.id] || 0;
+    return `<div class="player-card">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="font-weight:600;font-size:14px">${i+1}. ${p.name}</div>
+        <div style="font-size:16px;font-weight:700">${pts} pts</div>
+      </div>
+      <div style="margin-top:6px">${teams.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderLog() {
+  if (!gamestate.matchLog?.length) return `<div class="notice">No matches logged yet.</div>`;
+  return [...gamestate.matchLog].reverse().map(e =>
+    `<div class="score-row" style="font-size:13px">
+      <span>${e.msg}</span>
+      <span style="font-size:11px;color:var(--text3);white-space:nowrap;margin-left:8px">${new Date(e.time).toLocaleDateString()}</span>
+    </div>`
+  ).join('');
+}
+
+function showMsg(id, msg, type='') {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = `<div class="notice${type?' notice-'+type:''}" style="margin-top:8px">${msg}</div>`;
+}
+
+function setTab(t) { tab = t; render(); }
+
+// --- Draft actions ---
+
+async function addPlayer() {
+  const inp = document.getElementById('pname');
+  const name = inp?.value.trim();
+  if (!name || draft.players.length >= 8) return;
+  draft.players.push({ id: 'p' + Date.now(), name });
+  inp.value = '';
+  await saveDraft('Add player: ' + name);
+  render();
+}
+
+async function removePlayer(i) {
+  draft.players.splice(i, 1);
+  draft.draftOrder = [];
+  await saveDraft('Remove player');
+  render();
+}
+
+async function randomOrder() {
+  const ids = draft.players.map(p => p.id);
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+  draft.draftOrder = ids;
+  draft.draftIndex = 0;
+  draft.players.forEach(p => { gamestate.points[p.id] = 0; });
+  await saveDraft('Set draft order');
+  render();
+}
+
+function startDraft() {
+  draft.draftIndex = 0;
+  tab = 'draft';
+  render();
+}
+
+async function pickTeam(team, pid) {
+  draft.ownership[team] = pid;
+  draft.draftIndex = (draft.draftIndex || 0) + 1;
+  const totalPicks = draft.players.length * 6;
+  if (draft.draftIndex >= totalPicks) {
+    // auto-prompt to lock
+  }
+  await saveDraft(`Pick: ${playerName(pid)} selected ${team}`);
+  render();
+}
+
+async function completeDraft() {
+  draft.draftComplete = true;
+  draft.locked = true;
+  // Seed gamestate ownership from draft
+  gamestate.ownership = { ...draft.ownership };
+  draft.players.forEach(p => { gamestate.points[p.id] = 0; });
+  await saveDraft('Draft complete — locked');
+  await saveGamestate('Seed initial gamestate from draft');
+  tab = 'scores';
+  render();
+}
+
+async function resetDraft() {
+  if (!confirm('Reset the draft? This clears all picks and cannot be undone.')) return;
+  draft = { locked: false, players: [], draftOrder: [], ownership: {}, draftComplete: false, draftIndex: 0 };
+  gamestate = { points: {}, ownership: {}, matchLog: [], bonusesAwarded: {}, processedMatchIds: [], lastUpdated: null };
+  await saveDraft('Reset draft');
+  await saveGamestate('Reset gamestate');
+  tab = 'draft';
+  render();
+}
+
+// --- GitHub save helpers ---
+
+async function saveDraft(message) {
+  try {
+    const { sha } = await getFile('data/draft.json');
+    draft._sha = sha;
+    const payload = { ...draft };
+    delete payload._sha;
+    await putFile('data/draft.json', payload, sha, message);
+    const refreshed = await getFile('data/draft.json');
+    draft._sha = refreshed.sha;
+  } catch(e) {
+    console.error('Save draft failed:', e);
+  }
+}
+
+async function saveGamestate(message) {
+  try {
+    const { sha } = await getFile('data/gamestate.json');
+    gamestate._sha = sha;
+    const payload = { ...gamestate };
+    delete payload._sha;
+    await putFile('data/gamestate.json', payload, sha, message);
+    const refreshed = await getFile('data/gamestate.json');
+    gamestate._sha = refreshed.sha;
+  } catch(e) {
+    console.error('Save gamestate failed:', e);
+  }
+}
+
+async function getFile(path) {
+  const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`, {
+    headers: {
+      'Authorization': `Bearer ${pat}`,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  });
+  if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+  const data = await res.json();
+  return { content: JSON.parse(atob(data.content.replace(/\n/g,''))), sha: data.sha };
+}
+
+async function putFile(path, content, sha, message) {
+  const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${pat}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    },
+    body: JSON.stringify({ message, content: btoa(JSON.stringify(content, null, 2)), sha, branch: BRANCH })
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(()=>({}));
+    throw new Error(err.message || `GitHub PUT error ${res.status}`);
+  }
+}
+
+async function init() {
+  if (!pat) { render(); return; }
+  document.getElementById('app').innerHTML = `<div class="notice">Loading game data...</div>`;
+  await loadData();
+  tab = draft.draftComplete ? 'scores' : 'setup';
+  render();
+}
+
+init();
+</script>
+</body>
+</html>
