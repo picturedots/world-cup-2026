@@ -23,10 +23,8 @@ A self-hosted fantasy World Cup game for 8 players, powered by GitHub Pages and 
 ### 4. Update the repo config in index.html
 Open `index.html` and update these two lines near the top of the script:
 ```js
-const REPO_OWNER = 'YOUR_GITHUB_USERNAME';
-const REPO_NAME  = 'YOUR_REPO_NAME';
 const REPO_OWNER = 'picturedots';
-const REPO_NAME  = 'world-cup-2026-fantasy';
+const REPO_NAME  = 'world-cup-2026';
 ```
 
 ### 5. Enable GitHub Actions write permissions
@@ -43,7 +41,7 @@ The person running the draft needs a PAT to write game data back to the repo.
 
 ### 7. Share the game URL
 Share your GitHub Pages URL with all players:
-`https://picturedots.github.io/world-cup-2026-fantasy`
+`https://picturedots.github.io/world-cup-2026/`
 
 Viewers can see standings without a PAT. Only the person with the PAT can run the draft.
 
