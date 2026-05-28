@@ -263,8 +263,8 @@ function renderDraft(a) {
 }
 
 function renderPlayerSetup() {
-  if (draft.draftOrder.length > 0) {
-    return `<div class="notice notice-warn">Draft order already set. Remove all players to restart.</div>` + renderRosters();
+  if (draft.draftIndex > 0) {
+    return `<div class="notice notice-warn">Draft is in progress. Cannot change player list.</div>` + renderRosters();
   }
   let html = `<div class="card"><h2>Add players</h2>
     <div id="player-list" style="margin-bottom:12px">` +
@@ -379,15 +379,17 @@ async function addPlayer() {
   const inp = document.getElementById('pname');
   const name = inp?.value.trim();
   if (!name || draft.players.length >= 8) return;
-  draft.players.push({ id: 'p' + Date.now(), name });
+  const player = { id: 'p' + Date.now(), name };
+  draft.players.push(player);
+  draft.draftOrder.push(player.id);
   inp.value = '';
   await saveDraft('Add player: ' + name);
   render();
 }
 
 async function removePlayer(i) {
-  draft.players.splice(i, 1);
-  draft.draftOrder = [];
+  const removed = draft.players.splice(i, 1)[0];
+  draft.draftOrder = draft.draftOrder.filter(id => id !== removed.id);
   await saveDraft('Remove player');
   render();
 }
