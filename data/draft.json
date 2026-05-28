@@ -1,39 +1,6 @@
 {
   "locked": false,
-  "players": [
-    {
-      "id": "p1779935166525",
-      "name": "Tessa"
-    },
-    {
-      "id": "p1779935182506",
-      "name": "Mark"
-    },
-    {
-      "id": "p1779935189023",
-      "name": "Mildred"
-    },
-    {
-      "id": "p1779935198719",
-      "name": "Emily"
-    },
-    {
-      "id": "p1779935212563",
-      "name": "Bryce"
-    },
-    {
-      "id": "p1779935220016",
-      "name": "Liz"
-    },
-    {
-      "id": "p1779935224266",
-      "name": "Alissa"
-    },
-    {
-      "id": "p1779935230705",
-      "name": "Sam"
-    }
-  ],
+  "players": [],
   "draftOrder": [],
   "ownership": {},
   "draftComplete": false,
