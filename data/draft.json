@@ -4,10 +4,15 @@
     {
       "id": "p1779936707998",
       "name": "Tessa"
+    },
+    {
+      "id": "p1779936725338",
+      "name": "Mark"
     }
   ],
   "draftOrder": [
-    "p1779936707998"
+    "p1779936707998",
+    "p1779936725338"
   ],
   "ownership": {},
   "draftComplete": false,
