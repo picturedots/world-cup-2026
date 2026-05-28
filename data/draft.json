@@ -1,7 +1,14 @@
 {
   "locked": false,
-  "players": [],
-  "draftOrder": [],
+  "players": [
+    {
+      "id": "p1779936707998",
+      "name": "Tessa"
+    }
+  ],
+  "draftOrder": [
+    "p1779936707998"
+  ],
   "ownership": {},
   "draftComplete": false,
   "draftIndex": 0
