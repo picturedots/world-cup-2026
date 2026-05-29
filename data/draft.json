@@ -44,7 +44,9 @@
     "p1779936822308",
     "p1779936827805"
   ],
-  "ownership": {},
+  "ownership": {
+    "Spain": "p1779936707998"
+  },
   "draftComplete": false,
-  "draftIndex": 0
+  "draftIndex": 1
 }
