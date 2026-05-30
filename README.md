@@ -1,6 +1,6 @@
 # World Cup 2026 Fantasy
 
-A self-hosted fantasy World Cup game for 8 players, powered by GitHub Pages and GitHub Actions.
+A self-hosted fantasy World Cup game for 8 players, powered by [GitHub Pages](https://picturedots.github.io/world-cup-2026/) and GitHub Actions.
 
 ## Setup
 
