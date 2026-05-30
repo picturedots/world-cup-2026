@@ -54,6 +54,14 @@ function writeJson(filePath, data) {
 }
 
 async function main() {
+  const now = new Date();
+  const tournamentStart = new Date('2026-06-11');
+  const tournamentEnd = new Date('2026-07-20');
+  if (now < tournamentStart || now > tournamentEnd) {
+    console.log('Outside tournament window (Jun 11 – Jul 20, 2026) — skipping API call.');
+    return;
+  }
+
   const draftPath = path.resolve('data/draft.json');
   const gamestatePath = path.resolve('data/gamestate.json');
 
