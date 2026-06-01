@@ -1,5 +1,5 @@
 {
-  "locked": false,
+  "locked": true,
   "players": [
     {
       "id": "p1779936707998",
@@ -94,6 +94,6 @@
     "Iraq": "p1779936822308",
     "Saudi Arabia": "p1779936827805"
   },
-  "draftComplete": false,
+  "draftComplete": true,
   "draftIndex": 48
 }
