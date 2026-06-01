@@ -464,9 +464,10 @@ async function saveGamestate(message) {
 }
 
 async function getFile(path) {
+  const authHeaders = pat ? { 'Authorization': `Bearer ${pat}` } : {};
   const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`, {
     headers: {
-      'Authorization': `Bearer ${pat}`,
+      ...authHeaders,
       'Accept': 'application/vnd.github+json',
       'X-GitHub-Api-Version': '2022-11-28'
     }
