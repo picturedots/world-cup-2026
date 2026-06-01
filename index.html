@@ -117,10 +117,11 @@ let pat = localStorage.getItem('fifa26_pat') || '';
 // --- GitHub API helpers ---
 
 async function ghFetch(path, options = {}) {
+  const authHeaders = pat ? { 'Authorization': `Bearer ${pat}` } : {};
   const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/${path}`, {
     ...options,
     headers: {
-      'Authorization': `Bearer ${pat}`,
+      ...authHeaders,
       'Accept': 'application/vnd.github+json',
       'X-GitHub-Api-Version': '2022-11-28',
       ...(options.headers || {})
@@ -189,9 +190,10 @@ function effectiveOwnership() {
 
 function render() {
   const a = document.getElementById('app');
-  if (!pat) { renderPATSetup(a); return; }
-  if (!draft.draftComplete) renderDraft(a);
-  else renderTournament(a);
+  if (draft.draftComplete) { renderTournament(a); }
+  else if (!pat) { renderPATSetup(a); return; }
+  else renderDraft(a);
+  // else renderTournament(a);
 
   const lu = gamestate.lastUpdated ? new Date(gamestate.lastUpdated).toLocaleString() : 'Never';
   document.getElementById('last-updated-header').textContent = `Last synced: ${lu}`;
@@ -513,7 +515,6 @@ async function putFile(path, content, sha, message) {
 }
 
 async function init() {
-  if (!pat) { render(); return; }
   document.getElementById('app').innerHTML = `<div class="notice">Loading game data...</div>`;
   await loadData();
   tab = draft.draftComplete ? 'scores' : 'setup';
