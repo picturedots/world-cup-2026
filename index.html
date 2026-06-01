@@ -312,6 +312,7 @@ function renderRosters() {
 }
 
 function renderTournament(a) {
+  console.log("rendering Tournament...");
   let html = `<div class="tab-bar">
     <button class="tab ${tab==='scores'?'active':''}" onclick="setTab('scores')">Standings</button>
     <button class="tab ${tab==='rosters'?'active':''}" onclick="setTab('rosters')">Rosters</button>
@@ -327,6 +328,8 @@ function renderTournament(a) {
 
 function renderStandings() {
   const own = effectiveOwnership();
+  console.log("standings..");
+  console.log(own);
   const sorted = draft.players.slice().sort((a,b) => (gamestate.points[b.id]||0) - (gamestate.points[a.id]||0));
   let html = `<div class="notice" style="font-size:12px">Standings update automatically every 6 hours via GitHub Actions. Refresh to see the latest.</div>`;
   sorted.forEach((p, i) => {
@@ -494,10 +497,17 @@ async function getFile(path) {
   });
   if (!res.ok) throw new Error(`GitHub API ${res.status}`);
   const data = await res.json();
-  return { content: JSON.parse(atob(data.content.replace(/\n/g,''))), sha: data.sha };
+  const binary = atob(data.content.replace(/\n/g,''));
+  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+  return { content: JSON.parse(new TextDecoder().decode(bytes)), sha: data.sha };
 }
 
 async function putFile(path, content, sha, message) {
+  const jsonStr = JSON.stringify(content, null, 2);
+  const utf8Bytes = new TextEncoder().encode(jsonStr);
+  let binaryStr = '';
+  for (const b of utf8Bytes) binaryStr += String.fromCharCode(b);
+  const encoded = btoa(binaryStr);
   const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
     method: 'PUT',
     headers: {
@@ -506,7 +516,7 @@ async function putFile(path, content, sha, message) {
       'Content-Type': 'application/json',
       'X-GitHub-Api-Version': '2022-11-28'
     },
-    body: JSON.stringify({ message, content: btoa(JSON.stringify(content, null, 2)), sha, branch: BRANCH })
+    body: JSON.stringify({ message, content: encoded, sha, branch: BRANCH })
   });
   if (!res.ok) {
     const err = await res.json().catch(()=>({}));
