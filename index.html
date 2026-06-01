@@ -134,30 +134,6 @@ async function ghFetch(path, options = {}) {
   return res.json();
 }
 
-async function getFile(path) {
-  const data = await ghFetch(`contents/${path}?ref=${BRANCH}`);
-  const binary = atob(data.content.replace(/\n/g, ''));
-  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
-  return { content: JSON.parse(new TextDecoder().decode(bytes)), sha: data.sha };
-}
-
-async function putFile(path, content, sha, message) {
-  const jsonStr = JSON.stringify(content, null, 2);
-  const utf8Bytes = new TextEncoder().encode(jsonStr);
-  let binaryStr = '';
-  for (const b of utf8Bytes) binaryStr += String.fromCharCode(b);
-  await ghFetch(`contents/${path}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      message,
-      content: btoa(binaryStr),
-      sha,
-      branch: BRANCH
-    })
-  });
-}
-
 async function loadData() {
   try {
     const [d, g] = await Promise.all([getFile('data/draft.json'), getFile('data/gamestate.json')]);
