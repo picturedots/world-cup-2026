@@ -76,9 +76,11 @@ You can run the GitHub Action manually at any time:
 |---|---|
 | Win | 3 |
 | Draw | 1 (+ teams swap owners) |
-| Advance to knockout stage | 5 |
-| Round of 16 appearance | 5 |
-| Quarterfinal appearance | 8 |
-| Semifinal appearance | 12 |
-| Final appearance | 18 |
-| Champion | 25 |
+| Advance to Round of 32 as group winner | 7 |
+| Advance to Round of 32 as 2nd place | 5 |
+| Advance to Round of 32 as 3rd place | 3 |
+| Advance to Round of 16 | 4 |
+| Advance to Round of 8 | 5 |
+| Advance to Semis | 6 |
+| Advance to Final | 7 |
+| Champion | 8 |

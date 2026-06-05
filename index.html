@@ -317,6 +317,25 @@ function renderStandings() {
   console.log(own);
   const sorted = draft.players.slice().sort((a,b) => (gamestate.points[b.id]||0) - (gamestate.points[a.id]||0));
   let html = `<div class="notice" style="font-size:12px">Standings update automatically every 6 hours via GitHub Actions. Refresh to see the latest.</div>`;
+  html += `<details style="margin-bottom:1rem">
+    <summary style="cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);user-select:none">Points guide</summary>
+    <div class="card" style="margin-top:0.5rem;font-size:13px">
+      <table style="width:100%;border-collapse:collapse">
+        <tbody>
+          <tr><td style="padding:4px 0;color:var(--text2)">Win</td><td style="text-align:right;font-weight:600">3</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Draw <span style="font-weight:400;font-size:11px">(+ teams swap owners)</span></td><td style="text-align:right;font-weight:600">1</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Round of 32 — group winner</td><td style="text-align:right;font-weight:600">7</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Round of 32 — 2nd place</td><td style="text-align:right;font-weight:600">5</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Round of 32 — 3rd place</td><td style="text-align:right;font-weight:600">3</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Round of 16</td><td style="text-align:right;font-weight:600">4</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Round of 8</td><td style="text-align:right;font-weight:600">5</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Semis</td><td style="text-align:right;font-weight:600">6</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Advance to Final</td><td style="text-align:right;font-weight:600">7</td></tr>
+          <tr><td style="padding:4px 0;color:var(--text2)">Champion</td><td style="text-align:right;font-weight:600">8</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>`;
   sorted.forEach((p, i) => {
     const pts = gamestate.points[p.id] || 0;
     const teams = ALL_TEAMS.filter(t => own[t] === p.id);

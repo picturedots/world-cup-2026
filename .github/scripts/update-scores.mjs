@@ -7,12 +7,14 @@ const FIFA_WC_2026_ID = 1; // API-Football tournament ID for FIFA World Cup 2026
 const SEASON = 2026;
 
 const BONUS_POINTS = {
-  knockout: 5,
-  r16: 5,
-  qf: 8,
-  sf: 12,
-  final: 18,
-  champion: 25
+  r32_winner: 7,  // Advance to Round of 32 as group winner
+  r32_runner: 5,  // Advance to Round of 32 as 2nd place
+  r32_third: 3,   // Advance to Round of 32 as 3rd place (best third)
+  r16: 4,         // Advance to Round of 16
+  qf: 5,          // Advance to Round of 8
+  sf: 6,          // Advance to Semis
+  final: 7,       // Advance to Final
+  champion: 8     // Champion
 };
 
 const ROUND_TO_BONUS = {
@@ -173,27 +175,59 @@ async function main() {
     processedMatchIds.add(id);
   }
 
-  // Award knockout stage bonus (advancing past group stage)
-  // Find all teams that appear in any knockout round fixture
-  const knockoutRounds = new Set(['Round of 16', 'Quarter-finals', 'Semi-finals', 'Final']);
-  const teamsInKnockout = new Set();
+  // Award group advancement bonuses (Round of 32) based on group finish position
+  // Fetch standings to determine each team's rank within their group
+  const groupRankMap = {}; // teamName -> { rank, played }
+  try {
+    const sData = await apiFootball(`/standings?league=${FIFA_WC_2026_ID}&season=${SEASON}`);
+    for (const league of sData.response || []) {
+      for (const group of league.league.standings || []) {
+        for (const entry of group) {
+          groupRankMap[normalizeTeamName(entry.team.name)] = {
+            rank: entry.rank,
+            played: entry.all?.played ?? 0
+          };
+        }
+      }
+    }
+    console.log(`Loaded standings for ${Object.keys(groupRankMap).length} teams.`);
+  } catch (e) {
+    console.log('Could not fetch standings (position-based R32 bonuses will be skipped):', e.message);
+  }
+
+  // Find 3rd-place teams that actually advanced (appear in Round of 32 fixtures)
+  const teamsInR32 = new Set();
   for (const fixture of fixtures) {
     const round = fixture.league.round || '';
-    if (knockoutRounds.has(round) || round.toLowerCase().includes('round of 16') || round.toLowerCase().includes('quarter') || round.toLowerCase().includes('semi') || round.toLowerCase().includes('final')) {
-      teamsInKnockout.add(normalizeTeamName(fixture.teams.home.name));
-      teamsInKnockout.add(normalizeTeamName(fixture.teams.away.name));
+    if (round.toLowerCase().includes('round of 32') || round.toLowerCase().includes('last 32')) {
+      teamsInR32.add(normalizeTeamName(fixture.teams.home.name));
+      teamsInR32.add(normalizeTeamName(fixture.teams.away.name));
     }
   }
 
-  for (const team of teamsInKnockout) {
-    const bonusKey = `knockout:${team}`;
+  for (const [team, info] of Object.entries(groupRankMap)) {
+    if (info.played < 3) continue; // Group stage not complete for this team yet
+
+    const owner = ownerOf(team);
+    if (!owner) continue;
+
+    let bonusType;
+    if (info.rank === 1) {
+      bonusType = 'r32_winner'; // Group winners always advance
+    } else if (info.rank === 2) {
+      bonusType = 'r32_runner'; // Runners-up always advance
+    } else if (info.rank === 3 && teamsInR32.has(team)) {
+      bonusType = 'r32_third'; // Only best 8 third-place teams advance
+    } else {
+      continue;
+    }
+
+    const bonusKey = `${bonusType}:${team}`;
     if (!bonusesAwarded[bonusKey]) {
-      const owner = ownerOf(team);
-      if (owner) {
-        points[owner] = (points[owner] || 0) + BONUS_POINTS.knockout;
-        bonusesAwarded[bonusKey] = true;
-        matchLog.push({ time: Date.now(), msg: `${team} advanced to knockout stage → +${BONUS_POINTS.knockout} pts for ${playerName(owner)}` });
-      }
+      points[owner] = (points[owner] || 0) + BONUS_POINTS[bonusType];
+      bonusesAwarded[bonusKey] = true;
+      const label = { r32_winner: 'group winner', r32_runner: '2nd place', r32_third: '3rd place' }[bonusType];
+      matchLog.push({ time: Date.now(), msg: `${team} advanced to Round of 32 as ${label} → +${BONUS_POINTS[bonusType]} pts for ${playerName(owner)}` });
     }
   }
 
@@ -212,7 +246,7 @@ async function main() {
         if (owner) {
           points[owner] = (points[owner] || 0) + BONUS_POINTS[bonusType];
           bonusesAwarded[bonusKey] = true;
-          const label = { r16: 'Round of 16', qf: 'Quarterfinal', sf: 'Semifinal', final: 'Final' }[bonusType];
+          const label = { r16: 'Round of 16', qf: 'Round of 8', sf: 'Semis', final: 'Final' }[bonusType];
           matchLog.push({ time: Date.now(), msg: `${team} reached ${label} → +${BONUS_POINTS[bonusType]} pts for ${playerName(owner)}` });
         }
       }
