@@ -9,16 +9,15 @@ A self-hosted fantasy World Cup game for 8 players, powered by [GitHub Pages](ht
 - Upload all files from this project maintaining the folder structure
 - Go to **Settings → Pages** → set source to **Deploy from branch: main, / (root)**
 
-### 2. Get a RapidAPI key for match data
-- Sign up at [rapidapi.com](https://rapidapi.com)
-- Search for **API-Football** and subscribe to the free tier
-- Copy your RapidAPI key
+### 2. Get a football-data.org API key for match data
+- Register at [football-data.org](https://www.football-data.org/client/register) (the free tier includes the FIFA World Cup)
+- Copy your API token ([API docs](https://docs.football-data.org/general/v4/index.html))
 
 ### 3. Add the API key as a GitHub secret
 - Go to your repo → **Settings → Secrets and variables → Actions**
 - Click **New repository secret**
-- Name: `RAPIDAPI_KEY`
-- Value: your RapidAPI key
+- Name: `FOOTBALLDATA_KEY`
+- Value: your football-data.org API token
 
 ### 4. Update the repo config in index.html
 Open `index.html` and update these two lines near the top of the script:
@@ -58,13 +57,13 @@ Viewers can see standings without a PAT. Only the person with the PAT can run th
     ├── workflows/
     │   └── update-scores.yml           # Runs every 6 hours
     └── scripts/
-        └── update-scores.mjs           # Fetches API-Football data, recalculates standings
+        └── update-scores.mjs           # Fetches football-data.org data, recalculates standings
 ```
 
 ## How it works
 
 - **Draft phase**: The app UI handles player setup and team selection. Each pick is committed to `data/draft.json` via the GitHub API. Once the draft is locked, the file is frozen.
-- **Tournament phase**: Every 6 hours, the GitHub Action fetches all completed World Cup fixtures from API-Football, awards points (win = 3pts, draw = 1pt each + team swap), awards advancement bonuses automatically, and commits the updated `data/gamestate.json`.
+- **Tournament phase**: Every 6 hours, the GitHub Action fetches all World Cup matches from [football-data.org](https://www.football-data.org), awards points for completed matches (win = 3pts, draw = 1pt each + team swap), awards advancement bonuses automatically, and commits the updated `data/gamestate.json`. Group finishing positions (for Round of 32 bonuses) are computed from the group-stage results using points, goal difference, goals for, and head-to-head as tiebreakers.
 - **Viewing**: Anyone with the GitHub Pages URL sees live standings. The page reads `data/gamestate.json` directly from the repo.
 
 ## Triggering manually

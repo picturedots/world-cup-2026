@@ -1,9 +1,8 @@
-import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
 
-const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
-const FIFA_WC_2026_ID = 1; // API-Football tournament ID for FIFA World Cup 2026
+const FOOTBALLDATA_KEY = process.env.FOOTBALLDATA_KEY;
+const COMPETITION = 'WC'; // football-data.org code for the FIFA World Cup
 const SEASON = 2026;
 
 const BONUS_POINTS = {
@@ -17,32 +16,29 @@ const BONUS_POINTS = {
   champion: 8     // Champion
 };
 
-const ROUND_TO_BONUS = {
-  'Round of 16': 'r16',
-  'Quarter-finals': 'qf',
-  'Semi-finals': 'sf',
-  'Final': 'final'
+const STAGE_TO_BONUS = {
+  'LAST_16': 'r16',
+  'QUARTER_FINALS': 'qf',
+  'SEMI_FINALS': 'sf',
+  'FINAL': 'final'
 };
 
-async function apiFootball(endpoint) {
-  const url = `https://api-football-v1.p.rapidapi.com/v3${endpoint}`;
+async function footballData(endpoint) {
+  const url = `https://api.football-data.org/v4${endpoint}`;
   const res = await fetch(url, {
-    headers: {
-      'X-RapidAPI-Key': RAPIDAPI_KEY,
-      'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-    }
+    headers: { 'X-Auth-Token': FOOTBALLDATA_KEY }
   });
   if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
   return res.json();
 }
 
+// Map football-data.org team names to the names used in data/draft.json
 function normalizeTeamName(name) {
   const map = {
-    'United States': 'USA',
-    'Korea Republic': 'South Korea',
-    'IR Iran': 'Iran',
-    'Côte d\'Ivoire': 'Ivory Coast',
-    'Türkiye': 'Turkey'
+    'Bosnia-Herzegovina': 'Bosnia and Herzegovina',
+    'Cape Verde Islands': 'Cape Verde',
+    'Congo DR': 'DR Congo',
+    'Turkey': 'Türkiye'
   };
   return map[name] || name;
 }
@@ -55,7 +51,72 @@ function writeJson(filePath, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
+// Build group tables from finished group-stage matches.
+// Returns teamName -> { rank, played, groupComplete }.
+// Tiebreakers: points, goal difference, goals for, then head-to-head result.
+function computeGroupRanks(matches) {
+  const groups = {}; // group -> { teams: Set, results: [] }
+  for (const m of matches) {
+    if (m.stage !== 'GROUP_STAGE' || !m.group) continue;
+    if (!m.homeTeam?.name || !m.awayTeam?.name) continue;
+    const g = (groups[m.group] ||= { teams: new Set(), results: [] });
+    const home = normalizeTeamName(m.homeTeam.name);
+    const away = normalizeTeamName(m.awayTeam.name);
+    g.teams.add(home);
+    g.teams.add(away);
+    if (m.status === 'FINISHED') {
+      g.results.push({
+        home, away,
+        homeGoals: m.score.fullTime.home,
+        awayGoals: m.score.fullTime.away,
+        winner: m.score.winner
+      });
+    }
+  }
+
+  const rankMap = {};
+  for (const g of Object.values(groups)) {
+    const table = [...g.teams].map(team => ({ team, pts: 0, gd: 0, gf: 0, played: 0 }));
+    const row = team => table.find(r => r.team === team);
+    for (const r of g.results) {
+      const h = row(r.home), a = row(r.away);
+      h.played++; a.played++;
+      h.gf += r.homeGoals; a.gf += r.awayGoals;
+      h.gd += r.homeGoals - r.awayGoals; a.gd += r.awayGoals - r.homeGoals;
+      if (r.winner === 'HOME_TEAM') h.pts += 3;
+      else if (r.winner === 'AWAY_TEAM') a.pts += 3;
+      else { h.pts += 1; a.pts += 1; }
+    }
+    table.sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+    // Head-to-head tiebreak for adjacent teams that are exactly tied
+    for (let i = 0; i < table.length - 1; i++) {
+      const a = table[i], b = table[i + 1];
+      if (a.pts === b.pts && a.gd === b.gd && a.gf === b.gf) {
+        const h2h = g.results.find(r =>
+          (r.home === a.team && r.away === b.team) || (r.home === b.team && r.away === a.team)
+        );
+        const h2hWinner = h2h?.winner === 'HOME_TEAM' ? h2h.home
+          : h2h?.winner === 'AWAY_TEAM' ? h2h.away : null;
+        if (h2hWinner === b.team) {
+          table[i] = b;
+          table[i + 1] = a;
+        }
+      }
+    }
+    const groupComplete = table.length === 4 && table.every(r => r.played === 3);
+    table.forEach((r, i) => {
+      rankMap[r.team] = { rank: i + 1, played: r.played, groupComplete };
+    });
+  }
+  return rankMap;
+}
+
 async function main() {
+  if (!FOOTBALLDATA_KEY) {
+    console.error('FOOTBALLDATA_KEY environment variable is not set.');
+    process.exit(1);
+  }
+
   const now = new Date();
   const tournamentStart = new Date('2026-06-11');
   const tournamentEnd = new Date('2026-07-20');
@@ -93,44 +154,38 @@ async function main() {
 
   // Helper: find player id that owns a team
   function ownerOf(teamName) {
-    return ownership[normalizeTeamName(teamName)] || ownership[teamName] || null;
+    return ownership[teamName] || null;
   }
 
   function playerName(pid) {
     return draft.players.find(p => p.id === pid)?.name || pid;
   }
 
-  // Fetch all fixtures for the tournament
-  console.log('Fetching fixtures from API-Football...');
-  let fixtures = [];
+  // Fetch all matches for the tournament
+  console.log('Fetching matches from football-data.org...');
+  let matches = [];
   try {
-    const data = await apiFootball(`/fixtures?league=${FIFA_WC_2026_ID}&season=${SEASON}`);
-    fixtures = data.response || [];
+    const data = await footballData(`/competitions/${COMPETITION}/matches?season=${SEASON}`);
+    matches = data.matches || [];
   } catch (e) {
-    console.error('Failed to fetch fixtures:', e.message);
+    console.error('Failed to fetch matches:', e.message);
     process.exit(1);
   }
 
-  const completedFixtures = fixtures.filter(f =>
-    f.fixture.status.short === 'FT' || f.fixture.status.short === 'AET' || f.fixture.status.short === 'PEN'
-  );
+  const completedMatches = matches.filter(m => m.status === 'FINISHED');
+  console.log(`Found ${completedMatches.length} completed matches.`);
 
-  console.log(`Found ${completedFixtures.length} completed fixtures.`);
-
-  // Process group stage matches (win/draw/loss points + swaps)
-  for (const fixture of completedFixtures) {
-    const id = fixture.fixture.id;
+  // Process completed matches (win/draw/loss points + swaps)
+  for (const match of completedMatches) {
+    const id = match.id;
     if (processedMatchIds.has(id)) continue;
+    if (!match.homeTeam?.name || !match.awayTeam?.name) continue;
 
-    const round = fixture.league.round || '';
-    const isGroupStage = round.toLowerCase().includes('group');
-
-    const homeRaw = fixture.teams.home.name;
-    const awayRaw = fixture.teams.away.name;
-    const home = normalizeTeamName(homeRaw);
-    const away = normalizeTeamName(awayRaw);
-    const homeGoals = fixture.goals.home;
-    const awayGoals = fixture.goals.away;
+    const home = normalizeTeamName(match.homeTeam.name);
+    const away = normalizeTeamName(match.awayTeam.name);
+    const homeGoals = match.score.fullTime.home;
+    const awayGoals = match.score.fullTime.away;
+    const winner = match.score.winner; // HOME_TEAM | AWAY_TEAM | DRAW (includes ET/penalty winners)
 
     const homeOwner = ownerOf(home);
     const awayOwner = ownerOf(away);
@@ -142,12 +197,12 @@ async function main() {
 
     const timestamp = Date.now();
 
-    if (homeGoals > awayGoals) {
+    if (winner === 'HOME_TEAM') {
       if (homeOwner) {
         points[homeOwner] = (points[homeOwner] || 0) + 3;
         matchLog.push({ time: timestamp, msg: `${home} beat ${away} (${homeGoals}-${awayGoals}) → +3 pts for ${playerName(homeOwner)}` });
       }
-    } else if (awayGoals > homeGoals) {
+    } else if (winner === 'AWAY_TEAM') {
       if (awayOwner) {
         points[awayOwner] = (points[awayOwner] || 0) + 3;
         matchLog.push({ time: timestamp, msg: `${away} beat ${home} (${awayGoals}-${homeGoals}) → +3 pts for ${playerName(awayOwner)}` });
@@ -175,38 +230,20 @@ async function main() {
     processedMatchIds.add(id);
   }
 
-  // Award group advancement bonuses (Round of 32) based on group finish position
-  // Fetch standings to determine each team's rank within their group
-  const groupRankMap = {}; // teamName -> { rank, played }
-  try {
-    const sData = await apiFootball(`/standings?league=${FIFA_WC_2026_ID}&season=${SEASON}`);
-    for (const league of sData.response || []) {
-      for (const group of league.league.standings || []) {
-        for (const entry of group) {
-          groupRankMap[normalizeTeamName(entry.team.name)] = {
-            rank: entry.rank,
-            played: entry.all?.played ?? 0
-          };
-        }
-      }
-    }
-    console.log(`Loaded standings for ${Object.keys(groupRankMap).length} teams.`);
-  } catch (e) {
-    console.log('Could not fetch standings (position-based R32 bonuses will be skipped):', e.message);
-  }
+  // Award group advancement bonuses (Round of 32) based on group finish position.
+  // Group tables are computed from finished group-stage matches.
+  const groupRankMap = computeGroupRanks(matches);
 
-  // Find 3rd-place teams that actually advanced (appear in Round of 32 fixtures)
+  // Find 3rd-place teams that actually advanced (appear in Round of 32 matches)
   const teamsInR32 = new Set();
-  for (const fixture of fixtures) {
-    const round = fixture.league.round || '';
-    if (round.toLowerCase().includes('round of 32') || round.toLowerCase().includes('last 32')) {
-      teamsInR32.add(normalizeTeamName(fixture.teams.home.name));
-      teamsInR32.add(normalizeTeamName(fixture.teams.away.name));
-    }
+  for (const match of matches) {
+    if (match.stage !== 'LAST_32') continue;
+    if (match.homeTeam?.name) teamsInR32.add(normalizeTeamName(match.homeTeam.name));
+    if (match.awayTeam?.name) teamsInR32.add(normalizeTeamName(match.awayTeam.name));
   }
 
   for (const [team, info] of Object.entries(groupRankMap)) {
-    if (info.played < 3) continue; // Group stage not complete for this team yet
+    if (!info.groupComplete) continue; // Group stage not complete for this group yet
 
     const owner = ownerOf(team);
     if (!owner) continue;
@@ -232,14 +269,13 @@ async function main() {
   }
 
   // Award round-specific appearance bonuses
-  for (const fixture of fixtures) {
-    const round = fixture.league.round || '';
-    const bonusType = ROUND_TO_BONUS[round];
+  for (const match of matches) {
+    const bonusType = STAGE_TO_BONUS[match.stage];
     if (!bonusType) continue;
 
-    for (const side of ['home', 'away']) {
-      const teamRaw = fixture.teams[side].name;
-      const team = normalizeTeamName(teamRaw);
+    for (const side of ['homeTeam', 'awayTeam']) {
+      if (!match[side]?.name) continue; // Bracket slot not decided yet
+      const team = normalizeTeamName(match[side].name);
       const bonusKey = `${bonusType}:${team}`;
       if (!bonusesAwarded[bonusKey]) {
         const owner = ownerOf(team);
@@ -252,31 +288,19 @@ async function main() {
       }
     }
 
-    // Champion bonus — Final winner
-    if (round === 'Final') {
-      const finalCompleted = fixture.fixture.status.short === 'FT' || fixture.fixture.status.short === 'AET' || fixture.fixture.status.short === 'PEN';
-      if (finalCompleted) {
-        const homeGoals = fixture.goals.home;
-        const awayGoals = fixture.goals.away;
-        let champion = null;
-        if (homeGoals > awayGoals) champion = normalizeTeamName(fixture.teams.home.name);
-        else if (awayGoals > homeGoals) champion = normalizeTeamName(fixture.teams.away.name);
-        // Penalty shootout winner
-        if (!champion && fixture.fixture.status.short === 'PEN') {
-          const homePen = fixture.score.penalty?.home;
-          const awayPen = fixture.score.penalty?.away;
-          if (homePen > awayPen) champion = normalizeTeamName(fixture.teams.home.name);
-          else champion = normalizeTeamName(fixture.teams.away.name);
-        }
-        if (champion) {
-          const bonusKey = `champion:${champion}`;
-          if (!bonusesAwarded[bonusKey]) {
-            const owner = ownerOf(champion);
-            if (owner) {
-              points[owner] = (points[owner] || 0) + BONUS_POINTS.champion;
-              bonusesAwarded[bonusKey] = true;
-              matchLog.push({ time: Date.now(), msg: `${champion} are World Cup Champions → +${BONUS_POINTS.champion} pts for ${playerName(owner)}` });
-            }
+    // Champion bonus — Final winner (score.winner covers extra time and penalties)
+    if (match.stage === 'FINAL' && match.status === 'FINISHED') {
+      let champion = null;
+      if (match.score.winner === 'HOME_TEAM') champion = normalizeTeamName(match.homeTeam.name);
+      else if (match.score.winner === 'AWAY_TEAM') champion = normalizeTeamName(match.awayTeam.name);
+      if (champion) {
+        const bonusKey = `champion:${champion}`;
+        if (!bonusesAwarded[bonusKey]) {
+          const owner = ownerOf(champion);
+          if (owner) {
+            points[owner] = (points[owner] || 0) + BONUS_POINTS.champion;
+            bonusesAwarded[bonusKey] = true;
+            matchLog.push({ time: Date.now(), msg: `${champion} are World Cup Champions → +${BONUS_POINTS.champion} pts for ${playerName(owner)}` });
           }
         }
       }
