@@ -336,12 +336,15 @@ function renderStandings() {
       </table>
     </div>
   </details>`;
+  let rank = 0;
+  let prevPts = null;
   sorted.forEach((p, i) => {
     const pts = gamestate.points[p.id] || 0;
+    if (pts !== prevPts) { rank = i + 1; prevPts = pts; }
     const teams = ALL_TEAMS.filter(t => own[t] === p.id);
-    const rankIcon = i === 0 ? '🏆' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}`;
-    const rankStyle = i < 3 ? 'font-size:18px;width:28px;text-align:center' : 'font-size:14px;font-weight:700;width:28px;text-align:center;color:var(--text3)';
-    html += `<div class="score-row${i===0?' gold':''}">
+    const rankIcon = rank === 1 ? '🏆' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `${rank}`;
+    const rankStyle = rank <= 3 ? 'font-size:18px;width:28px;text-align:center' : 'font-size:14px;font-weight:700;width:28px;text-align:center;color:var(--text3)';
+    html += `<div class="score-row${rank===1?' gold':''}">
       <div style="display:flex;align-items:center;gap:10px">
         <span style="${rankStyle}">${rankIcon}</span>
         <div>
