@@ -5,7 +5,7 @@
     "p1779936796017": 0,
     "p1779936803050": 0,
     "p1779936810074": 0,
-    "p1779936817378": 0,
+    "p1779936817378": 3,
     "p1779936822308": 0,
     "p1779936827805": 0
   },
@@ -59,8 +59,15 @@
     "Iraq": "p1779936822308",
     "Saudi Arabia": "p1779936827805"
   },
-  "matchLog": [],
+  "matchLog": [
+    {
+      "time": 1781225909556,
+      "msg": "Mexico beat South Africa (2-0) → +3 pts for Liz"
+    }
+  ],
   "bonusesAwarded": {},
-  "processedMatchIds": [],
-  "lastUpdated": null
+  "processedMatchIds": [
+    537327
+  ],
+  "lastUpdated": "2026-06-12T00:58:29.556Z"
 }
