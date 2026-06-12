@@ -55,7 +55,7 @@ Viewers can see standings without a PAT. Only the person with the PAT can run th
 │   └── gamestate.json                  # Points, ownership after swaps, match log
 └── .github/
     ├── workflows/
-    │   └── update-scores.yml           # Runs every 6 hours
+    │   └── update-scores.yml           # Runs every 4 hours
     └── scripts/
         └── update-scores.mjs           # Fetches football-data.org data, recalculates standings
 ```
@@ -63,7 +63,7 @@ Viewers can see standings without a PAT. Only the person with the PAT can run th
 ## How it works
 
 - **Draft phase**: The app UI handles player setup and team selection. Each pick is committed to `data/draft.json` via the GitHub API. Once the draft is locked, the file is frozen.
-- **Tournament phase**: Every 6 hours, the GitHub Action fetches all World Cup matches from [football-data.org](https://www.football-data.org), awards points for completed matches (win = 3pts, draw = 1pt each + team swap), awards advancement bonuses automatically, and commits the updated `data/gamestate.json`. Group finishing positions (for Round of 32 bonuses) are computed from the group-stage results using points, goal difference, goals for, and head-to-head as tiebreakers.
+- **Tournament phase**: Every 4 hours, the GitHub Action fetches all World Cup matches from [football-data.org](https://www.football-data.org), awards points for completed matches (win = 3pts, draw = 1pt each + team swap), awards advancement bonuses automatically, and commits the updated `data/gamestate.json`. Group finishing positions (for Round of 32 bonuses) are computed from the group-stage results using points, goal difference, goals for, and head-to-head as tiebreakers.
 - **Viewing**: Anyone with the GitHub Pages URL sees live standings. The page reads `data/gamestate.json` directly from the repo.
 
 ## Triggering manually

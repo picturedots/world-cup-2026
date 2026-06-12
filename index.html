@@ -247,7 +247,7 @@ function renderDraft(a) {
       });
       html += `</div>`;
     } else {
-      html += `<div class="notice notice-success">🎉 All picks in! Lock the draft to kick off the tournament — standings update every 6 hours via GitHub Actions.</div>`;
+      html += `<div class="notice notice-success">🎉 All picks in! Lock the draft to kick off the tournament — standings update every 4 hours via GitHub Actions.</div>`;
       html += `<button class="btn btn-primary" onclick="completeDraft()">⚽ Kick off the tournament!</button>`;
     }
   }
@@ -316,7 +316,7 @@ function renderStandings() {
   console.log("standings..");
   console.log(own);
   const sorted = draft.players.slice().sort((a,b) => (gamestate.points[b.id]||0) - (gamestate.points[a.id]||0));
-  let html = `<div class="notice" style="font-size:12px">Standings update automatically every 6 hours via GitHub Actions. Refresh to see the latest.</div>`;
+  let html = `<div class="notice" style="font-size:12px">Standings update automatically every 4 hours via GitHub Actions. Refresh to see the latest.</div>`;
   html += `<details style="margin-bottom:1rem">
     <summary style="cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);user-select:none">Points guide</summary>
     <div class="card" style="margin-top:0.5rem;font-size:13px">
