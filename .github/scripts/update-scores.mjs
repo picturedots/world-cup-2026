@@ -236,12 +236,12 @@ async function main() {
         ownership[away] = homeOwner;
         matchLog.push({
           time: timestamp,
-          msg: `${home} drew ${away} (${homeGoals}-${awayGoals}) → ${playerName(homeOwner)} +1, ${playerName(awayOwner)} +1. Teams swapped: ${home} → ${playerName(awayOwner)}, ${away} → ${playerName(homeOwner)}`
+          msg: `SWITCHEROO! ${home} drew ${away} (${homeGoals}-${awayGoals}) → ${playerName(homeOwner)} +1, ${playerName(awayOwner)} +1. Teams swapped: ${home} → ${playerName(awayOwner)}, ${away} → ${playerName(homeOwner)}`
         });
       } else {
         matchLog.push({
           time: timestamp,
-          msg: `${home} drew ${away} (${homeGoals}-${awayGoals}) → ${homeOwner ? playerName(homeOwner) + ' +1' : ''} ${awayOwner ? playerName(awayOwner) + ' +1' : ''}`
+          msg: `SWITCHEROO! ${home} drew ${away} (${homeGoals}-${awayGoals}) → ${homeOwner ? playerName(homeOwner) + ' +1' : ''} ${awayOwner ? playerName(awayOwner) + ' +1' : ''}`
         });
       }
     }
