@@ -120,6 +120,7 @@ Object.entries(GROUPS).forEach(([g,ts]) => { ts.forEach(t => { ALL_TEAMS.push(t)
 
 let draft = { locked: false, players: [], draftOrder: [], ownership: {}, draftComplete: false };
 let gamestate = { points: {}, ownership: {}, matchLog: [], bonusesAwarded: {}, processedMatchIds: [], lastUpdated: null };
+let schedule = { matches: [], lastUpdated: null };
 let tab = 'scores';
 let pat = localStorage.getItem('fifa26_pat') || '';
 
@@ -150,6 +151,13 @@ async function loadData() {
     gamestate = g.content; gamestate._sha = g.sha;
   } catch(e) {
     showMsg('app-msg', 'Could not load game data. Check your PAT and repo settings.', 'danger');
+  }
+  // Schedule is optional — it may not exist before the first updater run.
+  try {
+    const s = await getFile('data/schedule.json');
+    schedule = s.content;
+  } catch(e) {
+    schedule = { matches: [], lastUpdated: null };
   }
 }
 
@@ -302,11 +310,13 @@ function renderTournament(a) {
     <button class="tab ${tab==='scores'?'active':''}" onclick="setTab('scores')">Standings</button>
     <button class="tab ${tab==='rosters'?'active':''}" onclick="setTab('rosters')">Rosters</button>
     <button class="tab ${tab==='log'?'active':''}" onclick="setTab('log')">Match log</button>
+    <button class="tab ${tab==='schedule'?'active':''}" onclick="setTab('schedule')">Schedule</button>
   </div>`;
 
   if (tab === 'scores') html += renderStandings();
   else if (tab === 'rosters') html += renderTournamentRosters();
   else if (tab === 'log') html += renderLog();
+  else if (tab === 'schedule') html += renderSchedule();
 
   a.innerHTML = html;
 }
@@ -384,6 +394,43 @@ function renderLog() {
       <span style="font-size:11px;color:var(--text3);white-space:nowrap;margin-left:8px">${new Date(e.time).toLocaleDateString()}</span>
     </div>`
   ).join('');
+}
+
+function renderSchedule() {
+  const matches = schedule.matches || [];
+  if (!matches.length) return `<div class="notice">No upcoming matches scheduled.</div>`;
+  const own = effectiveOwnership();
+  const stageLabel = {
+    GROUP_STAGE: '', LAST_32: 'Round of 32', LAST_16: 'Round of 16',
+    QUARTER_FINALS: 'Quarter-final', SEMI_FINALS: 'Semi-final',
+    THIRD_PLACE: 'Third place', FINAL: 'Final'
+  };
+  const teamCell = (name) => {
+    if (!name) return `<span style="color:var(--text3)">TBD</span>`;
+    const owner = own[name] ? playerName(own[name]) : null;
+    return `${name}${owner ? ` <span style="font-size:11px;opacity:0.6">(${owner})</span>` : ''}`;
+  };
+
+  let html = `<div class="notice" style="font-size:12px">Upcoming matches shown in your local time. Completed games are not listed.</div>`;
+  let lastDay = null;
+  matches.forEach(m => {
+    const d = new Date(m.utcDate);
+    const dayKey = d.toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' });
+    if (dayKey !== lastDay) {
+      html += `<div class="section-label" style="margin-top:14px">${dayKey}</div>`;
+      lastDay = dayKey;
+    }
+    const time = d.toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' });
+    const label = stageLabel[m.stage] || (m.group ? m.group.replace('GROUP_', 'Group ') : '');
+    html += `<div class="score-row" style="font-size:13px">
+      <div>
+        <div>${teamCell(m.home)} <span style="color:var(--text3)">vs</span> ${teamCell(m.away)}</div>
+        ${label ? `<div style="margin-top:3px"><span class="tag">${label}</span></div>` : ''}
+      </div>
+      <span style="font-size:12px;color:var(--text2);white-space:nowrap;margin-left:8px">${time}</span>
+    </div>`;
+  });
+  return html;
 }
 
 function showMsg(id, msg, type='') {

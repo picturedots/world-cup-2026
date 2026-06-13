@@ -175,6 +175,25 @@ async function main() {
   const completedMatches = matches.filter(m => m.status === 'FINISHED');
   console.log(`Found ${completedMatches.length} completed matches.`);
 
+  // Build upcoming-match schedule (everything not finished), in chronological order.
+  // Team names are null for knockout slots not yet decided; the UI shows those as TBD.
+  const upcoming = matches
+    .filter(m => m.status !== 'FINISHED')
+    .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate))
+    .map(m => ({
+      id: m.id,
+      utcDate: m.utcDate,
+      stage: m.stage,
+      group: m.group || null,
+      home: m.homeTeam?.name ? normalizeTeamName(m.homeTeam.name) : null,
+      away: m.awayTeam?.name ? normalizeTeamName(m.awayTeam.name) : null
+    }));
+  writeJson(path.resolve('data/schedule.json'), {
+    matches: upcoming,
+    lastUpdated: new Date().toISOString()
+  });
+  console.log(`schedule.json updated: ${upcoming.length} upcoming matches.`);
+
   // Process completed matches (win/draw/loss points + swaps)
   for (const match of completedMatches) {
     const id = match.id;
