@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537339,
-      "utcDate": "2026-06-13T22:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_C",
-      "home": "Brazil",
-      "away": "Morocco"
-    },
-    {
       "id": 537340,
       "utcDate": "2026-06-14T01:00:00Z",
       "stage": "GROUP_STAGE",
@@ -793,5 +785,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-13T22:56:47.624Z"
+  "lastUpdated": "2026-06-14T00:11:15.688Z"
 }

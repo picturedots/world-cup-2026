@@ -3,17 +3,17 @@
     "p1779936707998": 1,
     "p1779936725338": 1,
     "p1779936796017": 4,
-    "p1779936803050": 0,
+    "p1779936803050": 1,
     "p1779936810074": 3,
     "p1779936817378": 3,
-    "p1779936822308": 0,
+    "p1779936822308": 1,
     "p1779936827805": 1
   },
   "ownership": {
     "Spain": "p1779936707998",
     "France": "p1779936725338",
     "England": "p1779936796017",
-    "Brazil": "p1779936803050",
+    "Brazil": "p1779936822308",
     "Portugal": "p1779936810074",
     "Argentina": "p1779936817378",
     "Netherlands": "p1779936822308",
@@ -24,7 +24,7 @@
     "Colombia": "p1779936803050",
     "Senegal": "p1779936810074",
     "Mexico": "p1779936817378",
-    "Morocco": "p1779936822308",
+    "Morocco": "p1779936803050",
     "Germany": "p1779936827805",
     "Japan": "p1779936707998",
     "Uruguay": "p1779936725338",
@@ -79,6 +79,10 @@
     {
       "time": 1781391407628,
       "msg": "SWITCHEROO! Qatar drew Switzerland (1-1) → Mark +1, Tessa +1. Teams swapped: Qatar → Tessa, Switzerland → Mark"
+    },
+    {
+      "time": 1781395875691,
+      "msg": "SWITCHEROO! Brazil drew Morocco (1-1) → Emily +1, Alissa +1. Teams swapped: Brazil → Alissa, Morocco → Emily"
     }
   ],
   "bonusesAwarded": {},
@@ -87,7 +91,8 @@
     537328,
     537333,
     537345,
-    537334
+    537334,
+    537339
   ],
-  "lastUpdated": "2026-06-13T22:56:47.629Z"
+  "lastUpdated": "2026-06-14T00:11:15.692Z"
 }
