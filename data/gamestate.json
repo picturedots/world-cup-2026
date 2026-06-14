@@ -3,8 +3,8 @@
     "p1779936707998": 1,
     "p1779936725338": 1,
     "p1779936796017": 4,
-    "p1779936803050": 1,
-    "p1779936810074": 3,
+    "p1779936803050": 4,
+    "p1779936810074": 6,
     "p1779936817378": 3,
     "p1779936822308": 1,
     "p1779936827805": 1
@@ -83,6 +83,14 @@
     {
       "time": 1781395875691,
       "msg": "SWITCHEROO! Brazil drew Morocco (1-1) → Emily +1, Alissa +1. Teams swapped: Brazil → Alissa, Morocco → Emily"
+    },
+    {
+      "time": 1781424392774,
+      "msg": "Scotland beat Haiti (1-0) → +3 pts for Bryce"
+    },
+    {
+      "time": 1781424392774,
+      "msg": "Australia beat Türkiye (2-0) → +3 pts for Emily"
     }
   ],
   "bonusesAwarded": {},
@@ -92,7 +100,9 @@
     537333,
     537345,
     537334,
-    537339
+    537339,
+    537340,
+    537346
   ],
-  "lastUpdated": "2026-06-14T02:30:52.049Z"
+  "lastUpdated": "2026-06-14T08:06:32.775Z"
 }
