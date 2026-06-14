@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537351,
-      "utcDate": "2026-06-14T17:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_E",
-      "home": "Germany",
-      "away": "Curaçao"
-    },
-    {
       "id": 537357,
       "utcDate": "2026-06-14T20:00:00Z",
       "stage": "GROUP_STAGE",
@@ -769,5 +761,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-14T17:06:43.435Z"
+  "lastUpdated": "2026-06-14T20:58:15.288Z"
 }
