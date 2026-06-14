@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537357,
-      "utcDate": "2026-06-14T20:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_F",
-      "home": "Netherlands",
-      "away": "Japan"
-    },
-    {
       "id": 537352,
       "utcDate": "2026-06-14T23:00:00Z",
       "stage": "GROUP_STAGE",
@@ -761,5 +753,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-14T20:58:15.288Z"
+  "lastUpdated": "2026-06-14T22:33:08.885Z"
 }
