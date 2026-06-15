@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 2,
-    "p1779936725338": 1,
+    "p1779936725338": 4,
     "p1779936796017": 4,
     "p1779936803050": 4,
     "p1779936810074": 6,
@@ -99,6 +99,10 @@
     {
       "time": 1781476388888,
       "msg": "SWITCHEROO! Netherlands drew Japan (2-2) → Alissa +1, Tessa +1. Teams swapped: Netherlands → Tessa, Japan → Alissa"
+    },
+    {
+      "time": 1781492318529,
+      "msg": "Ivory Coast beat Ecuador (1-0) → +3 pts for Mark"
     }
   ],
   "bonusesAwarded": {},
@@ -112,7 +116,8 @@
     537340,
     537346,
     537351,
-    537357
+    537357,
+    537352
   ],
-  "lastUpdated": "2026-06-15T02:35:34.303Z"
+  "lastUpdated": "2026-06-15T02:58:38.530Z"
 }

@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537352,
-      "utcDate": "2026-06-14T23:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_E",
-      "home": "Ivory Coast",
-      "away": "Ecuador"
-    },
-    {
       "id": 537358,
       "utcDate": "2026-06-15T02:00:00Z",
       "stage": "GROUP_STAGE",
@@ -753,5 +745,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-15T02:35:34.302Z"
+  "lastUpdated": "2026-06-15T02:58:38.526Z"
 }
