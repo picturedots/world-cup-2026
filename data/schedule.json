@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537369,
-      "utcDate": "2026-06-15T16:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_H",
-      "home": "Spain",
-      "away": "Cape Verde"
-    },
-    {
       "id": 537363,
       "utcDate": "2026-06-15T19:00:00Z",
       "stage": "GROUP_STAGE",
@@ -737,5 +729,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-15T16:52:39.675Z"
+  "lastUpdated": "2026-06-15T19:23:42.071Z"
 }
