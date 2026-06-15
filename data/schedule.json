@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537358,
-      "utcDate": "2026-06-15T02:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_F",
-      "home": "Sweden",
-      "away": "Tunisia"
-    },
-    {
       "id": 537369,
       "utcDate": "2026-06-15T16:00:00Z",
       "stage": "GROUP_STAGE",
@@ -745,5 +737,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-15T02:58:38.526Z"
+  "lastUpdated": "2026-06-15T09:50:53.267Z"
 }
