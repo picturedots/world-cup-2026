@@ -370,7 +370,7 @@ function renderStandings() {
   sorted.forEach((p, i) => {
     const pts = gamestate.points[p.id] || 0;
     if (pts !== prevPts) { rank = i + 1; prevPts = pts; }
-    const teams = ALL_TEAMS.filter(t => own[t] === p.id);
+    const teams = ALL_TEAMS.filter(t => own[t] === p.id).sort((a, b) => a.localeCompare(b));
     const rankIcon = rank === 1 ? '🏆' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `${rank}`;
     const rankStyle = rank <= 3 ? 'font-size:18px;width:28px;text-align:center' : 'font-size:14px;font-weight:700;width:28px;text-align:center;color:var(--text3)';
     html += `<div class="score-row${rank===1?' gold':''}">
@@ -393,7 +393,7 @@ function renderStandings() {
 function renderTournamentRosters() {
   const own = effectiveOwnership();
   return draft.players.map((p, i) => {
-    const teams = ALL_TEAMS.filter(t => own[t] === p.id);
+    const teams = ALL_TEAMS.filter(t => own[t] === p.id).sort((a, b) => a.localeCompare(b));
     const pts = gamestate.points[p.id] || 0;
     return `<div class="player-card">
       <div style="display:flex;align-items:center;justify-content:space-between">
