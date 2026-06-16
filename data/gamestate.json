@@ -1,9 +1,9 @@
 {
   "points": {
-    "p1779936707998": 3,
+    "p1779936707998": 4,
     "p1779936725338": 5,
     "p1779936796017": 5,
-    "p1779936803050": 5,
+    "p1779936803050": 6,
     "p1779936810074": 6,
     "p1779936817378": 6,
     "p1779936822308": 2,
@@ -29,7 +29,7 @@
     "Japan": "p1779936822308",
     "Uruguay": "p1779936827805",
     "United States": "p1779936796017",
-    "Iran": "p1779936803050",
+    "Iran": "p1779936707998",
     "South Korea": "p1779936810074",
     "Türkiye": "p1779936817378",
     "Ecuador": "p1779936822308",
@@ -50,7 +50,7 @@
     "DR Congo": "p1779936817378",
     "Uzbekistan": "p1779936822308",
     "South Africa": "p1779936827805",
-    "New Zealand": "p1779936707998",
+    "New Zealand": "p1779936803050",
     "Qatar": "p1779936707998",
     "Curaçao": "p1779936796017",
     "Cape Verde": "p1779936707998",
@@ -119,6 +119,10 @@
     {
       "time": 1781568586241,
       "msg": "SWITCHEROO! Saudi Arabia drew Uruguay (1-1) → Sam +1, Mark +1. Teams swapped: Saudi Arabia → Mark, Uruguay → Sam"
+    },
+    {
+      "time": 1781601289507,
+      "msg": "SWITCHEROO! Iran drew New Zealand (2-2) → Emily +1, Tessa +1. Teams swapped: Iran → Tessa, New Zealand → Emily"
     }
   ],
   "bonusesAwarded": {},
@@ -137,7 +141,8 @@
     537358,
     537369,
     537363,
-    537370
+    537370,
+    537364
   ],
-  "lastUpdated": "2026-06-16T02:37:51.388Z"
+  "lastUpdated": "2026-06-16T09:14:49.508Z"
 }
