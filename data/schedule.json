@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537391,
-      "utcDate": "2026-06-16T19:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_I",
-      "home": "France",
-      "away": "Senegal"
-    },
-    {
       "id": 537392,
       "utcDate": "2026-06-16T22:00:00Z",
       "stage": "GROUP_STAGE",
@@ -705,5 +697,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-16T16:20:23.215Z"
+  "lastUpdated": "2026-06-16T22:04:54.837Z"
 }
