@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537370,
-      "utcDate": "2026-06-15T22:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_H",
-      "home": "Saudi Arabia",
-      "away": "Uruguay"
-    },
-    {
       "id": 537364,
       "utcDate": "2026-06-16T01:00:00Z",
       "stage": "GROUP_STAGE",
@@ -721,5 +713,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-16T00:06:09.122Z"
+  "lastUpdated": "2026-06-16T00:09:46.239Z"
 }

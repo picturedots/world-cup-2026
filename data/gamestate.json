@@ -1,13 +1,13 @@
 {
   "points": {
     "p1779936707998": 3,
-    "p1779936725338": 4,
+    "p1779936725338": 5,
     "p1779936796017": 5,
     "p1779936803050": 5,
     "p1779936810074": 6,
     "p1779936817378": 6,
     "p1779936822308": 2,
-    "p1779936827805": 5
+    "p1779936827805": 6
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -27,7 +27,7 @@
     "Morocco": "p1779936803050",
     "Germany": "p1779936827805",
     "Japan": "p1779936822308",
-    "Uruguay": "p1779936725338",
+    "Uruguay": "p1779936827805",
     "United States": "p1779936796017",
     "Iran": "p1779936803050",
     "South Korea": "p1779936810074",
@@ -57,7 +57,7 @@
     "Jordan": "p1779936810074",
     "Haiti": "p1779936817378",
     "Iraq": "p1779936822308",
-    "Saudi Arabia": "p1779936827805"
+    "Saudi Arabia": "p1779936725338"
   },
   "matchLog": [
     {
@@ -115,6 +115,10 @@
     {
       "time": 1781561368112,
       "msg": "SWITCHEROO! Belgium drew Egypt (1-1) → Sam +1, Mildred +1. Teams swapped: Belgium → Mildred, Egypt → Sam"
+    },
+    {
+      "time": 1781568586241,
+      "msg": "SWITCHEROO! Saudi Arabia drew Uruguay (1-1) → Sam +1, Mark +1. Teams swapped: Saudi Arabia → Mark, Uruguay → Sam"
     }
   ],
   "bonusesAwarded": {},
@@ -132,7 +136,8 @@
     537352,
     537358,
     537369,
-    537363
+    537363,
+    537370
   ],
-  "lastUpdated": "2026-06-16T00:06:09.125Z"
+  "lastUpdated": "2026-06-16T00:09:46.242Z"
 }
