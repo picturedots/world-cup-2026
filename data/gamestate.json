@@ -2,7 +2,7 @@
   "points": {
     "p1779936707998": 4,
     "p1779936725338": 8,
-    "p1779936796017": 8,
+    "p1779936796017": 11,
     "p1779936803050": 6,
     "p1779936810074": 7,
     "p1779936817378": 10,
@@ -143,6 +143,10 @@
     {
       "time": 1781723195124,
       "msg": "SWITCHEROO! Portugal drew DR Congo (1-1) → Bryce +1, Liz +1. Teams swapped: Portugal → Liz, DR Congo → Bryce"
+    },
+    {
+      "time": 1781740451068,
+      "msg": "England beat Croatia (4-2) → +3 pts for Mildred"
     }
   ],
   "bonusesAwarded": {},
@@ -167,7 +171,8 @@
     537392,
     537397,
     537398,
-    537403
+    537403,
+    537409
   ],
-  "lastUpdated": "2026-06-17T21:51:59.639Z"
+  "lastUpdated": "2026-06-17T23:54:11.069Z"
 }
