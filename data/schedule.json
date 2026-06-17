@@ -1,22 +1,6 @@
 {
   "matches": [
     {
-      "id": 537397,
-      "utcDate": "2026-06-17T01:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_J",
-      "home": "Argentina",
-      "away": "Algeria"
-    },
-    {
-      "id": 537398,
-      "utcDate": "2026-06-17T04:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_J",
-      "home": "Austria",
-      "away": "Jordan"
-    },
-    {
       "id": 537403,
       "utcDate": "2026-06-17T17:00:00Z",
       "stage": "GROUP_STAGE",
@@ -689,5 +673,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-17T02:35:07.762Z"
+  "lastUpdated": "2026-06-17T08:52:50.840Z"
 }
