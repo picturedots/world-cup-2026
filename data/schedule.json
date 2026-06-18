@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537404,
-      "utcDate": "2026-06-18T02:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_K",
-      "home": "Uzbekistan",
-      "away": "Colombia"
-    },
-    {
       "id": 537329,
       "utcDate": "2026-06-18T16:00:00Z",
       "stage": "GROUP_STAGE",
@@ -649,5 +641,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-18T02:33:02.325Z"
+  "lastUpdated": "2026-06-18T08:29:23.213Z"
 }
