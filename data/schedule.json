@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537329,
-      "utcDate": "2026-06-18T16:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_A",
-      "home": "Czechia",
-      "away": "South Africa"
-    },
-    {
       "id": 537335,
       "utcDate": "2026-06-18T19:00:00Z",
       "stage": "GROUP_STAGE",
@@ -641,5 +633,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-18T14:42:17.094Z"
+  "lastUpdated": "2026-06-18T18:19:47.382Z"
 }

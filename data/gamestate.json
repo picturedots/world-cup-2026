@@ -1,13 +1,13 @@
 {
   "points": {
     "p1779936707998": 4,
-    "p1779936725338": 8,
+    "p1779936725338": 9,
     "p1779936796017": 11,
     "p1779936803050": 9,
     "p1779936810074": 10,
     "p1779936817378": 10,
     "p1779936822308": 2,
-    "p1779936827805": 9
+    "p1779936827805": 10
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -43,13 +43,13 @@
     "Algeria": "p1779936822308",
     "Austria": "p1779936827805",
     "Paraguay": "p1779936707998",
-    "Czechia": "p1779936725338",
+    "Czechia": "p1779936827805",
     "Bosnia and Herzegovina": "p1779936827805",
     "Tunisia": "p1779936803050",
     "Ghana": "p1779936810074",
     "DR Congo": "p1779936810074",
     "Uzbekistan": "p1779936822308",
-    "South Africa": "p1779936827805",
+    "South Africa": "p1779936725338",
     "New Zealand": "p1779936803050",
     "Qatar": "p1779936707998",
     "Curaçao": "p1779936796017",
@@ -155,6 +155,10 @@
     {
       "time": 1781771363214,
       "msg": "Colombia beat Uzbekistan (3-1) → +3 pts for Emily"
+    },
+    {
+      "time": 1781806787383,
+      "msg": "SWITCHEROO! Czechia drew South Africa (1-1) → Mark +1, Sam +1. Teams swapped: Czechia → Sam, South Africa → Mark"
     }
   ],
   "bonusesAwarded": {},
@@ -182,7 +186,8 @@
     537403,
     537409,
     537410,
-    537404
+    537404,
+    537329
   ],
-  "lastUpdated": "2026-06-18T14:42:17.095Z"
+  "lastUpdated": "2026-06-18T18:19:47.384Z"
 }
