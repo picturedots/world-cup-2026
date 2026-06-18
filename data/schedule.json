@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537410,
-      "utcDate": "2026-06-17T23:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_L",
-      "home": "Ghana",
-      "away": "Panama"
-    },
-    {
       "id": 537404,
       "utcDate": "2026-06-18T02:00:00Z",
       "stage": "GROUP_STAGE",
@@ -657,5 +649,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-17T23:54:11.067Z"
+  "lastUpdated": "2026-06-18T01:10:48.565Z"
 }
