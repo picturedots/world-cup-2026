@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537335,
-      "utcDate": "2026-06-18T19:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_B",
-      "home": "Switzerland",
-      "away": "Bosnia and Herzegovina"
-    },
-    {
       "id": 537336,
       "utcDate": "2026-06-18T22:00:00Z",
       "stage": "GROUP_STAGE",
@@ -633,5 +625,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-18T18:19:47.382Z"
+  "lastUpdated": "2026-06-18T21:55:45.768Z"
 }

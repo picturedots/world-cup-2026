@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 4,
-    "p1779936725338": 9,
+    "p1779936725338": 12,
     "p1779936796017": 11,
     "p1779936803050": 9,
     "p1779936810074": 10,
@@ -159,6 +159,10 @@
     {
       "time": 1781806787383,
       "msg": "SWITCHEROO! Czechia drew South Africa (1-1) → Mark +1, Sam +1. Teams swapped: Czechia → Sam, South Africa → Mark"
+    },
+    {
+      "time": 1781819745768,
+      "msg": "Switzerland beat Bosnia and Herzegovina (4-1) → +3 pts for Mark"
     }
   ],
   "bonusesAwarded": {},
@@ -187,7 +191,8 @@
     537409,
     537410,
     537404,
-    537329
+    537329,
+    537335
   ],
-  "lastUpdated": "2026-06-18T18:19:47.384Z"
+  "lastUpdated": "2026-06-18T21:55:45.769Z"
 }
