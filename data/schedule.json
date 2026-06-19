@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537330,
-      "utcDate": "2026-06-19T01:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_A",
-      "home": "Mexico",
-      "away": "South Korea"
-    },
-    {
       "id": 537348,
       "utcDate": "2026-06-19T19:00:00Z",
       "stage": "GROUP_STAGE",
@@ -617,5 +609,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-19T02:48:43.964Z"
+  "lastUpdated": "2026-06-19T08:57:01.698Z"
 }
