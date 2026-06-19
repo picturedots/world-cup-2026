@@ -1,14 +1,6 @@
 {
   "matches": [
     {
-      "id": 537336,
-      "utcDate": "2026-06-18T22:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_B",
-      "home": "Canada",
-      "away": "Qatar"
-    },
-    {
       "id": 537330,
       "utcDate": "2026-06-19T01:00:00Z",
       "stage": "GROUP_STAGE",
@@ -625,5 +617,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-18T21:55:45.768Z"
+  "lastUpdated": "2026-06-19T02:48:43.964Z"
 }
