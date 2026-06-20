@@ -1,22 +1,6 @@
 {
   "matches": [
     {
-      "id": 537341,
-      "utcDate": "2026-06-20T00:30:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_C",
-      "home": "Brazil",
-      "away": "Haiti"
-    },
-    {
-      "id": 537347,
-      "utcDate": "2026-06-20T03:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_D",
-      "home": "Türkiye",
-      "away": "Paraguay"
-    },
-    {
       "id": 537359,
       "utcDate": "2026-06-20T17:00:00Z",
       "stage": "GROUP_STAGE",
@@ -593,5 +577,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-20T02:09:29.066Z"
+  "lastUpdated": "2026-06-20T07:41:06.089Z"
 }
