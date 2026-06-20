@@ -266,6 +266,42 @@ async function main() {
     if (match.awayTeam?.name) teamsInR32.add(normalizeTeamName(match.awayTeam.name));
   }
 
+  // Track eliminated teams so the UI can strike them out. A team is out when:
+  //   - its group is complete and it did not advance, or
+  //   - it lost a knockout match.
+  const eliminated = new Set(gamestate.eliminated || []);
+
+  // Group-stage eliminations. Rank 4 is always out once the group finishes.
+  // Rank 3 advances only as one of the 8 best third-place teams, so it is only
+  // safe to call out once every Round-of-32 slot is filled (32 teams).
+  const r32SlotsFilled = teamsInR32.size >= 32;
+  for (const [team, info] of Object.entries(groupRankMap)) {
+    if (!info.groupComplete) continue;
+    if (info.rank === 4) eliminated.add(team);
+    else if (info.rank === 3 && r32SlotsFilled && !teamsInR32.has(team)) eliminated.add(team);
+  }
+
+  // Knockout eliminations: the loser of any finished knockout match is out.
+  // SEMI_FINALS is excluded here on purpose — its losers drop into the
+  // third-place game, so they stay in until THIRD_PLACE is played (below).
+  const KNOCKOUT_STAGES = new Set([
+    'LAST_32', 'LAST_16', 'QUARTER_FINALS', 'FINAL'
+  ]);
+  for (const match of matches) {
+    if (match.status !== 'FINISHED') continue;
+    if (!match.homeTeam?.name || !match.awayTeam?.name) continue;
+    const home = normalizeTeamName(match.homeTeam.name);
+    const away = normalizeTeamName(match.awayTeam.name);
+    if (KNOCKOUT_STAGES.has(match.stage)) {
+      if (match.score.winner === 'HOME_TEAM') eliminated.add(away);
+      else if (match.score.winner === 'AWAY_TEAM') eliminated.add(home);
+    } else if (match.stage === 'THIRD_PLACE') {
+      // Both participants (the two semi-final losers) are out once it's decided.
+      eliminated.add(home);
+      eliminated.add(away);
+    }
+  }
+
   for (const [team, info] of Object.entries(groupRankMap)) {
     if (!info.groupComplete) continue; // Group stage not complete for this group yet
 
@@ -337,6 +373,7 @@ async function main() {
     matchLog,
     bonusesAwarded,
     processedMatchIds: [...processedMatchIds],
+    eliminated: [...eliminated],
     lastUpdated: new Date().toISOString()
   };
 
