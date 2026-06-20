@@ -6,7 +6,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "home": "Netherlands",
-      "away": "Sweden"
+      "away": "Sweden",
+      "city": "Houston"
     },
     {
       "id": 537353,
@@ -14,7 +15,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "home": "Germany",
-      "away": "Ivory Coast"
+      "away": "Ivory Coast",
+      "city": "Toronto"
     },
     {
       "id": 537354,
@@ -22,7 +24,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "home": "Ecuador",
-      "away": "Curaçao"
+      "away": "Curaçao",
+      "city": "Kansas City"
     },
     {
       "id": 537360,
@@ -30,7 +33,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "home": "Tunisia",
-      "away": "Japan"
+      "away": "Japan",
+      "city": "Monterrey"
     },
     {
       "id": 537371,
@@ -38,7 +42,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "home": "Spain",
-      "away": "Saudi Arabia"
+      "away": "Saudi Arabia",
+      "city": "Atlanta"
     },
     {
       "id": 537365,
@@ -46,7 +51,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "home": "Belgium",
-      "away": "Iran"
+      "away": "Iran",
+      "city": "Los Angeles"
     },
     {
       "id": 537372,
@@ -54,7 +60,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "home": "Uruguay",
-      "away": "Cape Verde"
+      "away": "Cape Verde",
+      "city": "Miami"
     },
     {
       "id": 537366,
@@ -62,7 +69,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "home": "New Zealand",
-      "away": "Egypt"
+      "away": "Egypt",
+      "city": "Vancouver"
     },
     {
       "id": 537399,
@@ -70,7 +78,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
       "home": "Argentina",
-      "away": "Austria"
+      "away": "Austria",
+      "city": "Dallas"
     },
     {
       "id": 537393,
@@ -78,7 +87,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "home": "France",
-      "away": "Iraq"
+      "away": "Iraq",
+      "city": "Philadelphia"
     },
     {
       "id": 537394,
@@ -86,7 +96,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "home": "Norway",
-      "away": "Senegal"
+      "away": "Senegal",
+      "city": "New York/New Jersey"
     },
     {
       "id": 537400,
@@ -94,7 +105,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
       "home": "Jordan",
-      "away": "Algeria"
+      "away": "Algeria",
+      "city": "San Francisco Bay Area"
     },
     {
       "id": 537405,
@@ -102,7 +114,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "home": "Portugal",
-      "away": "Uzbekistan"
+      "away": "Uzbekistan",
+      "city": "Houston"
     },
     {
       "id": 537411,
@@ -110,7 +123,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "home": "England",
-      "away": "Ghana"
+      "away": "Ghana",
+      "city": "Boston"
     },
     {
       "id": 537412,
@@ -118,7 +132,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "home": "Panama",
-      "away": "Croatia"
+      "away": "Croatia",
+      "city": "Toronto"
     },
     {
       "id": 537406,
@@ -126,7 +141,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "home": "Colombia",
-      "away": "DR Congo"
+      "away": "DR Congo",
+      "city": "Guadalajara"
     },
     {
       "id": 537337,
@@ -134,7 +150,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "home": "Switzerland",
-      "away": "Canada"
+      "away": "Canada",
+      "city": "Vancouver"
     },
     {
       "id": 537338,
@@ -142,7 +159,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_B",
       "home": "Bosnia and Herzegovina",
-      "away": "Qatar"
+      "away": "Qatar",
+      "city": "Seattle"
     },
     {
       "id": 537344,
@@ -150,7 +168,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "home": "Morocco",
-      "away": "Haiti"
+      "away": "Haiti",
+      "city": "Atlanta"
     },
     {
       "id": 537343,
@@ -158,7 +177,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_C",
       "home": "Scotland",
-      "away": "Brazil"
+      "away": "Brazil",
+      "city": "Miami"
     },
     {
       "id": 537331,
@@ -166,7 +186,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "home": "Czechia",
-      "away": "Mexico"
+      "away": "Mexico",
+      "city": "Mexico City"
     },
     {
       "id": 537332,
@@ -174,7 +195,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_A",
       "home": "South Africa",
-      "away": "South Korea"
+      "away": "South Korea",
+      "city": "Monterrey"
     },
     {
       "id": 537355,
@@ -182,7 +204,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "home": "Ecuador",
-      "away": "Germany"
+      "away": "Germany",
+      "city": "New York/New Jersey"
     },
     {
       "id": 537356,
@@ -190,7 +213,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_E",
       "home": "Curaçao",
-      "away": "Ivory Coast"
+      "away": "Ivory Coast",
+      "city": "Philadelphia"
     },
     {
       "id": 537361,
@@ -198,7 +222,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "home": "Tunisia",
-      "away": "Netherlands"
+      "away": "Netherlands",
+      "city": "Kansas City"
     },
     {
       "id": 537362,
@@ -206,7 +231,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_F",
       "home": "Japan",
-      "away": "Sweden"
+      "away": "Sweden",
+      "city": "Dallas"
     },
     {
       "id": 537349,
@@ -214,7 +240,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
       "home": "Türkiye",
-      "away": "United States"
+      "away": "United States",
+      "city": "Los Angeles"
     },
     {
       "id": 537350,
@@ -222,7 +249,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_D",
       "home": "Paraguay",
-      "away": "Australia"
+      "away": "Australia",
+      "city": "San Francisco Bay Area"
     },
     {
       "id": 537395,
@@ -230,7 +258,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "home": "Norway",
-      "away": "France"
+      "away": "France",
+      "city": "Boston"
     },
     {
       "id": 537396,
@@ -238,7 +267,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_I",
       "home": "Senegal",
-      "away": "Iraq"
+      "away": "Iraq",
+      "city": "Toronto"
     },
     {
       "id": 537373,
@@ -246,7 +276,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "home": "Uruguay",
-      "away": "Spain"
+      "away": "Spain",
+      "city": "Guadalajara"
     },
     {
       "id": 537374,
@@ -254,7 +285,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_H",
       "home": "Cape Verde",
-      "away": "Saudi Arabia"
+      "away": "Saudi Arabia",
+      "city": "Houston"
     },
     {
       "id": 537367,
@@ -262,7 +294,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "home": "New Zealand",
-      "away": "Belgium"
+      "away": "Belgium",
+      "city": "Vancouver"
     },
     {
       "id": 537368,
@@ -270,7 +303,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_G",
       "home": "Egypt",
-      "away": "Iran"
+      "away": "Iran",
+      "city": "Seattle"
     },
     {
       "id": 537413,
@@ -278,7 +312,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "home": "Panama",
-      "away": "England"
+      "away": "England",
+      "city": "New York/New Jersey"
     },
     {
       "id": 537414,
@@ -286,7 +321,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_L",
       "home": "Croatia",
-      "away": "Ghana"
+      "away": "Ghana",
+      "city": "Philadelphia"
     },
     {
       "id": 537407,
@@ -294,7 +330,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "home": "Colombia",
-      "away": "Portugal"
+      "away": "Portugal",
+      "city": "Miami"
     },
     {
       "id": 537408,
@@ -302,7 +339,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_K",
       "home": "DR Congo",
-      "away": "Uzbekistan"
+      "away": "Uzbekistan",
+      "city": "Atlanta"
     },
     {
       "id": 537401,
@@ -310,7 +348,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
       "home": "Jordan",
-      "away": "Argentina"
+      "away": "Argentina",
+      "city": "Dallas"
     },
     {
       "id": 537402,
@@ -318,7 +357,8 @@
       "stage": "GROUP_STAGE",
       "group": "GROUP_J",
       "home": "Algeria",
-      "away": "Austria"
+      "away": "Austria",
+      "city": "Kansas City"
     },
     {
       "id": 537417,
@@ -326,7 +366,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Los Angeles"
     },
     {
       "id": 537423,
@@ -334,7 +375,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Houston"
     },
     {
       "id": 537415,
@@ -342,7 +384,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Boston"
     },
     {
       "id": 537418,
@@ -350,7 +393,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Monterrey"
     },
     {
       "id": 537424,
@@ -358,7 +402,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Dallas"
     },
     {
       "id": 537416,
@@ -366,7 +411,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "New York/New Jersey"
     },
     {
       "id": 537425,
@@ -374,7 +420,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Mexico City"
     },
     {
       "id": 537426,
@@ -382,7 +429,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Atlanta"
     },
     {
       "id": 537422,
@@ -390,7 +438,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Seattle"
     },
     {
       "id": 537421,
@@ -398,7 +447,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "San Francisco Bay Area"
     },
     {
       "id": 537420,
@@ -406,7 +456,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Los Angeles"
     },
     {
       "id": 537419,
@@ -414,7 +465,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Toronto"
     },
     {
       "id": 537429,
@@ -422,7 +474,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Vancouver"
     },
     {
       "id": 537428,
@@ -430,7 +483,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Dallas"
     },
     {
       "id": 537427,
@@ -438,7 +492,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Miami"
     },
     {
       "id": 537430,
@@ -446,7 +501,8 @@
       "stage": "LAST_32",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Kansas City"
     },
     {
       "id": 537376,
@@ -454,7 +510,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Houston"
     },
     {
       "id": 537375,
@@ -462,7 +519,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Philadelphia"
     },
     {
       "id": 537377,
@@ -470,7 +528,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "New York/New Jersey"
     },
     {
       "id": 537378,
@@ -478,7 +537,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Mexico City"
     },
     {
       "id": 537379,
@@ -486,7 +546,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Dallas"
     },
     {
       "id": 537380,
@@ -494,7 +555,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Seattle"
     },
     {
       "id": 537381,
@@ -502,7 +564,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Atlanta"
     },
     {
       "id": 537382,
@@ -510,7 +573,8 @@
       "stage": "LAST_16",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Vancouver"
     },
     {
       "id": 537383,
@@ -518,7 +582,8 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Boston"
     },
     {
       "id": 537384,
@@ -526,7 +591,8 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Los Angeles"
     },
     {
       "id": 537385,
@@ -534,7 +600,8 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Miami"
     },
     {
       "id": 537386,
@@ -542,7 +609,8 @@
       "stage": "QUARTER_FINALS",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Kansas City"
     },
     {
       "id": 537387,
@@ -550,7 +618,8 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Dallas"
     },
     {
       "id": 537388,
@@ -558,7 +627,8 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Atlanta"
     },
     {
       "id": 537389,
@@ -566,7 +636,8 @@
       "stage": "THIRD_PLACE",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "Miami"
     },
     {
       "id": 537390,
@@ -574,8 +645,9 @@
       "stage": "FINAL",
       "group": null,
       "home": null,
-      "away": null
+      "away": null,
+      "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-20T13:23:57.642Z"
+  "lastUpdated": "2026-06-20T16:01:38.733Z"
 }

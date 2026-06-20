@@ -47,6 +47,10 @@ function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
+// Static match id -> host city map. football-data.org does not return a venue
+// for the World Cup, so cities come from the published fixture schedule.
+const VENUE_CITIES = readJson(path.resolve('data/venues.json')).cities;
+
 function writeJson(filePath, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
@@ -186,7 +190,8 @@ async function main() {
       stage: m.stage,
       group: m.group || null,
       home: m.homeTeam?.name ? normalizeTeamName(m.homeTeam.name) : null,
-      away: m.awayTeam?.name ? normalizeTeamName(m.awayTeam.name) : null
+      away: m.awayTeam?.name ? normalizeTeamName(m.awayTeam.name) : null,
+      city: VENUE_CITIES[m.id] || null
     }));
   writeJson(path.resolve('data/schedule.json'), {
     matches: upcoming,
