@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537359,
-      "utcDate": "2026-06-20T17:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_F",
-      "home": "Netherlands",
-      "away": "Sweden",
-      "city": "Houston"
-    },
-    {
       "id": 537353,
       "utcDate": "2026-06-20T20:00:00Z",
       "stage": "GROUP_STAGE",
@@ -649,5 +640,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-20T17:14:16.044Z"
+  "lastUpdated": "2026-06-20T21:02:49.305Z"
 }
