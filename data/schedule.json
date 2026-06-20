@@ -1,22 +1,6 @@
 {
   "matches": [
     {
-      "id": 537348,
-      "utcDate": "2026-06-19T19:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_D",
-      "home": "United States",
-      "away": "Australia"
-    },
-    {
-      "id": 537342,
-      "utcDate": "2026-06-19T22:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_C",
-      "home": "Scotland",
-      "away": "Morocco"
-    },
-    {
       "id": 537341,
       "utcDate": "2026-06-20T00:30:00Z",
       "stage": "GROUP_STAGE",
@@ -609,5 +593,5 @@
       "away": null
     }
   ],
-  "lastUpdated": "2026-06-19T21:00:00.402Z"
+  "lastUpdated": "2026-06-20T02:09:29.066Z"
 }
