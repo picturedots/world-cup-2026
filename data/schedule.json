@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537353,
-      "utcDate": "2026-06-20T20:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_E",
-      "home": "Germany",
-      "away": "Ivory Coast",
-      "city": "Toronto"
-    },
-    {
       "id": 537354,
       "utcDate": "2026-06-21T00:00:00Z",
       "stage": "GROUP_STAGE",
@@ -640,5 +631,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-20T21:02:49.305Z"
+  "lastUpdated": "2026-06-20T22:28:12.852Z"
 }
