@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537354,
-      "utcDate": "2026-06-21T00:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_E",
-      "home": "Ecuador",
-      "away": "Curaçao",
-      "city": "Kansas City"
-    },
-    {
       "id": 537360,
       "utcDate": "2026-06-21T04:00:00Z",
       "stage": "GROUP_STAGE",
@@ -631,5 +622,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-20T22:28:12.852Z"
+  "lastUpdated": "2026-06-21T02:33:02.566Z"
 }
