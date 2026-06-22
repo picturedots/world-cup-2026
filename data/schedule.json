@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537366,
-      "utcDate": "2026-06-22T01:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_G",
-      "home": "New Zealand",
-      "away": "Egypt",
-      "city": "Vancouver"
-    },
-    {
       "id": 537399,
       "utcDate": "2026-06-22T17:00:00Z",
       "stage": "GROUP_STAGE",
@@ -586,5 +577,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-22T02:37:16.434Z"
+  "lastUpdated": "2026-06-22T09:37:29.611Z"
 }

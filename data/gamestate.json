@@ -7,7 +7,7 @@
     "p1779936810074": 10,
     "p1779936817378": 13,
     "p1779936822308": 9,
-    "p1779936827805": 14
+    "p1779936827805": 17
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -215,6 +215,10 @@
     {
       "time": 1782089861988,
       "msg": "SWITCHEROO! Uruguay drew Cape Verde (2-2) → Sam +1, Tessa +1. Teams swapped: Uruguay → Tessa, Cape Verde → Sam"
+    },
+    {
+      "time": 1782121049612,
+      "msg": "Egypt beat New Zealand (3-1) → +3 pts for Sam"
     }
   ],
   "bonusesAwarded": {},
@@ -257,8 +261,9 @@
     537360,
     537371,
     537365,
-    537372
+    537372,
+    537366
   ],
   "eliminated": [],
-  "lastUpdated": "2026-06-22T02:37:16.436Z"
+  "lastUpdated": "2026-06-22T09:37:29.613Z"
 }
