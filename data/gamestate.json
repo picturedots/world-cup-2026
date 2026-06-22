@@ -1,13 +1,13 @@
 {
   "points": {
-    "p1779936707998": 10,
+    "p1779936707998": 12,
     "p1779936725338": 12,
-    "p1779936796017": 18,
+    "p1779936796017": 19,
     "p1779936803050": 15,
     "p1779936810074": 10,
     "p1779936817378": 13,
     "p1779936822308": 9,
-    "p1779936827805": 13
+    "p1779936827805": 14
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -17,7 +17,7 @@
     "Portugal": "p1779936817378",
     "Argentina": "p1779936817378",
     "Netherlands": "p1779936707998",
-    "Belgium": "p1779936796017",
+    "Belgium": "p1779936707998",
     "Switzerland": "p1779936725338",
     "Croatia": "p1779936725338",
     "Norway": "p1779936796017",
@@ -27,9 +27,9 @@
     "Morocco": "p1779936803050",
     "Germany": "p1779936827805",
     "Japan": "p1779936822308",
-    "Uruguay": "p1779936827805",
+    "Uruguay": "p1779936707998",
     "United States": "p1779936796017",
-    "Iran": "p1779936707998",
+    "Iran": "p1779936796017",
     "South Korea": "p1779936810074",
     "Türkiye": "p1779936817378",
     "Ecuador": "p1779936796017",
@@ -53,7 +53,7 @@
     "New Zealand": "p1779936803050",
     "Qatar": "p1779936707998",
     "Curaçao": "p1779936822308",
-    "Cape Verde": "p1779936707998",
+    "Cape Verde": "p1779936827805",
     "Jordan": "p1779936810074",
     "Haiti": "p1779936817378",
     "Iraq": "p1779936822308",
@@ -207,6 +207,14 @@
     {
       "time": 1782069196664,
       "msg": "Spain beat Saudi Arabia (5-0) → +3 pts for Emily"
+    },
+    {
+      "time": 1782089861988,
+      "msg": "SWITCHEROO! Belgium drew Iran (0-0) → Mildred +1, Tessa +1. Teams swapped: Belgium → Tessa, Iran → Mildred"
+    },
+    {
+      "time": 1782089861988,
+      "msg": "SWITCHEROO! Uruguay drew Cape Verde (2-2) → Sam +1, Tessa +1. Teams swapped: Uruguay → Tessa, Cape Verde → Sam"
     }
   ],
   "bonusesAwarded": {},
@@ -247,8 +255,10 @@
     537353,
     537354,
     537360,
-    537371
+    537371,
+    537365,
+    537372
   ],
   "eliminated": [],
-  "lastUpdated": "2026-06-21T21:03:05.924Z"
+  "lastUpdated": "2026-06-22T00:57:41.989Z"
 }
