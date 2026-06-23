@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537400,
-      "utcDate": "2026-06-23T03:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_J",
-      "home": "Jordan",
-      "away": "Algeria",
-      "city": "San Francisco Bay Area"
-    },
-    {
       "id": 537405,
       "utcDate": "2026-06-23T17:00:00Z",
       "stage": "GROUP_STAGE",
@@ -550,5 +541,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-23T02:11:06.426Z"
+  "lastUpdated": "2026-06-23T07:37:23.176Z"
 }
