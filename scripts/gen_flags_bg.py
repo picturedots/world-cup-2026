@@ -8,6 +8,10 @@ cluster into a rainbow.
 
 Run:  python3 scripts/gen_flags_bg.py   (writes flags-bg.svg in the repo root)
 Downloads are cached in scripts/.flag-cache/ so reruns are offline/fast.
+
+The live footer ribbon (flags-strip.svg) was generated with the defaults:
+    python3 scripts/gen_flags_bg.py --shape strip --layout column-serpentine
+i.e. a plain `python3 scripts/gen_flags_bg.py` reproduces it.
 """
 import argparse
 import base64
