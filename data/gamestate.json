@@ -2,9 +2,9 @@
   "points": {
     "p1779936707998": 12,
     "p1779936725338": 15,
-    "p1779936796017": 22,
+    "p1779936796017": 23,
     "p1779936803050": 15,
-    "p1779936810074": 10,
+    "p1779936810074": 11,
     "p1779936817378": 19,
     "p1779936822308": 12,
     "p1779936827805": 17
@@ -12,7 +12,7 @@
   "ownership": {
     "Spain": "p1779936803050",
     "France": "p1779936725338",
-    "England": "p1779936796017",
+    "England": "p1779936810074",
     "Brazil": "p1779936822308",
     "Portugal": "p1779936817378",
     "Argentina": "p1779936817378",
@@ -46,7 +46,7 @@
     "Czechia": "p1779936827805",
     "Bosnia and Herzegovina": "p1779936827805",
     "Tunisia": "p1779936803050",
-    "Ghana": "p1779936810074",
+    "Ghana": "p1779936796017",
     "DR Congo": "p1779936810074",
     "Uzbekistan": "p1779936822308",
     "South Africa": "p1779936725338",
@@ -239,6 +239,10 @@
     {
       "time": 1782249735727,
       "msg": "Portugal beat Uzbekistan (5-0) → +3 pts for Liz"
+    },
+    {
+      "time": 1782253493604,
+      "msg": "SWITCHEROO! England drew Ghana (0-0) → Mildred +1, Bryce +1. Teams swapped: England → Bryce, Ghana → Mildred"
     }
   ],
   "bonusesAwarded": {},
@@ -287,8 +291,9 @@
     537393,
     537394,
     537400,
-    537405
+    537405,
+    537411
   ],
   "eliminated": [],
-  "lastUpdated": "2026-06-23T21:22:15.728Z"
+  "lastUpdated": "2026-06-23T22:24:53.605Z"
 }
