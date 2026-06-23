@@ -144,3 +144,6 @@ vite.config.ts.timestamp-*
 
 # Mac
 **/.DS_Store
+
+# cached flag PNGs for scripts/gen_flags_bg.py (already embedded in flags-bg.svg)
+scripts/.flag-cache/
