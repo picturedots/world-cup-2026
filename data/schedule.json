@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537393,
-      "utcDate": "2026-06-22T21:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_I",
-      "home": "France",
-      "away": "Iraq",
-      "city": "Philadelphia"
-    },
-    {
       "id": 537394,
       "utcDate": "2026-06-23T00:00:00Z",
       "stage": "GROUP_STAGE",
@@ -302,7 +293,7 @@
       "utcDate": "2026-06-29T20:30:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Germany",
       "away": null,
       "city": "Boston"
     },
@@ -338,7 +329,7 @@
       "utcDate": "2026-07-01T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Mexico",
       "away": null,
       "city": "Mexico City"
     },
@@ -365,7 +356,7 @@
       "utcDate": "2026-07-02T00:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "United States",
       "away": null,
       "city": "San Francisco Bay Area"
     },
@@ -568,5 +559,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-22T21:54:28.236Z"
+  "lastUpdated": "2026-06-23T02:03:19.773Z"
 }
