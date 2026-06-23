@@ -84,6 +84,9 @@
     .lock-banner { background: var(--amber-bg); color: var(--amber-text); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 1rem; font-size: 13px; font-weight: 600; }
     .team-out { text-decoration: line-through; opacity: 0.5; }
     #pat-warning { display: none; }
+    .country-filter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px; margin-top: 8px; }
+    .country-filter-grid .team-btn { margin-bottom: 0; }
+    .team-btn.selected { background: var(--blue-bg); color: var(--blue-text); border-color: transparent; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -142,6 +145,10 @@ let draft = { locked: false, players: [], draftOrder: [], ownership: {}, draftCo
 let gamestate = { points: {}, ownership: {}, matchLog: [], bonusesAwarded: {}, processedMatchIds: [], lastUpdated: null };
 let schedule = { matches: [], lastUpdated: null };
 let tab = 'scores';
+let scheduleFilterOpen = false;
+let scheduleFilterCountry = null;
+let logFilterOpen = false;
+let logFilterCountry = null;
 let pat = localStorage.getItem('fifa26_pat') || '';
 
 // --- GitHub API helpers ---
@@ -409,7 +416,14 @@ function renderTournamentRosters() {
 
 function renderLog() {
   if (!gamestate.matchLog?.length) return `<div class="notice">No matches logged yet.</div>`;
-  return [...gamestate.matchLog].reverse().map(e =>
+  let html = renderCountryFilter('log');
+  const entries = [...gamestate.matchLog].reverse().filter(e =>
+    !logFilterCountry || (e.msg || '').includes(logFilterCountry)
+  );
+  if (!entries.length) {
+    return html + `<div class="notice">No logged matches for ${logFilterCountry}.</div>`;
+  }
+  return html + entries.map(e =>
     `<div class="score-row" style="font-size:13px">
       <span>${e.msg}</span>
       <span style="font-size:11px;color:var(--text3);white-space:nowrap;margin-left:8px">${new Date(e.time).toLocaleDateString()}</span>
@@ -418,8 +432,8 @@ function renderLog() {
 }
 
 function renderSchedule() {
-  const matches = schedule.matches || [];
-  if (!matches.length) return `<div class="notice">No upcoming matches scheduled.</div>`;
+  const allMatches = schedule.matches || [];
+  if (!allMatches.length) return `<div class="notice">No upcoming matches scheduled.</div>`;
   const own = effectiveOwnership();
   const stageLabel = {
     GROUP_STAGE: '', LAST_32: 'Round of 32', LAST_16: 'Round of 16',
@@ -433,6 +447,16 @@ function renderSchedule() {
   };
 
   let html = `<div class="notice" style="font-size:12px">Upcoming matches shown in your local time. Completed games are not listed.</div>`;
+  html += renderCountryFilter('schedule');
+
+  const matches = scheduleFilterCountry
+    ? allMatches.filter(m => m.home === scheduleFilterCountry || m.away === scheduleFilterCountry)
+    : allMatches;
+
+  if (!matches.length) {
+    return html + `<div class="notice">No upcoming matches for ${scheduleFilterCountry}.</div>`;
+  }
+
   let lastDay = null;
   matches.forEach(m => {
     const d = new Date(m.utcDate);
@@ -452,6 +476,42 @@ function renderSchedule() {
     </div>`;
   });
   return html;
+}
+
+function renderCountryFilter(kind) {
+  const open = kind === 'log' ? logFilterOpen : scheduleFilterOpen;
+  const selected = kind === 'log' ? logFilterCountry : scheduleFilterCountry;
+  let html = `<div class="card" style="padding:10px 12px">
+    <button class="btn btn-sm" style="width:100%;display:flex;align-items:center;justify-content:space-between" onclick="toggleCountryFilter('${kind}')">
+      <span>Filter by country${selected ? `: <strong>${teamFlag(selected)} ${selected}</strong>` : ''}</span>
+      <span style="color:var(--text3)">${open ? '▲' : '▼'}</span>
+    </button>`;
+  if (open) {
+    html += `<div style="margin-top:10px">
+      <button class="team-btn${!selected ? ' selected' : ''}" onclick="setCountryFilter('${kind}',null)">All countries</button>
+      <div class="country-filter-grid">` +
+      [...ALL_TEAMS].sort((a, b) => a.localeCompare(b)).map(t =>
+        `<button class="team-btn${t === selected ? ' selected' : ''}" onclick="setCountryFilter('${kind}','${t.replace(/'/g, "\\'")}')">
+          <span style="font-size:1.25em;vertical-align:-0.12em">${teamFlag(t)}</span> ${t}
+        </button>`
+      ).join('') +
+      `</div>
+    </div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+function toggleCountryFilter(kind) {
+  if (kind === 'log') logFilterOpen = !logFilterOpen;
+  else scheduleFilterOpen = !scheduleFilterOpen;
+  render();
+}
+
+function setCountryFilter(kind, country) {
+  if (kind === 'log') logFilterCountry = country;
+  else scheduleFilterCountry = country;
+  render();
 }
 
 function showMsg(id, msg, type='') {
