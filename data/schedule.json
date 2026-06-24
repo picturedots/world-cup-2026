@@ -239,7 +239,7 @@
       "utcDate": "2026-06-29T20:30:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Germany",
       "away": null,
       "city": "Boston"
     },
@@ -275,7 +275,7 @@
       "utcDate": "2026-07-01T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Mexico",
       "away": null,
       "city": "Mexico City"
     },
@@ -302,7 +302,7 @@
       "utcDate": "2026-07-02T00:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "United States",
       "away": null,
       "city": "San Francisco Bay Area"
     },
@@ -347,7 +347,7 @@
       "utcDate": "2026-07-03T22:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Argentina",
       "away": null,
       "city": "Miami"
     },
@@ -505,5 +505,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-24T14:03:03.440Z"
+  "lastUpdated": "2026-06-24T17:46:17.716Z"
 }
