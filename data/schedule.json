@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537337,
-      "utcDate": "2026-06-24T19:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_B",
-      "home": "Switzerland",
-      "away": "Canada",
-      "city": "Vancouver"
-    },
-    {
-      "id": 537338,
-      "utcDate": "2026-06-24T19:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_B",
-      "home": "Bosnia and Herzegovina",
-      "away": "Qatar",
-      "city": "Seattle"
-    },
-    {
       "id": 537344,
       "utcDate": "2026-06-24T22:00:00Z",
       "stage": "GROUP_STAGE",
@@ -239,7 +221,7 @@
       "utcDate": "2026-06-29T20:30:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Germany",
+      "home": null,
       "away": null,
       "city": "Boston"
     },
@@ -275,7 +257,7 @@
       "utcDate": "2026-07-01T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Mexico",
+      "home": null,
       "away": null,
       "city": "Mexico City"
     },
@@ -302,7 +284,7 @@
       "utcDate": "2026-07-02T00:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "United States",
+      "home": null,
       "away": null,
       "city": "San Francisco Bay Area"
     },
@@ -347,7 +329,7 @@
       "utcDate": "2026-07-03T22:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Argentina",
+      "home": null,
       "away": null,
       "city": "Miami"
     },
@@ -505,5 +487,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-24T17:46:17.716Z"
+  "lastUpdated": "2026-06-24T21:15:39.059Z"
 }

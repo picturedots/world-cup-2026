@@ -1,13 +1,13 @@
 {
   "points": {
     "p1779936707998": 12,
-    "p1779936725338": 18,
-    "p1779936796017": 23,
+    "p1779936725338": 28,
+    "p1779936796017": 28,
     "p1779936803050": 18,
     "p1779936810074": 11,
     "p1779936817378": 19,
     "p1779936822308": 12,
-    "p1779936827805": 17
+    "p1779936827805": 20
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -251,9 +251,28 @@
     {
       "time": 1782286256937,
       "msg": "Colombia beat DR Congo (1-0) → +3 pts for Emily"
+    },
+    {
+      "time": 1782335739060,
+      "msg": "Switzerland beat Canada (2-1) → +3 pts for Mark"
+    },
+    {
+      "time": 1782335739060,
+      "msg": "Bosnia and Herzegovina beat Qatar (3-1) → +3 pts for Sam"
+    },
+    {
+      "time": 1782335739061,
+      "msg": "Switzerland advanced to Round of 32 as group winner → +7 pts for Mark"
+    },
+    {
+      "time": 1782335739061,
+      "msg": "Canada advanced to Round of 32 as 2nd place → +5 pts for Mildred"
     }
   ],
-  "bonusesAwarded": {},
+  "bonusesAwarded": {
+    "r32_winner:Switzerland": true,
+    "r32_runner:Canada": true
+  },
   "processedMatchIds": [
     537327,
     537328,
@@ -302,8 +321,12 @@
     537405,
     537411,
     537412,
-    537406
+    537406,
+    537337,
+    537338
   ],
-  "eliminated": [],
-  "lastUpdated": "2026-06-24T17:46:17.718Z"
+  "eliminated": [
+    "Qatar"
+  ],
+  "lastUpdated": "2026-06-24T21:15:39.061Z"
 }
