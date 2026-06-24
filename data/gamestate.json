@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 12,
-    "p1779936725338": 15,
+    "p1779936725338": 18,
     "p1779936796017": 23,
     "p1779936803050": 15,
     "p1779936810074": 11,
@@ -243,6 +243,10 @@
     {
       "time": 1782253493604,
       "msg": "SWITCHEROO! England drew Ghana (0-0) → Mildred +1, Bryce +1. Teams swapped: England → Bryce, Ghana → Mildred"
+    },
+    {
+      "time": 1782266699452,
+      "msg": "Croatia beat Panama (1-0) → +3 pts for Mark"
     }
   ],
   "bonusesAwarded": {},
@@ -292,8 +296,9 @@
     537394,
     537400,
     537405,
-    537411
+    537411,
+    537412
   ],
   "eliminated": [],
-  "lastUpdated": "2026-06-23T22:24:53.605Z"
+  "lastUpdated": "2026-06-24T02:04:59.454Z"
 }
