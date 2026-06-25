@@ -1,11 +1,11 @@
 {
   "points": {
     "p1779936707998": 12,
-    "p1779936725338": 28,
+    "p1779936725338": 36,
     "p1779936796017": 28,
     "p1779936803050": 26,
     "p1779936810074": 11,
-    "p1779936817378": 19,
+    "p1779936817378": 29,
     "p1779936822308": 22,
     "p1779936827805": 20
   },
@@ -283,13 +283,31 @@
     {
       "time": 1782346706640,
       "msg": "Morocco advanced to Round of 32 as 2nd place → +5 pts for Emily"
+    },
+    {
+      "time": 1782356721480,
+      "msg": "Mexico beat Czechia (3-0) → +3 pts for Liz"
+    },
+    {
+      "time": 1782356721480,
+      "msg": "South Africa beat South Korea (1-0) → +3 pts for Mark"
+    },
+    {
+      "time": 1782356721481,
+      "msg": "Mexico advanced to Round of 32 as group winner → +7 pts for Liz"
+    },
+    {
+      "time": 1782356721481,
+      "msg": "South Africa advanced to Round of 32 as 2nd place → +5 pts for Mark"
     }
   ],
   "bonusesAwarded": {
     "r32_winner:Switzerland": true,
     "r32_runner:Canada": true,
     "r32_winner:Brazil": true,
-    "r32_runner:Morocco": true
+    "r32_runner:Morocco": true,
+    "r32_winner:Mexico": true,
+    "r32_runner:South Africa": true
   },
   "processedMatchIds": [
     537327,
@@ -343,11 +361,14 @@
     537337,
     537338,
     537344,
-    537343
+    537343,
+    537331,
+    537332
   ],
   "eliminated": [
     "Qatar",
-    "Haiti"
+    "Haiti",
+    "Czechia"
   ],
-  "lastUpdated": "2026-06-25T02:05:36.926Z"
+  "lastUpdated": "2026-06-25T03:05:21.481Z"
 }
