@@ -3,10 +3,10 @@
     "p1779936707998": 12,
     "p1779936725338": 28,
     "p1779936796017": 28,
-    "p1779936803050": 18,
+    "p1779936803050": 26,
     "p1779936810074": 11,
     "p1779936817378": 19,
-    "p1779936822308": 12,
+    "p1779936822308": 22,
     "p1779936827805": 20
   },
   "ownership": {
@@ -267,11 +267,29 @@
     {
       "time": 1782335739061,
       "msg": "Canada advanced to Round of 32 as 2nd place → +5 pts for Mildred"
+    },
+    {
+      "time": 1782346706639,
+      "msg": "Morocco beat Haiti (4-2) → +3 pts for Emily"
+    },
+    {
+      "time": 1782346706639,
+      "msg": "Brazil beat Scotland (3-0) → +3 pts for Alissa"
+    },
+    {
+      "time": 1782346706640,
+      "msg": "Brazil advanced to Round of 32 as group winner → +7 pts for Alissa"
+    },
+    {
+      "time": 1782346706640,
+      "msg": "Morocco advanced to Round of 32 as 2nd place → +5 pts for Emily"
     }
   ],
   "bonusesAwarded": {
     "r32_winner:Switzerland": true,
-    "r32_runner:Canada": true
+    "r32_runner:Canada": true,
+    "r32_winner:Brazil": true,
+    "r32_runner:Morocco": true
   },
   "processedMatchIds": [
     537327,
@@ -323,10 +341,13 @@
     537412,
     537406,
     537337,
-    537338
+    537338,
+    537344,
+    537343
   ],
   "eliminated": [
-    "Qatar"
+    "Qatar",
+    "Haiti"
   ],
-  "lastUpdated": "2026-06-24T21:15:39.061Z"
+  "lastUpdated": "2026-06-25T00:18:26.640Z"
 }

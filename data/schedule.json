@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537344,
-      "utcDate": "2026-06-24T22:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_C",
-      "home": "Morocco",
-      "away": "Haiti",
-      "city": "Atlanta"
-    },
-    {
-      "id": 537343,
-      "utcDate": "2026-06-24T22:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_C",
-      "home": "Scotland",
-      "away": "Brazil",
-      "city": "Miami"
-    },
-    {
       "id": 537331,
       "utcDate": "2026-06-25T01:00:00Z",
       "stage": "GROUP_STAGE",
@@ -487,5 +469,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-24T21:15:39.059Z"
+  "lastUpdated": "2026-06-25T00:18:26.638Z"
 }
