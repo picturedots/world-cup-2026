@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537349,
-      "utcDate": "2026-06-26T02:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_D",
-      "home": "Türkiye",
-      "away": "United States",
-      "city": "Los Angeles"
-    },
-    {
-      "id": 537350,
-      "utcDate": "2026-06-26T02:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_D",
-      "home": "Paraguay",
-      "away": "Australia",
-      "city": "San Francisco Bay Area"
-    },
-    {
       "id": 537395,
       "utcDate": "2026-06-26T19:00:00Z",
       "stage": "GROUP_STAGE",
@@ -415,5 +397,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-26T02:07:22.074Z"
+  "lastUpdated": "2026-06-26T04:08:55.261Z"
 }

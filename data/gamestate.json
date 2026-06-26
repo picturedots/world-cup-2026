@@ -1,11 +1,11 @@
 {
   "points": {
-    "p1779936707998": 22,
+    "p1779936707998": 28,
     "p1779936725338": 44,
-    "p1779936796017": 31,
-    "p1779936803050": 26,
+    "p1779936796017": 38,
+    "p1779936803050": 27,
     "p1779936810074": 11,
-    "p1779936817378": 35,
+    "p1779936817378": 38,
     "p1779936822308": 23,
     "p1779936827805": 27
   },
@@ -37,12 +37,12 @@
     "Panama": "p1779936707998",
     "Ivory Coast": "p1779936725338",
     "Egypt": "p1779936827805",
-    "Australia": "p1779936803050",
+    "Australia": "p1779936707998",
     "Scotland": "p1779936810074",
     "Sweden": "p1779936822308",
     "Algeria": "p1779936822308",
     "Austria": "p1779936827805",
-    "Paraguay": "p1779936707998",
+    "Paraguay": "p1779936803050",
     "Czechia": "p1779936827805",
     "Bosnia and Herzegovina": "p1779936827805",
     "Tunisia": "p1779936803050",
@@ -331,6 +331,22 @@
     {
       "time": 1782435919217,
       "msg": "Japan advanced to Round of 32 as 2nd place → +5 pts for Liz"
+    },
+    {
+      "time": 1782446935262,
+      "msg": "Türkiye beat United States (3-2) → +3 pts for Liz"
+    },
+    {
+      "time": 1782446935262,
+      "msg": "SWITCHEROO! 🔄 Paraguay drew Australia (0-0) → Tessa +1, Emily +1. Teams swapped: Paraguay → Emily, Australia → Tessa"
+    },
+    {
+      "time": 1782446935263,
+      "msg": "United States advanced to Round of 32 as group winner → +7 pts for Mildred"
+    },
+    {
+      "time": 1782446935263,
+      "msg": "Australia advanced to Round of 32 as 2nd place → +5 pts for Tessa"
     }
   ],
   "bonusesAwarded": {
@@ -343,7 +359,9 @@
     "r32_winner:Germany": true,
     "r32_runner:Ivory Coast": true,
     "r32_winner:Netherlands": true,
-    "r32_runner:Japan": true
+    "r32_runner:Japan": true,
+    "r32_winner:United States": true,
+    "r32_runner:Australia": true
   },
   "processedMatchIds": [
     537327,
@@ -403,14 +421,17 @@
     537355,
     537356,
     537361,
-    537362
+    537362,
+    537349,
+    537350
   ],
   "eliminated": [
     "Qatar",
     "Haiti",
     "Czechia",
     "Curaçao",
-    "Tunisia"
+    "Tunisia",
+    "Türkiye"
   ],
-  "lastUpdated": "2026-06-26T02:07:22.075Z"
+  "lastUpdated": "2026-06-26T04:08:55.263Z"
 }
