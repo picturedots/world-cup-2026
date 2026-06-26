@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537361,
-      "utcDate": "2026-06-25T23:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_F",
-      "home": "Tunisia",
-      "away": "Netherlands",
-      "city": "Kansas City"
-    },
-    {
-      "id": 537362,
-      "utcDate": "2026-06-25T23:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_F",
-      "home": "Japan",
-      "away": "Sweden",
-      "city": "Dallas"
-    },
-    {
       "id": 537349,
       "utcDate": "2026-06-26T02:00:00Z",
       "stage": "GROUP_STAGE",
@@ -433,5 +415,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-25T22:04:47.789Z"
+  "lastUpdated": "2026-06-26T01:05:19.216Z"
 }
