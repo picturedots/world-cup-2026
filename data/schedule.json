@@ -113,8 +113,8 @@
       "utcDate": "2026-06-28T19:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "South Africa",
+      "away": "Canada",
       "city": "Los Angeles"
     },
     {
@@ -122,8 +122,8 @@
       "utcDate": "2026-06-29T17:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Brazil",
+      "away": "Japan",
       "city": "Houston"
     },
     {
@@ -131,7 +131,7 @@
       "utcDate": "2026-06-29T20:30:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Germany",
       "away": null,
       "city": "Boston"
     },
@@ -140,8 +140,8 @@
       "utcDate": "2026-06-30T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Netherlands",
+      "away": "Morocco",
       "city": "Monterrey"
     },
     {
@@ -167,7 +167,7 @@
       "utcDate": "2026-07-01T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Mexico",
       "away": null,
       "city": "Mexico City"
     },
@@ -194,8 +194,8 @@
       "utcDate": "2026-07-02T00:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "United States",
+      "away": "Bosnia and Herzegovina",
       "city": "San Francisco Bay Area"
     },
     {
@@ -221,7 +221,7 @@
       "utcDate": "2026-07-03T03:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Switzerland",
       "away": null,
       "city": "Vancouver"
     },
@@ -230,7 +230,7 @@
       "utcDate": "2026-07-03T18:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Australia",
       "away": null,
       "city": "Dallas"
     },
@@ -239,7 +239,7 @@
       "utcDate": "2026-07-03T22:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Argentina",
       "away": null,
       "city": "Miami"
     },
@@ -397,5 +397,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-26T07:40:58.671Z"
+  "lastUpdated": "2026-06-26T10:42:21.647Z"
 }

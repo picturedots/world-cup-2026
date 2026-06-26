@@ -7,7 +7,7 @@
     "p1779936810074": 11,
     "p1779936817378": 38,
     "p1779936822308": 23,
-    "p1779936827805": 27
+    "p1779936827805": 30
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -347,6 +347,10 @@
     {
       "time": 1782446935263,
       "msg": "Australia advanced to Round of 32 as 2nd place → +5 pts for Tessa"
+    },
+    {
+      "time": 1782470541649,
+      "msg": "Bosnia and Herzegovina advanced to Round of 32 as 3rd place → +3 pts for Sam"
     }
   ],
   "bonusesAwarded": {
@@ -361,7 +365,8 @@
     "r32_winner:Netherlands": true,
     "r32_runner:Japan": true,
     "r32_winner:United States": true,
-    "r32_runner:Australia": true
+    "r32_runner:Australia": true,
+    "r32_third:Bosnia and Herzegovina": true
   },
   "processedMatchIds": [
     537327,
@@ -433,5 +438,5 @@
     "Tunisia",
     "Türkiye"
   ],
-  "lastUpdated": "2026-06-26T07:40:58.673Z"
+  "lastUpdated": "2026-06-26T10:42:21.649Z"
 }
