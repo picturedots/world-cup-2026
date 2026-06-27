@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537367,
-      "utcDate": "2026-06-27T03:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_G",
-      "home": "New Zealand",
-      "away": "Belgium",
-      "city": "Vancouver"
-    },
-    {
-      "id": 537368,
-      "utcDate": "2026-06-27T03:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_G",
-      "home": "Egypt",
-      "away": "Iran",
-      "city": "Seattle"
-    },
-    {
       "id": 537413,
       "utcDate": "2026-06-27T21:00:00Z",
       "stage": "GROUP_STAGE",
@@ -113,7 +95,7 @@
       "utcDate": "2026-06-30T17:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": null,
+      "home": "Ivory Coast",
       "away": null,
       "city": "Dallas"
     },
@@ -361,5 +343,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-27T02:20:46.993Z"
+  "lastUpdated": "2026-06-27T06:45:26.638Z"
 }

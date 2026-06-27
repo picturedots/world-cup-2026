@@ -1,13 +1,13 @@
 {
   "points": {
-    "p1779936707998": 28,
+    "p1779936707998": 38,
     "p1779936725338": 60,
-    "p1779936796017": 43,
+    "p1779936796017": 49,
     "p1779936803050": 37,
     "p1779936810074": 14,
     "p1779936817378": 38,
     "p1779936822308": 23,
-    "p1779936827805": 31
+    "p1779936827805": 32
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -29,14 +29,14 @@
     "Japan": "p1779936817378",
     "Uruguay": "p1779936707998",
     "United States": "p1779936796017",
-    "Iran": "p1779936796017",
+    "Iran": "p1779936827805",
     "South Korea": "p1779936810074",
     "Türkiye": "p1779936817378",
     "Ecuador": "p1779936796017",
     "Canada": "p1779936796017",
     "Panama": "p1779936707998",
     "Ivory Coast": "p1779936725338",
-    "Egypt": "p1779936827805",
+    "Egypt": "p1779936796017",
     "Australia": "p1779936707998",
     "Scotland": "p1779936810074",
     "Sweden": "p1779936822308",
@@ -383,6 +383,22 @@
     {
       "time": 1782526846997,
       "msg": "Cape Verde advanced to Round of 32 as 2nd place → +5 pts for Mark"
+    },
+    {
+      "time": 1782542726638,
+      "msg": "Belgium beat New Zealand (5-1) → +3 pts for Tessa"
+    },
+    {
+      "time": 1782542726638,
+      "msg": "SWITCHEROO! 🔄 Egypt drew Iran (1-1) → Sam +1, Mildred +1. Teams swapped: Egypt → Mildred, Iran → Sam"
+    },
+    {
+      "time": 1782542726640,
+      "msg": "Belgium advanced to Round of 32 as group winner → +7 pts for Tessa"
+    },
+    {
+      "time": 1782542726640,
+      "msg": "Egypt advanced to Round of 32 as 2nd place → +5 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -402,7 +418,9 @@
     "r32_winner:France": true,
     "r32_runner:Norway": true,
     "r32_winner:Spain": true,
-    "r32_runner:Cape Verde": true
+    "r32_runner:Cape Verde": true,
+    "r32_winner:Belgium": true,
+    "r32_runner:Egypt": true
   },
   "processedMatchIds": [
     537327,
@@ -468,7 +486,9 @@
     537395,
     537396,
     537373,
-    537374
+    537374,
+    537367,
+    537368
   ],
   "eliminated": [
     "Qatar",
@@ -478,7 +498,8 @@
     "Tunisia",
     "Türkiye",
     "Iraq",
-    "Saudi Arabia"
+    "Saudi Arabia",
+    "New Zealand"
   ],
-  "lastUpdated": "2026-06-27T02:20:46.997Z"
+  "lastUpdated": "2026-06-27T06:45:26.640Z"
 }
