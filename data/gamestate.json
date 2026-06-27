@@ -1,13 +1,13 @@
 {
   "points": {
     "p1779936707998": 28,
-    "p1779936725338": 54,
+    "p1779936725338": 60,
     "p1779936796017": 43,
-    "p1779936803050": 27,
+    "p1779936803050": 37,
     "p1779936810074": 14,
     "p1779936817378": 38,
     "p1779936822308": 23,
-    "p1779936827805": 30
+    "p1779936827805": 31
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -53,11 +53,11 @@
     "New Zealand": "p1779936803050",
     "Qatar": "p1779936707998",
     "Curaçao": "p1779936822308",
-    "Cape Verde": "p1779936827805",
+    "Cape Verde": "p1779936725338",
     "Jordan": "p1779936810074",
     "Haiti": "p1779936817378",
     "Iraq": "p1779936822308",
-    "Saudi Arabia": "p1779936725338"
+    "Saudi Arabia": "p1779936827805"
   },
   "matchLog": [
     {
@@ -367,6 +367,22 @@
     {
       "time": 1782508305076,
       "msg": "Norway advanced to Round of 32 as 2nd place → +5 pts for Mildred"
+    },
+    {
+      "time": 1782526846996,
+      "msg": "Spain beat Uruguay (1-0) → +3 pts for Emily"
+    },
+    {
+      "time": 1782526846996,
+      "msg": "SWITCHEROO! 🔄 Cape Verde drew Saudi Arabia (0-0) → Sam +1, Mark +1. Teams swapped: Cape Verde → Mark, Saudi Arabia → Sam"
+    },
+    {
+      "time": 1782526846997,
+      "msg": "Spain advanced to Round of 32 as group winner → +7 pts for Emily"
+    },
+    {
+      "time": 1782526846997,
+      "msg": "Cape Verde advanced to Round of 32 as 2nd place → +5 pts for Mark"
     }
   ],
   "bonusesAwarded": {
@@ -384,7 +400,9 @@
     "r32_runner:Australia": true,
     "r32_third:Bosnia and Herzegovina": true,
     "r32_winner:France": true,
-    "r32_runner:Norway": true
+    "r32_runner:Norway": true,
+    "r32_winner:Spain": true,
+    "r32_runner:Cape Verde": true
   },
   "processedMatchIds": [
     537327,
@@ -448,7 +466,9 @@
     537349,
     537350,
     537395,
-    537396
+    537396,
+    537373,
+    537374
   ],
   "eliminated": [
     "Qatar",
@@ -457,7 +477,8 @@
     "Curaçao",
     "Tunisia",
     "Türkiye",
-    "Iraq"
+    "Iraq",
+    "Saudi Arabia"
   ],
-  "lastUpdated": "2026-06-27T02:02:14.643Z"
+  "lastUpdated": "2026-06-27T02:20:46.997Z"
 }
