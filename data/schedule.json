@@ -59,8 +59,8 @@
       "utcDate": "2026-06-28T19:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "South Africa",
-      "away": "Canada",
+      "home": null,
+      "away": null,
       "city": "Los Angeles"
     },
     {
@@ -68,8 +68,8 @@
       "utcDate": "2026-06-29T17:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Brazil",
-      "away": "Japan",
+      "home": null,
+      "away": null,
       "city": "Houston"
     },
     {
@@ -77,7 +77,7 @@
       "utcDate": "2026-06-29T20:30:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Germany",
+      "home": null,
       "away": null,
       "city": "Boston"
     },
@@ -86,8 +86,8 @@
       "utcDate": "2026-06-30T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Netherlands",
-      "away": "Morocco",
+      "home": null,
+      "away": null,
       "city": "Monterrey"
     },
     {
@@ -95,7 +95,7 @@
       "utcDate": "2026-06-30T17:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Ivory Coast",
+      "home": null,
       "away": null,
       "city": "Dallas"
     },
@@ -113,7 +113,7 @@
       "utcDate": "2026-07-01T01:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Mexico",
+      "home": null,
       "away": null,
       "city": "Mexico City"
     },
@@ -140,8 +140,8 @@
       "utcDate": "2026-07-02T00:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "United States",
-      "away": "Bosnia and Herzegovina",
+      "home": null,
+      "away": null,
       "city": "San Francisco Bay Area"
     },
     {
@@ -167,7 +167,7 @@
       "utcDate": "2026-07-03T03:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Switzerland",
+      "home": null,
       "away": null,
       "city": "Vancouver"
     },
@@ -176,7 +176,7 @@
       "utcDate": "2026-07-03T18:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Australia",
+      "home": null,
       "away": null,
       "city": "Dallas"
     },
@@ -185,7 +185,7 @@
       "utcDate": "2026-07-03T22:00:00Z",
       "stage": "LAST_32",
       "group": null,
-      "home": "Argentina",
+      "home": null,
       "away": null,
       "city": "Miami"
     },
@@ -343,5 +343,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-27T09:54:51.617Z"
+  "lastUpdated": "2026-06-27T13:05:07.556Z"
 }
