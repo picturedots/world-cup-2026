@@ -20,6 +20,9 @@
   <!-- <div style="margin-top:2rem;text-align:right">
     <button class="btn btn-sm btn-danger" onclick="resetDraft()">Reset draft</button>
   </div> -->
+  <p style="text-align:center;margin-top:1.5rem">
+    <a href="scores-chart.html">📈 Scores over time</a>
+  </p>
   <a href="flags-strip.svg"><img class="flag-divider" src="flags-strip.svg" alt="" title="The 48 nations, sorted by flag color -- click to enlarge"/></a>
 </div>
 
@@ -309,7 +312,7 @@ function renderStandings() {
         <span style="${rankStyle}">${rankIcon}</span>
         <div>
           <div style="font-weight:600;font-size:15px">${p.name}</div>
-          <div style="font-size:12px;opacity:0.65;margin-top:2px">${teams.map(t=>`<span class="${isEliminated(t)?'team-out':''}" style="margin-right:4px;display:inline-block;">${t}</span>`).join('')}</div>
+          <div style="font-size:14px;opacity:0.65;margin-top:2px">${teams.map(t=>`<span class="${isEliminated(t)?'team-out':''}" style="margin-right:4px;display:inline-block;">${t}</span>`).join('')}</div>
         </div>
       </div>
       <div style="text-align:right">
@@ -389,12 +392,12 @@ function renderSchedule() {
     }
     const time = d.toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' });
     const label = stageLabel[m.stage] || (m.group ? m.group.replace('GROUP_', 'Group ') : '');
-    html += `<div class="score-row" style="font-size:13px">
+    html += `<div class="score-row" style="font-size:16px">
       <div>
         <div>${teamCell(m.home)} <span style="color:var(--text3)">vs</span> ${teamCell(m.away)}${m.city ? ` <span style="color:var(--text3)">at</span> ${m.city}` : ''}</div>
         ${label ? `<div style="margin-top:3px"><span class="tag">${label}</span></div>` : ''}
       </div>
-      <span style="font-size:12px;color:var(--text2);white-space:nowrap;margin-left:8px">${time}</span>
+      <span style="font-size:16px;color:var(--text2);white-space:nowrap;margin-left:8px">${time}</span>
     </div>`;
   });
   return html;
