@@ -81,3 +81,13 @@ input[type=text], select {
 /* Scores-over-time chart page */
 p.sub { color: var(--text2); font-size: 14px; margin-top: 0.25rem; margin-bottom: 1.25rem; }
 .chart-wrap { position: relative; height: 70vh; min-height: 420px; }
+
+/* Give the chart more room on large displays. */
+@media (min-width: 1100px) {
+  .container { max-width: 1100px; }
+  .chart-wrap { height: 78vh; min-height: 600px; }
+}
+@media (min-width: 1600px) {
+  .container { max-width: 1400px; }
+  .chart-wrap { height: 82vh; min-height: 720px; }
+}
