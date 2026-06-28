@@ -3,9 +3,9 @@
     "p1779936707998": 38,
     "p1779936725338": 68,
     "p1779936796017": 49,
-    "p1779936803050": 37,
-    "p1779936810074": 24,
-    "p1779936817378": 38,
+    "p1779936803050": 43,
+    "p1779936810074": 27,
+    "p1779936817378": 46,
     "p1779936822308": 23,
     "p1779936827805": 32
   },
@@ -14,14 +14,14 @@
     "France": "p1779936725338",
     "England": "p1779936810074",
     "Brazil": "p1779936822308",
-    "Portugal": "p1779936817378",
+    "Portugal": "p1779936803050",
     "Argentina": "p1779936817378",
     "Netherlands": "p1779936707998",
     "Belgium": "p1779936707998",
     "Switzerland": "p1779936725338",
     "Croatia": "p1779936725338",
     "Norway": "p1779936796017",
-    "Colombia": "p1779936803050",
+    "Colombia": "p1779936817378",
     "Senegal": "p1779936810074",
     "Mexico": "p1779936817378",
     "Morocco": "p1779936803050",
@@ -415,6 +415,22 @@
     {
       "time": 1782602302222,
       "msg": "Croatia advanced to Round of 32 as 2nd place → +5 pts for Mark"
+    },
+    {
+      "time": 1782611829003,
+      "msg": "SWITCHEROO! 🔄 Colombia drew Portugal (0-0) → Emily +1, Liz +1. Teams swapped: Colombia → Liz, Portugal → Emily"
+    },
+    {
+      "time": 1782611829003,
+      "msg": "DR Congo beat Uzbekistan (3-1) → +3 pts for Bryce"
+    },
+    {
+      "time": 1782611829004,
+      "msg": "Colombia advanced to Round of 32 as group winner → +7 pts for Liz"
+    },
+    {
+      "time": 1782611829004,
+      "msg": "Portugal advanced to Round of 32 as 2nd place → +5 pts for Emily"
     }
   ],
   "bonusesAwarded": {
@@ -438,7 +454,9 @@
     "r32_winner:Belgium": true,
     "r32_runner:Egypt": true,
     "r32_winner:England": true,
-    "r32_runner:Croatia": true
+    "r32_runner:Croatia": true,
+    "r32_winner:Colombia": true,
+    "r32_runner:Portugal": true
   },
   "processedMatchIds": [
     537327,
@@ -508,7 +526,9 @@
     537367,
     537368,
     537413,
-    537414
+    537414,
+    537407,
+    537408
   ],
   "eliminated": [
     "Qatar",
@@ -520,7 +540,8 @@
     "Iraq",
     "Saudi Arabia",
     "New Zealand",
-    "Panama"
+    "Panama",
+    "Uzbekistan"
   ],
-  "lastUpdated": "2026-06-27T23:18:22.222Z"
+  "lastUpdated": "2026-06-28T01:57:09.004Z"
 }
