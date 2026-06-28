@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537413,
-      "utcDate": "2026-06-27T21:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_L",
-      "home": "Panama",
-      "away": "England",
-      "city": "New York/New Jersey"
-    },
-    {
-      "id": 537414,
-      "utcDate": "2026-06-27T21:00:00Z",
-      "stage": "GROUP_STAGE",
-      "group": "GROUP_L",
-      "home": "Croatia",
-      "away": "Ghana",
-      "city": "Philadelphia"
-    },
-    {
       "id": 537417,
       "utcDate": "2026-06-28T19:00:00Z",
       "stage": "LAST_32",
@@ -307,5 +289,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-28T04:07:31.684Z"
+  "lastUpdated": "2026-06-28T04:24:38.396Z"
 }
