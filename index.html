@@ -13,16 +13,13 @@
 <body>
 <div class="container">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
-    <h1><span class="logo-ball">⚽</span>World C(hack)UP 2026</h1>
-    <div style="font-size:13px;color:var(--text2)" id="last-updated-header"></div>
+    <h1 style="white-space:nowrap"><span class="logo-ball">⚽</span>World C(hack)UP 2026</h1>
+    <div style="font-size:13px;color:var(--text2);text-align:right;min-width:0;flex-shrink:1;margin-left:12px" id="last-updated-header"></div>
   </div>
   <div id="app"></div>
   <!-- <div style="margin-top:2rem;text-align:right">
     <button class="btn btn-sm btn-danger" onclick="resetDraft()">Reset draft</button>
   </div> -->
-  <p style="text-align:center;margin-top:1.5rem">
-    <a href="scores-chart.html">📈 Chart</a>
-  </p>
   <a href="flags-strip.svg"><img class="flag-divider" src="flags-strip.svg" alt="" title="The 48 nations, sorted by flag color -- click to enlarge"/></a>
 </div>
 
@@ -142,7 +139,7 @@ function render() {
   // else renderTournament(a);
 
   const lu = gamestate.lastUpdated ? new Date(gamestate.lastUpdated).toLocaleString() : 'Never';
-  document.getElementById('last-updated-header').textContent = `Last synced: ${lu}`;
+  document.getElementById('last-updated-header').textContent = `Updated: ${lu}`;
 }
 
 function renderPATSetup(a) {
@@ -321,6 +318,9 @@ function renderStandings() {
       </div>
     </div>`;
   });
+  html += `<p style="text-align:center;margin-top:1.5rem">
+    <a href="scores-chart.html">📈 Chart</a>
+  </p>`;
   return html;
 }
 
