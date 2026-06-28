@@ -2,7 +2,7 @@
   "points": {
     "p1779936707998": 38,
     "p1779936725338": 68,
-    "p1779936796017": 55,
+    "p1779936796017": 58,
     "p1779936803050": 46,
     "p1779936810074": 33,
     "p1779936817378": 56,
@@ -475,6 +475,10 @@
     {
       "time": 1782632548012,
       "msg": "Ghana advanced to Round of 32 as 3rd place → +3 pts for Mildred"
+    },
+    {
+      "time": 1782690709064,
+      "msg": "Canada beat South Africa (1-0) → +3 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -583,7 +587,8 @@
     537407,
     537408,
     537401,
-    537402
+    537402,
+    537417
   ],
   "eliminated": [
     "Qatar",
@@ -601,7 +606,8 @@
     "South Korea",
     "Scotland",
     "Uruguay",
-    "Iran"
+    "Iran",
+    "South Africa"
   ],
-  "lastUpdated": "2026-06-28T20:50:29.738Z"
+  "lastUpdated": "2026-06-28T23:51:49.065Z"
 }
