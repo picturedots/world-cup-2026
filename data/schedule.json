@@ -1,22 +1,22 @@
 {
   "matches": [
     {
-      "id": 537401,
-      "utcDate": "2026-06-28T02:00:00Z",
+      "id": 537413,
+      "utcDate": "2026-06-27T21:00:00Z",
       "stage": "GROUP_STAGE",
-      "group": "GROUP_J",
-      "home": "Jordan",
-      "away": "Argentina",
-      "city": "Dallas"
+      "group": "GROUP_L",
+      "home": "Panama",
+      "away": "England",
+      "city": "New York/New Jersey"
     },
     {
-      "id": 537402,
-      "utcDate": "2026-06-28T02:00:00Z",
+      "id": 537414,
+      "utcDate": "2026-06-27T21:00:00Z",
       "stage": "GROUP_STAGE",
-      "group": "GROUP_J",
-      "home": "Algeria",
-      "away": "Austria",
-      "city": "Kansas City"
+      "group": "GROUP_L",
+      "home": "Croatia",
+      "away": "Ghana",
+      "city": "Philadelphia"
     },
     {
       "id": 537417,
@@ -307,5 +307,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-28T02:13:05.608Z"
+  "lastUpdated": "2026-06-28T04:07:31.684Z"
 }

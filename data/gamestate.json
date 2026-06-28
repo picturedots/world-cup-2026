@@ -5,9 +5,9 @@
     "p1779936796017": 49,
     "p1779936803050": 43,
     "p1779936810074": 27,
-    "p1779936817378": 46,
-    "p1779936822308": 23,
-    "p1779936827805": 32
+    "p1779936817378": 56,
+    "p1779936822308": 29,
+    "p1779936827805": 33
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -40,8 +40,8 @@
     "Australia": "p1779936707998",
     "Scotland": "p1779936810074",
     "Sweden": "p1779936822308",
-    "Algeria": "p1779936822308",
-    "Austria": "p1779936827805",
+    "Algeria": "p1779936827805",
+    "Austria": "p1779936822308",
     "Paraguay": "p1779936803050",
     "Czechia": "p1779936827805",
     "Bosnia and Herzegovina": "p1779936827805",
@@ -431,6 +431,22 @@
     {
       "time": 1782611829004,
       "msg": "Portugal advanced to Round of 32 as 2nd place → +5 pts for Emily"
+    },
+    {
+      "time": 1782619651688,
+      "msg": "Argentina beat Jordan (3-1) → +3 pts for Liz"
+    },
+    {
+      "time": 1782619651688,
+      "msg": "SWITCHEROO! 🔄 Algeria drew Austria (3-3) → Alissa +1, Sam +1. Teams swapped: Algeria → Sam, Austria → Alissa"
+    },
+    {
+      "time": 1782619651689,
+      "msg": "Argentina advanced to Round of 32 as group winner → +7 pts for Liz"
+    },
+    {
+      "time": 1782619651689,
+      "msg": "Austria advanced to Round of 32 as 2nd place → +5 pts for Alissa"
     }
   ],
   "bonusesAwarded": {
@@ -456,7 +472,9 @@
     "r32_winner:England": true,
     "r32_runner:Croatia": true,
     "r32_winner:Colombia": true,
-    "r32_runner:Portugal": true
+    "r32_runner:Portugal": true,
+    "r32_winner:Argentina": true,
+    "r32_runner:Austria": true
   },
   "processedMatchIds": [
     537327,
@@ -528,7 +546,9 @@
     537413,
     537414,
     537407,
-    537408
+    537408,
+    537401,
+    537402
   ],
   "eliminated": [
     "Qatar",
@@ -541,7 +561,8 @@
     "Saudi Arabia",
     "New Zealand",
     "Panama",
-    "Uzbekistan"
+    "Uzbekistan",
+    "Jordan"
   ],
-  "lastUpdated": "2026-06-28T02:13:05.610Z"
+  "lastUpdated": "2026-06-28T04:07:31.689Z"
 }
