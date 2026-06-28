@@ -15,6 +15,11 @@
 <div class="container">
   <h1><span class="logo-ball">⚽</span>World C(hack)UP 2026</h1>
   <div class="chart-wrap"><canvas id="chart"></canvas></div>
+  <p class="sub" style="text-align:center;">
+    <label style="cursor:pointer; user-select:none;">
+      <input type="checkbox" id="altToggle"> Ignore switcheroos — credit each team's original draft owner
+    </label>
+  </p>
   <p id="status" class="sub"></p>
   <a href="flags-strip.svg"><img class="flag-divider" src="flags-strip.svg" alt="" title="The 48 nations, sorted by flag color -- click to enlarge"/></a>
 </div>
@@ -26,7 +31,50 @@
 const COLORS = ['#e6194B','#3cb44b','#4363d8','#f58231','#911eb4',
                 '#42d4f4','#f032e6','#9A6324','#808000','#000075'];
 
-// Parse the gamestate match log into cumulative-points-over-time datasets.
+// Turn a list of {time, name, delta} scoring events into cumulative
+// points-over-time datasets, one line per player.
+function seriesDatasets(events) {
+  events.sort((a, b) => a.time - b.time);
+
+  // Players in first-appearance order.
+  const names = [];
+  for (const e of events) if (!names.includes(e.name)) names.push(e.name);
+
+  const series = {}, totals = {};
+  const t0 = events.length ? events[0].time : Date.now();
+  const tLast = events.length ? events[events.length - 1].time : t0;
+  for (const n of names) { series[n] = [{ x: t0, y: 0 }]; totals[n] = 0; }
+  for (const e of events) {
+    totals[e.name] += e.delta;
+    series[e.name].push({ x: e.time, y: totals[e.name] });
+  }
+  // Extend every line to the right edge so finishers stay visible.
+  for (const n of names) {
+    const last = series[n][series[n].length - 1];
+    if (last.x !== tLast) series[n].push({ x: tLast, y: totals[n] });
+  }
+
+  // Fixed color per player by alphabetical name order, so a player keeps the
+  // same color regardless of rank or which view is shown.
+  const colorOf = {};
+  names.slice().sort((a, b) => a.localeCompare(b))
+    .forEach((name, i) => { colorOf[name] = COLORS[i % COLORS.length]; });
+
+  // Legend ordered by final total, descending.
+  const order = names.slice().sort((a, b) => totals[b] - totals[a]);
+  return order.map((name) => {
+    const c = colorOf[name];
+    return {
+      label: `${name} (${totals[name]})`,
+      data: series[name],
+      borderColor: c, backgroundColor: c,
+      borderWidth: 2, tension: 0, stepped: true,
+      pointRadius: 2, pointHoverRadius: 5,
+    };
+  });
+}
+
+// Actual standings: parse the gamestate match log as written.
 // Only two message patterns award points:
 //   "+<n> pts for <name>"   (regular awards / bonuses)
 //   "<name> +1"             (switcheroo draws, one per player)
@@ -48,38 +96,43 @@ function buildDatasets(gamestate) {
       }
     }
   }
-  events.sort((a, b) => a.time - b.time);
+  return seriesDatasets(events);
+}
 
-  // Players in first-appearance order.
-  const names = [];
-  for (const e of events) if (!names.includes(e.name)) names.push(e.name);
+// Alternate standings: ignore the switcheroo swap rule entirely. Every point
+// is credited to the ORIGINAL draft owner of the team that generated it
+// (draft.json), regardless of who held the team when the points were scored.
+function buildOriginalDatasets(gamestate, draft) {
+  // team -> original owner's name
+  const idToName = {};
+  for (const p of draft.players) idToName[p.id] = p.name;
+  const teamOwner = {};
+  for (const [team, id] of Object.entries(draft.ownership)) teamOwner[team] = idToName[id];
 
-  const series = {}, totals = {};
-  const t0 = events.length ? events[0].time : Date.now();
-  const tLast = events.length ? events[events.length - 1].time : t0;
-  for (const n of names) { series[n] = [{ x: t0, y: 0 }]; totals[n] = 0; }
-  for (const e of events) {
-    totals[e.name] += e.delta;
-    series[e.name].push({ x: e.time, y: totals[e.name] });
+  const reWin = /^(.+?) beat (.+?) \(\d+-\d+\) → \+(\d+) pts for/;
+  const reAdvance = /^(.+?) advanced to .+? → \+(\d+) pts for/;
+  const reDraw = /^SWITCHEROO! 🔄 (.+?) drew (.+?) \(\d+-\d+\)/;
+
+  const events = []; // {time, name, delta}
+  const credit = (time, team, delta) => {
+    const owner = teamOwner[team];
+    if (owner) events.push({ time, name: owner, delta });
+  };
+
+  for (const entry of gamestate.matchLog) {
+    const { time, msg } = entry;
+    let m;
+    if ((m = reDraw.exec(msg))) {
+      // Each team in a switcheroo draw earned +1; credit both original owners.
+      credit(time, m[1], 1);
+      credit(time, m[2], 1);
+    } else if ((m = reWin.exec(msg))) {
+      credit(time, m[1], +m[3]);
+    } else if ((m = reAdvance.exec(msg))) {
+      credit(time, m[1], +m[2]);
+    }
   }
-  // Extend every line to the right edge so finishers stay visible.
-  for (const n of names) {
-    const last = series[n][series[n].length - 1];
-    if (last.x !== tLast) series[n].push({ x: tLast, y: totals[n] });
-  }
-
-  // Legend ordered by final total, descending.
-  const order = names.slice().sort((a, b) => totals[b] - totals[a]);
-  return order.map((name, i) => {
-    const c = COLORS[i % COLORS.length];
-    return {
-      label: `${name} (${totals[name]})`,
-      data: series[name],
-      borderColor: c, backgroundColor: c,
-      borderWidth: 2, tension: 0, stepped: true,
-      pointRadius: 2, pointHoverRadius: 5,
-    };
-  });
+  return seriesDatasets(events);
 }
 
 const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -87,6 +140,7 @@ const grid = dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)';
 const tick = dark ? '#aeaeb2' : '#666';
 const fmt = new Intl.DateTimeFormat('en-US', {month:'short', day:'numeric'});
 
+let chart = null;
 function render(datasets) {
 // Bound the x-axis to the actual data range so it starts at the first
 // event (~June 11) instead of padding out to a "nice" round date.
@@ -95,7 +149,21 @@ for (const ds of datasets) for (const pt of ds.data) {
   if (pt.x < xMin) xMin = pt.x;
   if (pt.x > xMax) xMax = pt.x;
 }
-new Chart(document.getElementById('chart'), {
+// Reuse the existing chart so toggling just swaps datasets.
+if (chart) {
+  // Carry over each player's show/hide state (set via legend clicks) by name,
+  // since labels and dataset order differ between the two views.
+  const nameOf = (label) => label.replace(/ \(\d+\)$/, '');
+  const hidden = {};
+  chart.data.datasets.forEach((ds, i) => { hidden[nameOf(ds.label)] = !chart.isDatasetVisible(i); });
+  for (const ds of datasets) ds.hidden = !!hidden[nameOf(ds.label)];
+  chart.data.datasets = datasets;
+  chart.options.scales.x.min = xMin;
+  chart.options.scales.x.max = xMax;
+  chart.update();
+  return;
+}
+chart = new Chart(document.getElementById('chart'), {
   type: 'line',
   data: { datasets },
   options: {
@@ -131,12 +199,22 @@ new Chart(document.getElementById('chart'), {
 }
 
 // Read the match data dynamically on page load and draw the chart.
-fetch('data/gamestate.json', { cache: 'no-store' })
-  .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then((gamestate) => render(buildDatasets(gamestate)))
+const loadJSON = (path) =>
+  fetch(path, { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+
+Promise.all([loadJSON('data/gamestate.json'), loadJSON('data/draft.json')])
+  .then(([gamestate, draft]) => {
+    const actual = buildDatasets(gamestate);
+    const original = buildOriginalDatasets(gamestate, draft);
+    render(actual);
+    document.getElementById('altToggle').addEventListener('change', (e) => {
+      render(e.target.checked ? original : actual);
+    });
+  })
   .catch((err) => {
     document.getElementById('status').textContent =
-      'Could not load data/gamestate.json (' + err.message + '). ' +
+      'Could not load match data (' + err.message + '). ' +
       'Serve this page over HTTP (e.g. `python3 -m http.server`) rather than opening the file directly.';
   });
 </script>
