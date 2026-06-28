@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>World C(hack)UP 2026 — Scores Over Time</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1><span class="logo-ball">⚽</span>World C(hack)UP 2026</h1>
+  <div class="chart-wrap"><canvas id="chart"></canvas></div>
+  <p id="status" class="sub"></p>
+  <a href="flags-strip.svg"><img class="flag-divider" src="flags-strip.svg" alt="" title="The 48 nations, sorted by flag color -- click to enlarge"/></a>
+</div>
+<script>
+// Distinct line color per player.
+const COLORS = ['#e6194B','#3cb44b','#4363d8','#f58231','#911eb4',
+                '#42d4f4','#f032e6','#9A6324','#808000','#000075'];
+
+// Parse the gamestate match log into cumulative-points-over-time datasets.
+// Only two message patterns award points:
+//   "+<n> pts for <name>"   (regular awards / bonuses)
+//   "<name> +1"             (switcheroo draws, one per player)
+function buildDatasets(gamestate) {
+  const rePts = /\+(\d+) pts for (\w+)/g;
+  const reSwitch = /(\w+) \+(\d+)/g;
+
+  const events = []; // {time, name, delta}
+  for (const entry of gamestate.matchLog) {
+    const { time, msg } = entry;
+    let matched = false;
+    for (const m of msg.matchAll(rePts)) {
+      events.push({ time, name: m[2], delta: +m[1] });
+      matched = true;
+    }
+    if (!matched) {
+      for (const m of msg.matchAll(reSwitch)) {
+        events.push({ time, name: m[1], delta: +m[2] });
+      }
+    }
+  }
+  events.sort((a, b) => a.time - b.time);
+
+  // Players in first-appearance order.
+  const names = [];
+  for (const e of events) if (!names.includes(e.name)) names.push(e.name);
+
+  const series = {}, totals = {};
+  const t0 = events.length ? events[0].time : Date.now();
+  const tLast = events.length ? events[events.length - 1].time : t0;
+  for (const n of names) { series[n] = [{ x: t0, y: 0 }]; totals[n] = 0; }
+  for (const e of events) {
+    totals[e.name] += e.delta;
+    series[e.name].push({ x: e.time, y: totals[e.name] });
+  }
+  // Extend every line to the right edge so finishers stay visible.
+  for (const n of names) {
+    const last = series[n][series[n].length - 1];
+    if (last.x !== tLast) series[n].push({ x: tLast, y: totals[n] });
+  }
+
+  // Legend ordered by final total, descending.
+  const order = names.slice().sort((a, b) => totals[b] - totals[a]);
+  return order.map((name, i) => {
+    const c = COLORS[i % COLORS.length];
+    return {
+      label: `${name} (${totals[name]})`,
+      data: series[name],
+      borderColor: c, backgroundColor: c,
+      borderWidth: 2, tension: 0, stepped: true,
+      pointRadius: 2, pointHoverRadius: 5,
+    };
+  });
+}
+
+const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const grid = dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)';
+const tick = dark ? '#aeaeb2' : '#666';
+const fmt = new Intl.DateTimeFormat('en-US', {month:'short', day:'numeric'});
+
+function render(datasets) {
+// Bound the x-axis to the actual data range so it starts at the first
+// event (~June 11) instead of padding out to a "nice" round date.
+let xMin = Infinity, xMax = -Infinity;
+for (const ds of datasets) for (const pt of ds.data) {
+  if (pt.x < xMin) xMin = pt.x;
+  if (pt.x > xMax) xMax = pt.x;
+}
+new Chart(document.getElementById('chart'), {
+  type: 'line',
+  data: { datasets },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'nearest', intersect: false },
+    scales: {
+      x: {
+        type: 'linear',
+        min: xMin, max: xMax,
+        title: { display: true, text: 'Time', color: tick },
+        grid: { color: grid },
+        ticks: {
+          color: tick, maxRotation: 0, autoSkip: true, maxTicksLimit: 8,
+          callback: (v) => fmt.format(new Date(v))
+        }
+      },
+      y: {
+        title: { display: true, text: 'Points', color: tick },
+        beginAtZero: true, grid: { color: grid }, ticks: { color: tick }
+      }
+    },
+    plugins: {
+      legend: { labels: { color: tick, usePointStyle: true } },
+      tooltip: {
+        callbacks: {
+          title: (items) => fmt.format(new Date(items[0].parsed.x)),
+          label: (item) => item.dataset.label.replace(/ \(\d+\)$/, '') + ': ' + item.parsed.y + ' pts'
+        }
+      }
+    }
+  }
+});
+}
+
+// Read the match data dynamically on page load and draw the chart.
+fetch('data/gamestate.json', { cache: 'no-store' })
+  .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then((gamestate) => render(buildDatasets(gamestate)))
+  .catch((err) => {
+    document.getElementById('status').textContent =
+      'Could not load data/gamestate.json (' + err.message + '). ' +
+      'Serve this page over HTTP (e.g. `python3 -m http.server`) rather than opening the file directly.';
+  });
+</script>
+</body>
+</html>
