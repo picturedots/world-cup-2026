@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>World C(hack)UP 2026 — Scores Over Time</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,6 +19,9 @@
   <a href="flags-strip.svg"><img class="flag-divider" src="flags-strip.svg" alt="" title="The 48 nations, sorted by flag color -- click to enlarge"/></a>
 </div>
 <script>
+// Test with local server, e.g. 
+// python3 -m http.server
+// http://localhost:8000/scores-chart.html
 // Distinct line color per player.
 const COLORS = ['#e6194B','#3cb44b','#4363d8','#f58231','#911eb4',
                 '#42d4f4','#f032e6','#9A6324','#808000','#000075'];
