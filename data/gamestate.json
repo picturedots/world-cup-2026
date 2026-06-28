@@ -2,12 +2,12 @@
   "points": {
     "p1779936707998": 38,
     "p1779936725338": 68,
-    "p1779936796017": 49,
-    "p1779936803050": 43,
-    "p1779936810074": 27,
+    "p1779936796017": 55,
+    "p1779936803050": 46,
+    "p1779936810074": 33,
     "p1779936817378": 56,
-    "p1779936822308": 29,
-    "p1779936827805": 33
+    "p1779936822308": 32,
+    "p1779936827805": 36
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -447,6 +447,34 @@
     {
       "time": 1782619651689,
       "msg": "Austria advanced to Round of 32 as 2nd place → +5 pts for Alissa"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "Paraguay advanced to Round of 32 as 3rd place → +3 pts for Emily"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "Ecuador advanced to Round of 32 as 3rd place → +3 pts for Mildred"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "Sweden advanced to Round of 32 as 3rd place → +3 pts for Alissa"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "Senegal advanced to Round of 32 as 3rd place → +3 pts for Bryce"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "Algeria advanced to Round of 32 as 3rd place → +3 pts for Sam"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "DR Congo advanced to Round of 32 as 3rd place → +3 pts for Bryce"
+    },
+    {
+      "time": 1782632548012,
+      "msg": "Ghana advanced to Round of 32 as 3rd place → +3 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -474,7 +502,14 @@
     "r32_winner:Colombia": true,
     "r32_runner:Portugal": true,
     "r32_winner:Argentina": true,
-    "r32_runner:Austria": true
+    "r32_runner:Austria": true,
+    "r32_third:Paraguay": true,
+    "r32_third:Ecuador": true,
+    "r32_third:Sweden": true,
+    "r32_third:Senegal": true,
+    "r32_third:Algeria": true,
+    "r32_third:DR Congo": true,
+    "r32_third:Ghana": true
   },
   "processedMatchIds": [
     537327,
@@ -562,7 +597,11 @@
     "New Zealand",
     "Panama",
     "Uzbekistan",
-    "Jordan"
+    "Jordan",
+    "South Korea",
+    "Scotland",
+    "Uruguay",
+    "Iran"
   ],
-  "lastUpdated": "2026-06-28T04:24:38.400Z"
+  "lastUpdated": "2026-06-28T07:42:28.012Z"
 }
