@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537423,
-      "utcDate": "2026-06-29T17:00:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "Brazil",
-      "away": "Japan",
-      "city": "Houston"
-    },
-    {
       "id": 537415,
       "utcDate": "2026-06-29T20:30:00Z",
       "stage": "LAST_32",
@@ -280,5 +271,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-29T18:02:33.697Z"
+  "lastUpdated": "2026-06-29T21:15:35.528Z"
 }
