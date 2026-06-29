@@ -140,7 +140,7 @@
       "utcDate": "2026-07-04T17:00:00Z",
       "stage": "LAST_16",
       "group": null,
-      "home": null,
+      "home": "Canada",
       "away": null,
       "city": "Houston"
     },
@@ -280,5 +280,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-29T02:12:24.842Z"
+  "lastUpdated": "2026-06-29T08:48:09.676Z"
 }

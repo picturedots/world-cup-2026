@@ -2,7 +2,7 @@
   "points": {
     "p1779936707998": 38,
     "p1779936725338": 68,
-    "p1779936796017": 58,
+    "p1779936796017": 62,
     "p1779936803050": 46,
     "p1779936810074": 33,
     "p1779936817378": 56,
@@ -479,6 +479,10 @@
     {
       "time": 1782690709064,
       "msg": "Canada beat South Africa (1-0) → +3 pts for Mildred"
+    },
+    {
+      "time": 1782722889678,
+      "msg": "Canada reached Round of 16 → +4 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -513,7 +517,8 @@
     "r32_third:Senegal": true,
     "r32_third:Algeria": true,
     "r32_third:DR Congo": true,
-    "r32_third:Ghana": true
+    "r32_third:Ghana": true,
+    "r16:Canada": true
   },
   "processedMatchIds": [
     537327,
@@ -609,5 +614,5 @@
     "Iran",
     "South Africa"
   ],
-  "lastUpdated": "2026-06-29T02:12:24.844Z"
+  "lastUpdated": "2026-06-29T08:48:09.678Z"
 }
