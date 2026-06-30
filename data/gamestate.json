@@ -3,10 +3,10 @@
     "p1779936707998": 38,
     "p1779936725338": 68,
     "p1779936796017": 62,
-    "p1779936803050": 52,
+    "p1779936803050": 60,
     "p1779936810074": 33,
     "p1779936817378": 56,
-    "p1779936822308": 35,
+    "p1779936822308": 39,
     "p1779936827805": 37
   },
   "ownership": {
@@ -495,6 +495,18 @@
     {
       "time": 1782793316748,
       "msg": "Morocco beat Netherlands (1-1, won on penalties) → +3 pts for Emily"
+    },
+    {
+      "time": 1782805270739,
+      "msg": "Morocco reached Round of 16 → +4 pts for Emily"
+    },
+    {
+      "time": 1782805270739,
+      "msg": "Paraguay reached Round of 16 → +4 pts for Emily"
+    },
+    {
+      "time": 1782805270739,
+      "msg": "Brazil reached Round of 16 → +4 pts for Alissa"
     }
   ],
   "bonusesAwarded": {
@@ -530,7 +542,10 @@
     "r32_third:Algeria": true,
     "r32_third:DR Congo": true,
     "r32_third:Ghana": true,
-    "r16:Canada": true
+    "r16:Canada": true,
+    "r16:Morocco": true,
+    "r16:Paraguay": true,
+    "r16:Brazil": true
   },
   "processedMatchIds": [
     537327,
@@ -632,5 +647,5 @@
     "Germany",
     "Netherlands"
   ],
-  "lastUpdated": "2026-06-30T04:21:56.749Z"
+  "lastUpdated": "2026-06-30T07:41:10.739Z"
 }
