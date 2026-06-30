@@ -2,7 +2,7 @@
   "points": {
     "p1779936707998": 38,
     "p1779936725338": 68,
-    "p1779936796017": 62,
+    "p1779936796017": 65,
     "p1779936803050": 60,
     "p1779936810074": 33,
     "p1779936817378": 56,
@@ -507,6 +507,10 @@
     {
       "time": 1782805270739,
       "msg": "Brazil reached Round of 16 → +4 pts for Alissa"
+    },
+    {
+      "time": 1782846394239,
+      "msg": "Norway beat Ivory Coast (1-2) → +3 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -623,7 +627,8 @@
     537417,
     537423,
     537415,
-    537418
+    537418,
+    537424
   ],
   "eliminated": [
     "Qatar",
@@ -645,7 +650,8 @@
     "South Africa",
     "Japan",
     "Germany",
-    "Netherlands"
+    "Netherlands",
+    "Ivory Coast"
   ],
-  "lastUpdated": "2026-06-30T17:45:48.817Z"
+  "lastUpdated": "2026-06-30T19:06:34.240Z"
 }
