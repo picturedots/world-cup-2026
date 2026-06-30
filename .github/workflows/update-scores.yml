@@ -23,12 +23,14 @@ jobs:
       - name: Run score updater
         env:
           FOOTBALLDATA_KEY: ${{ secrets.FOOTBALLDATA_KEY }}
-        run: node .github/scripts/update-scores.mjs
+        run: |
+          node .github/scripts/update-scores.mjs | tee /tmp/update-scores.log
+          echo "SCORE_SUMMARY=$(tail -n 1 /tmp/update-scores.log)" >> "$GITHUB_ENV"
 
       - name: Commit updated gamestate
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/gamestate.json data/schedule.json
-          git diff --staged --quiet || git commit -m "chore: update scores $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git diff --staged --quiet || git commit -m "chore: update scores $(date -u '+%Y-%m-%d %H:%M UTC') - ${SCORE_SUMMARY}"
           git push

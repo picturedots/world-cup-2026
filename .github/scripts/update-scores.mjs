@@ -183,6 +183,7 @@ async function main() {
   const processedMatchIds = new Set(gamestate.processedMatchIds || []);
   const bonusesAwarded = { ...gamestate.bonusesAwarded };
   const matchLog = [...gamestate.matchLog];
+  const initialMatchLogLength = matchLog.length;
 
   // Seed points for players who have none yet
   draft.players.forEach(p => {
@@ -422,7 +423,11 @@ async function main() {
 
   writeJson(gamestatePath, updatedGamestate);
   console.log('gamestate.json updated successfully.');
-  console.log('Points:', points);
+
+  const newEntries = matchLog.slice(initialMatchLogLength);
+  console.log(newEntries.length > 0
+    ? newEntries.map(e => e.msg).join(' | ')
+    : 'no point updates');
 }
 
 main().catch(err => {
