@@ -3,7 +3,7 @@
     "p1779936707998": 38,
     "p1779936725338": 68,
     "p1779936796017": 62,
-    "p1779936803050": 47,
+    "p1779936803050": 52,
     "p1779936810074": 33,
     "p1779936817378": 56,
     "p1779936822308": 35,
@@ -489,8 +489,12 @@
       "msg": "Brazil beat Japan (2-1) → +3 pts for Alissa"
     },
     {
-      "time": 1782785239055,
-      "msg": "SWITCHEROO! 🔄 Germany drew Paraguay (4-5) → Sam +1, Emily +1. Teams swapped: Germany → Emily, Paraguay → Sam"
+      "time": 1782793316748,
+      "msg": "Paraguay beat Germany (1-1, won on penalties) → +3 pts for Emily"
+    },
+    {
+      "time": 1782793316748,
+      "msg": "Morocco beat Netherlands (1-1, won on penalties) → +3 pts for Emily"
     }
   ],
   "bonusesAwarded": {
@@ -603,7 +607,8 @@
     537402,
     537417,
     537423,
-    537415
+    537415,
+    537418
   ],
   "eliminated": [
     "Qatar",
@@ -623,7 +628,9 @@
     "Uruguay",
     "Iran",
     "South Africa",
-    "Japan"
+    "Japan",
+    "Germany",
+    "Netherlands"
   ],
-  "lastUpdated": "2026-06-30T02:07:19.056Z"
+  "lastUpdated": "2026-06-30T04:21:56.749Z"
 }
