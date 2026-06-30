@@ -1,24 +1,6 @@
 {
   "matches": [
     {
-      "id": 537415,
-      "utcDate": "2026-06-29T20:30:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "Germany",
-      "away": "Paraguay",
-      "city": "Boston"
-    },
-    {
-      "id": 537418,
-      "utcDate": "2026-06-30T01:00:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "Netherlands",
-      "away": "Morocco",
-      "city": "Monterrey"
-    },
-    {
       "id": 537424,
       "utcDate": "2026-06-30T17:00:00Z",
       "stage": "LAST_32",
@@ -271,5 +253,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-29T21:15:35.528Z"
+  "lastUpdated": "2026-06-30T04:21:56.746Z"
 }

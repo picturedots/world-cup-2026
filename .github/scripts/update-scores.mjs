@@ -43,6 +43,39 @@ function normalizeTeamName(name) {
   return map[name] || name;
 }
 
+// Resolve the true winner of a match.
+// Knockout matches cannot end in a draw: when level after extra time the tie is
+// broken by a penalty shootout. football-data.org reports those with
+// score.winner === null and duration === 'PENALTY_SHOOTOUT'; the score.fullTime
+// totals reflect the shootout outcome (the winner has strictly more), so the
+// winner is derived from fullTime. Genuine group-stage draws stay 'DRAW'.
+function resolveWinner(match) {
+  const w = match.score.winner;
+  if (w === 'HOME_TEAM' || w === 'AWAY_TEAM') return w;
+  if (w === 'DRAW' && match.stage === 'GROUP_STAGE') return 'DRAW';
+  // Knockout tie decided by extra time / penalties: winner comes through as null.
+  const ft = match.score.fullTime;
+  if (ft && ft.home != null && ft.away != null && ft.home !== ft.away) {
+    return ft.home > ft.away ? 'HOME_TEAM' : 'AWAY_TEAM';
+  }
+  return w; // unresolved (null/DRAW with no decisive score) — caller handles safely
+}
+
+// Pre-shootout (regulation + extra time) score, for clear match-log messages.
+// A penalty match's fullTime carries the shootout total, which reads oddly as a
+// football score, so prefer the level score and flag that penalties decided it.
+function scoreText(match) {
+  const ft = match.score.fullTime;
+  if (match.score.duration === 'PENALTY_SHOOTOUT') {
+    const rt = match.score.regularTime || ft;
+    const et = match.score.extraTime || { home: 0, away: 0 };
+    const lh = (rt.home ?? 0) + (et.home ?? 0);
+    const la = (rt.away ?? 0) + (et.away ?? 0);
+    return `${lh}-${la}, won on penalties`;
+  }
+  return `${ft.home}-${ft.away}`;
+}
+
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
@@ -207,9 +240,10 @@ async function main() {
 
     const home = normalizeTeamName(match.homeTeam.name);
     const away = normalizeTeamName(match.awayTeam.name);
-    const homeGoals = match.score.fullTime.home;
-    const awayGoals = match.score.fullTime.away;
-    const winner = match.score.winner; // HOME_TEAM | AWAY_TEAM | DRAW (includes ET/penalty winners)
+    // resolveWinner turns a penalty-decided knockout (winner === null) into the
+    // real winner; scoreText renders it as "1-1, won on penalties".
+    const winner = resolveWinner(match); // HOME_TEAM | AWAY_TEAM | DRAW
+    const score = scoreText(match);
 
     const homeOwner = ownerOf(home);
     const awayOwner = ownerOf(away);
@@ -224,15 +258,16 @@ async function main() {
     if (winner === 'HOME_TEAM') {
       if (homeOwner) {
         points[homeOwner] = (points[homeOwner] || 0) + 3;
-        matchLog.push({ time: timestamp, msg: `${home} beat ${away} (${homeGoals}-${awayGoals}) → +3 pts for ${playerName(homeOwner)}` });
+        matchLog.push({ time: timestamp, msg: `${home} beat ${away} (${score}) → +3 pts for ${playerName(homeOwner)}` });
       }
     } else if (winner === 'AWAY_TEAM') {
       if (awayOwner) {
         points[awayOwner] = (points[awayOwner] || 0) + 3;
-        matchLog.push({ time: timestamp, msg: `${away} beat ${home} (${awayGoals}-${homeGoals}) → +3 pts for ${playerName(awayOwner)}` });
+        matchLog.push({ time: timestamp, msg: `${away} beat ${home} (${score}) → +3 pts for ${playerName(awayOwner)}` });
       }
-    } else {
-      // Draw — award 1 pt each and swap teams if both are owned
+    } else if (winner === 'DRAW' && match.stage === 'GROUP_STAGE') {
+      // Genuine draw (group stage only) — award 1 pt each and swap teams if both are owned.
+      // Knockout ties are resolved to a winner above, so the switcheroo never fires there.
       if (homeOwner) points[homeOwner] = (points[homeOwner] || 0) + 1;
       if (awayOwner) points[awayOwner] = (points[awayOwner] || 0) + 1;
 
@@ -241,14 +276,20 @@ async function main() {
         ownership[away] = homeOwner;
         matchLog.push({
           time: timestamp,
-          msg: `SWITCHEROO! 🔄 ${home} drew ${away} (${homeGoals}-${awayGoals}) → ${playerName(homeOwner)} +1, ${playerName(awayOwner)} +1. Teams swapped: ${home} → ${playerName(awayOwner)}, ${away} → ${playerName(homeOwner)}`
+          msg: `SWITCHEROO! 🔄 ${home} drew ${away} (${score}) → ${playerName(homeOwner)} +1, ${playerName(awayOwner)} +1. Teams swapped: ${home} → ${playerName(awayOwner)}, ${away} → ${playerName(homeOwner)}`
         });
       } else {
         matchLog.push({
           time: timestamp,
-          msg: `SWITCHEROO! 🔄 ${home} drew ${away} (${homeGoals}-${awayGoals}) → ${homeOwner ? playerName(homeOwner) + ' +1' : ''} ${awayOwner ? playerName(awayOwner) + ' +1' : ''}`
+          msg: `SWITCHEROO! 🔄 ${home} drew ${away} (${score}) → ${homeOwner ? playerName(homeOwner) + ' +1' : ''} ${awayOwner ? playerName(awayOwner) + ' +1' : ''}`
         });
       }
+    } else {
+      // Knockout match whose winner could not be resolved yet (the live feed can
+      // briefly report FINISHED with a level score before the shootout result
+      // settles). Skip without marking it processed so the next run retries.
+      console.warn(`Unresolved winner for finished match ${id} (${home} vs ${away}) — retrying next run.`);
+      continue;
     }
 
     processedMatchIds.add(id);
@@ -293,8 +334,9 @@ async function main() {
     const home = normalizeTeamName(match.homeTeam.name);
     const away = normalizeTeamName(match.awayTeam.name);
     if (KNOCKOUT_STAGES.has(match.stage)) {
-      if (match.score.winner === 'HOME_TEAM') eliminated.add(away);
-      else if (match.score.winner === 'AWAY_TEAM') eliminated.add(home);
+      const winner = resolveWinner(match); // penalty-decided ties resolve to a winner
+      if (winner === 'HOME_TEAM') eliminated.add(away);
+      else if (winner === 'AWAY_TEAM') eliminated.add(home);
     } else if (match.stage === 'THIRD_PLACE') {
       // Both participants (the two semi-final losers) are out once it's decided.
       eliminated.add(home);
@@ -348,11 +390,12 @@ async function main() {
       }
     }
 
-    // Champion bonus — Final winner (score.winner covers extra time and penalties)
+    // Champion bonus — Final winner (resolveWinner covers extra time and penalties)
     if (match.stage === 'FINAL' && match.status === 'FINISHED') {
       let champion = null;
-      if (match.score.winner === 'HOME_TEAM') champion = normalizeTeamName(match.homeTeam.name);
-      else if (match.score.winner === 'AWAY_TEAM') champion = normalizeTeamName(match.awayTeam.name);
+      const finalWinner = resolveWinner(match);
+      if (finalWinner === 'HOME_TEAM') champion = normalizeTeamName(match.homeTeam.name);
+      else if (finalWinner === 'AWAY_TEAM') champion = normalizeTeamName(match.awayTeam.name);
       if (champion) {
         const bonusKey = `champion:${champion}`;
         if (!bonusesAwarded[bonusKey]) {
