@@ -3,11 +3,11 @@
     "p1779936707998": 38,
     "p1779936725338": 68,
     "p1779936796017": 62,
-    "p1779936803050": 46,
+    "p1779936803050": 47,
     "p1779936810074": 33,
     "p1779936817378": 56,
     "p1779936822308": 35,
-    "p1779936827805": 36
+    "p1779936827805": 37
   },
   "ownership": {
     "Spain": "p1779936803050",
@@ -25,7 +25,7 @@
     "Senegal": "p1779936810074",
     "Mexico": "p1779936817378",
     "Morocco": "p1779936803050",
-    "Germany": "p1779936827805",
+    "Germany": "p1779936803050",
     "Japan": "p1779936817378",
     "Uruguay": "p1779936707998",
     "United States": "p1779936796017",
@@ -42,7 +42,7 @@
     "Sweden": "p1779936822308",
     "Algeria": "p1779936827805",
     "Austria": "p1779936822308",
-    "Paraguay": "p1779936803050",
+    "Paraguay": "p1779936827805",
     "Czechia": "p1779936827805",
     "Bosnia and Herzegovina": "p1779936827805",
     "Tunisia": "p1779936803050",
@@ -487,6 +487,10 @@
     {
       "time": 1782767735529,
       "msg": "Brazil beat Japan (2-1) → +3 pts for Alissa"
+    },
+    {
+      "time": 1782785239055,
+      "msg": "SWITCHEROO! 🔄 Germany drew Paraguay (4-5) → Sam +1, Emily +1. Teams swapped: Germany → Emily, Paraguay → Sam"
     }
   ],
   "bonusesAwarded": {
@@ -598,7 +602,8 @@
     537401,
     537402,
     537417,
-    537423
+    537423,
+    537415
   ],
   "eliminated": [
     "Qatar",
@@ -620,5 +625,5 @@
     "South Africa",
     "Japan"
   ],
-  "lastUpdated": "2026-06-29T21:15:35.530Z"
+  "lastUpdated": "2026-06-30T02:07:19.056Z"
 }
