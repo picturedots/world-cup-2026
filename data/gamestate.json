@@ -1,6 +1,6 @@
 {
   "points": {
-    "p1779936707998": 38,
+    "p1779936707998": 41,
     "p1779936725338": 75,
     "p1779936796017": 69,
     "p1779936803050": 60,
@@ -531,6 +531,10 @@
     {
       "time": 1782938429896,
       "msg": "England beat DR Congo (2-1) → +3 pts for Bryce"
+    },
+    {
+      "time": 1782948458131,
+      "msg": "Belgium beat Senegal (3-2) → +3 pts for Tessa"
     }
   ],
   "bonusesAwarded": {
@@ -653,7 +657,8 @@
     537424,
     537416,
     537425,
-    537426
+    537426,
+    537422
   ],
   "eliminated": [
     "Qatar",
@@ -679,7 +684,8 @@
     "Ivory Coast",
     "Sweden",
     "Ecuador",
-    "DR Congo"
+    "DR Congo",
+    "Senegal"
   ],
-  "lastUpdated": "2026-07-01T21:15:18.051Z"
+  "lastUpdated": "2026-07-01T23:27:38.132Z"
 }

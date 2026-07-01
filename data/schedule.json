@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537422,
-      "utcDate": "2026-07-01T20:00:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "Belgium",
-      "away": "Senegal",
-      "city": "Seattle"
-    },
-    {
       "id": 537421,
       "utcDate": "2026-07-02T00:00:00Z",
       "stage": "LAST_32",
@@ -217,5 +208,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-01T21:15:18.049Z"
+  "lastUpdated": "2026-07-01T23:27:38.130Z"
 }
