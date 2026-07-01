@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537426,
-      "utcDate": "2026-07-01T16:00:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "England",
-      "away": "DR Congo",
-      "city": "Atlanta"
-    },
-    {
       "id": 537422,
       "utcDate": "2026-07-01T20:00:00Z",
       "stage": "LAST_32",
@@ -226,5 +217,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-01T17:45:18.007Z"
+  "lastUpdated": "2026-07-01T20:40:29.894Z"
 }
