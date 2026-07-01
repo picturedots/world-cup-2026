@@ -1,11 +1,11 @@
 {
   "points": {
     "p1779936707998": 38,
-    "p1779936725338": 71,
-    "p1779936796017": 65,
+    "p1779936725338": 75,
+    "p1779936796017": 69,
     "p1779936803050": 60,
     "p1779936810074": 33,
-    "p1779936817378": 56,
+    "p1779936817378": 59,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -515,6 +515,18 @@
     {
       "time": 1782871924309,
       "msg": "France beat Sweden (3-0) → +3 pts for Mark"
+    },
+    {
+      "time": 1782892879914,
+      "msg": "Mexico beat Ecuador (2-0) → +3 pts for Liz"
+    },
+    {
+      "time": 1782892879915,
+      "msg": "France reached Round of 16 → +4 pts for Mark"
+    },
+    {
+      "time": 1782892879915,
+      "msg": "Norway reached Round of 16 → +4 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -553,7 +565,9 @@
     "r16:Canada": true,
     "r16:Morocco": true,
     "r16:Paraguay": true,
-    "r16:Brazil": true
+    "r16:Brazil": true,
+    "r16:France": true,
+    "r16:Norway": true
   },
   "processedMatchIds": [
     537327,
@@ -633,7 +647,8 @@
     537415,
     537418,
     537424,
-    537416
+    537416,
+    537425
   ],
   "eliminated": [
     "Qatar",
@@ -657,7 +672,8 @@
     "Germany",
     "Netherlands",
     "Ivory Coast",
-    "Sweden"
+    "Sweden",
+    "Ecuador"
   ],
-  "lastUpdated": "2026-07-01T02:12:04.310Z"
+  "lastUpdated": "2026-07-01T08:01:19.915Z"
 }

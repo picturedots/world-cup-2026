@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537425,
-      "utcDate": "2026-07-01T01:00:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "Mexico",
-      "away": "Ecuador",
-      "city": "Mexico City"
-    },
-    {
       "id": 537426,
       "utcDate": "2026-07-01T16:00:00Z",
       "stage": "LAST_32",
@@ -105,7 +96,7 @@
       "stage": "LAST_16",
       "group": null,
       "home": "Paraguay",
-      "away": null,
+      "away": "France",
       "city": "Philadelphia"
     },
     {
@@ -114,7 +105,7 @@
       "stage": "LAST_16",
       "group": null,
       "home": "Brazil",
-      "away": null,
+      "away": "Norway",
       "city": "New York/New Jersey"
     },
     {
@@ -235,5 +226,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-01T02:12:04.309Z"
+  "lastUpdated": "2026-07-01T08:01:19.913Z"
 }
