@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537416,
-      "utcDate": "2026-06-30T21:00:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "France",
-      "away": "Sweden",
-      "city": "New York/New Jersey"
-    },
-    {
       "id": 537425,
       "utcDate": "2026-07-01T01:00:00Z",
       "stage": "LAST_32",
@@ -244,5 +235,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-06-30T21:21:39.175Z"
+  "lastUpdated": "2026-07-01T02:12:04.309Z"
 }
