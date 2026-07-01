@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>World C(hack)UP 2026 — Team Ownership Over Time</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1><a href="index.html" style="color:inherit;text-decoration:none"><span class="logo-ball">⚽</span>World C(hack)UP 2026</a></h1>
+  <p class="sub" style="text-align:center;">
+    Each line is a country, climbing in <b>points</b> (up) over <b>time</b> (right).
+    A line's color is whoever owned that country at the time — so a color change marks a switcheroo.
+  </p>
+  <div class="chart-wrap"><canvas id="chart"></canvas></div>
+  <div id="legend" class="sub" style="display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;margin-top:.5rem;"></div>
+  <p class="sub" style="text-align:center;font-size:12px;opacity:.7;">Click a name to highlight only the teams they owned. Hover a line for details.</p>
+  <p id="status" class="sub"></p>
+  <p class="sub" style="text-align:center;"><a href="scores-chart.html">📈 Player scores over time</a></p>
+  <a href="flags-strip.svg"><img class="flag-divider" src="flags-strip.svg" alt="" title="The 48 nations, sorted by flag color -- click to enlarge"/></a>
+</div>
+<script>
+// Test with a local server, e.g.
+// python3 -m http.server
+// http://localhost:8000/ownership-chart.html
+const COLORS = ['#e6194B','#3cb44b','#4363d8','#f58231','#911eb4',
+                '#42d4f4','#f032e6','#9A6324','#808000','#000075'];
+
+const TEAM_FLAGS = {
+  'Mexico':'🇲🇽','South Africa':'🇿🇦','South Korea':'🇰🇷','Czechia':'🇨🇿',
+  'Canada':'🇨🇦','Bosnia and Herzegovina':'🇧🇦','Qatar':'🇶🇦','Switzerland':'🇨🇭',
+  'Brazil':'🇧🇷','Morocco':'🇲🇦','Haiti':'🇭🇹','Scotland':'🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+  'United States':'🇺🇸','Paraguay':'🇵🇾','Australia':'🇦🇺','Türkiye':'🇹🇷',
+  'Germany':'🇩🇪','Curaçao':'🇨🇼','Ivory Coast':'🇨🇮','Ecuador':'🇪🇨',
+  'Netherlands':'🇳🇱','Japan':'🇯🇵','Sweden':'🇸🇪','Tunisia':'🇹🇳',
+  'Belgium':'🇧🇪','Egypt':'🇪🇬','Iran':'🇮🇷','New Zealand':'🇳🇿',
+  'Spain':'🇪🇸','Cape Verde':'🇨🇻','Saudi Arabia':'🇸🇦','Uruguay':'🇺🇾',
+  'France':'🇫🇷','Senegal':'🇸🇳','Iraq':'🇮🇶','Norway':'🇳🇴',
+  'Argentina':'🇦🇷','Algeria':'🇩🇿','Austria':'🇦🇹','Jordan':'🇯🇴',
+  'Portugal':'🇵🇹','DR Congo':'🇨🇩','Uzbekistan':'🇺🇿','Colombia':'🇨🇴',
+  'England':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','Croatia':'🇭🇷','Ghana':'🇬🇭','Panama':'🇵🇦'
+};
+
+// Fixed color per player by alphabetical name, so a player keeps one color.
+let colorOf = {};
+function colorForOwner(name) { return colorOf[name] || '#888'; }
+
+// Parse a non-switcheroo award: "<Team> beat/advanced/reached ... → +N pts for
+// <Player>". Country names contain spaces and accents (matched non-greedily);
+// player names are single words.
+function parseAward(msg) {
+  let m;
+  if ((m = msg.match(/^(.+?) beat .+? → \+(\d+) pts for (\w+)/)))       return { team: m[1], delta: +m[2], player: m[3] };
+  if ((m = msg.match(/^(.+?) advanced to .+? → \+(\d+) pts for (\w+)/))) return { team: m[1], delta: +m[2], player: m[3] };
+  if ((m = msg.match(/^(.+?) reached .+? → \+(\d+) pts for (\w+)/)))     return { team: m[1], delta: +m[2], player: m[3] };
+  return null;
+}
+
+// Build one line per country: cumulative points (x) vs. time (y), with the
+// owner recorded on every vertex so segments can be colored by who held the
+// team during that stretch. Ownership is reconstructed forward from the draft
+// by replaying every switcheroo swap in chronological order.
+//
+// Also builds a per-team, per-player point breakdown for the tooltip. Regular
+// awards go to the owner at the time. A switcheroo draw earns the team +1 for
+// its running total, but is credited to BOTH parties of the swap in the
+// breakdown (the outgoing and incoming owner) — so per-player figures can sum
+// to more than the country total, by one per switcheroo the team was in.
+function buildCountrySeries(gamestate, draft) {
+  const idToName = {};
+  for (const p of draft.players) idToName[p.id] = p.name;
+
+  const owner = {}; // team -> current owner name
+  const teams = Object.keys(draft.ownership).sort((a, b) => a.localeCompare(b));
+  for (const t of teams) owner[t] = idToName[draft.ownership[t]];
+
+  const log = gamestate.matchLog.slice().sort((a, b) => a.time - b.time);
+  const t0 = log.length ? log[0].time : Date.now();
+  let tMax = log.length ? log[log.length - 1].time : t0;
+  if (gamestate.lastUpdated) tMax = Math.max(tMax, Date.parse(gamestate.lastUpdated));
+
+  const cum = {}, series = {}, breakdown = {};
+  for (const t of teams) {
+    cum[t] = 0;
+    breakdown[t] = {}; // player name -> points so far
+    series[t] = [{ x: t0, y: 0, owner: owner[t], breakdown: {} }];
+  }
+  const credit = (team, player, n) => {
+    if (player) breakdown[team][player] = (breakdown[team][player] || 0) + n;
+  };
+  // Push a vertex that snapshots the team's running total, owner, and the
+  // per-player breakdown as of this moment (so line tooltips are time-aware).
+  const pushPoint = (team, time) => {
+    series[team].push({ x: time, y: cum[team], owner: owner[team], breakdown: { ...breakdown[team] } });
+  };
+
+  for (const { time, msg } of log) {
+    if (msg.startsWith('SWITCHEROO')) {
+      // "SWITCHEROO! 🔄 A drew B (1-1) → ... Teams swapped: A → NewA, B → NewB"
+      const m = msg.match(/🔄 (.+?) drew (.+?) \(/);
+      if (m) {
+        const A = m[1], B = m[2];
+        const parties = [owner[A], owner[B]]; // the two players swapping teams
+        for (const T of [A, B]) {
+          if (!(T in cum)) continue;
+          cum[T] += 1;                               // +1 to the country total (counted once)
+          for (const p of parties) credit(T, p, 1);  // +1 to each party in the breakdown
+          pushPoint(T, time);
+        }
+      }
+      const sp = msg.split('Teams swapped: ')[1];
+      if (sp) for (const part of sp.split(', ')) {
+        const [team, newOwner] = part.split(' → ');
+        if (team && newOwner && team.trim() in owner) owner[team.trim()] = newOwner.trim();
+      }
+    } else {
+      const a = parseAward(msg);
+      if (a && a.team in cum) {
+        cum[a.team] += a.delta;
+        credit(a.team, a.player, a.delta);
+        pushPoint(a.team, time);
+      }
+    }
+  }
+
+  // Extend every line to the latest timestamp so all reach the right edge.
+  for (const t of teams) pushPoint(t, tMax);
+
+  return teams.map((team) => ({
+    label: team,
+    data: series[team],
+    // Base color (whoever ends up owning the team); individual segments below
+    // override this so each stretch is colored by its owner at the time.
+    borderColor: colorForOwner(owner[team]),
+    borderWidth: 1.5, stepped: 'after',
+    pointRadius: 0, pointHoverRadius: 4,
+    pointBackgroundColor: (ctx) => styleColor(ctx.raw.owner, team),
+    pointBorderColor: (ctx) => styleColor(ctx.raw.owner, team),
+    segment: {
+      borderColor: (ctx) => styleColor(ctx.p1.raw.owner, team),
+      borderWidth: (ctx) => {
+        if (hoverTeam === team) return 3.5;
+        if (focus && ctx.p1.raw.owner === focus) return 3;
+        return 1.5;
+      },
+    },
+  }));
+}
+
+const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const grid = dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)';
+const tick = dark ? '#aeaeb2' : '#666';
+const fmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
+
+// Which owner is highlighted via the legend (null = everyone equal), and which
+// single country is highlighted via flag hover.
+let focus = null;
+let hoverTeam = null;
+
+// Flag hit-boxes from the most recent draw, for mouseover detection.
+let flagBoxes = [];
+
+// Color for a segment/point: dimmed when another owner is focused, or when a
+// different country's flag is being hovered.
+const styleColor = (owner, team) => {
+  const c = colorForOwner(owner);
+  const dim = (focus && owner !== focus) || (hoverTeam && team !== hoverTeam);
+  return dim ? c + '14' : c;
+};
+
+// One HTML tooltip element, shared by flag hovers and line hovers.
+let sharedTip = null;
+function getTip() {
+  if (!sharedTip) {
+    sharedTip = document.createElement('div');
+    sharedTip.style.cssText =
+      'position:fixed;pointer-events:none;z-index:20;display:none;white-space:nowrap;' +
+      'padding:5px 9px;border-radius:6px;font:600 13px Montserrat,system-ui,sans-serif;' +
+      `background:${dark ? '#2c2c2e' : '#fff'};color:${dark ? '#fff' : '#111'};` +
+      `border:1px solid ${grid};box-shadow:0 2px 8px rgba(0,0,0,0.25);`;
+    document.body.appendChild(sharedTip);
+  }
+  return sharedTip;
+}
+// Rows of "swatch Player ..... points", highest first. Zero-point players are
+// never present (they're only added to a breakdown when they earn something).
+function breakdownRows(breakdownObj) {
+  return Object.entries(breakdownObj)
+    .sort((a, b) => b[1] - a[1])
+    .map(([p, n]) =>
+      `<div style="display:flex;justify-content:space-between;gap:12px">` +
+      `<span><span style="color:${colorForOwner(p)}">■</span> ${p}</span><span>${n}</span></div>`)
+    .join('');
+}
+function showTip(html, clientX, clientY) {
+  const tip = getTip();
+  tip.innerHTML = html;
+  tip.style.display = 'block';
+  tip.style.left = (clientX + 12) + 'px';
+  tip.style.top = (clientY + 12) + 'px';
+}
+
+// Chart.js external tooltip: show the hovered vertex's cumulative breakdown up
+// to that point in time. Yields to the flag tooltip while a flag is hovered.
+function externalTooltip(context) {
+  if (hoverTeam) return; // flag hover owns the tooltip
+  const tip = getTip();
+  const { chart, tooltip } = context;
+  if (!tooltip || tooltip.opacity === 0 || !tooltip.dataPoints || !tooltip.dataPoints.length) {
+    tip.style.display = 'none';
+    return;
+  }
+  const dp = tooltip.dataPoints[0];
+  const raw = dp.raw;
+  const flag = TEAM_FLAGS[dp.dataset.label] || '';
+  const rect = chart.canvas.getBoundingClientRect();
+  showTip(
+    `<div style="font-weight:700">${flag} ${dp.dataset.label} — ${raw.y} pts</div>` +
+    `<div style="opacity:.6;font-weight:400;font-size:11px;margin-bottom:3px">${fmt.format(new Date(raw.x))}</div>` +
+    breakdownRows(raw.breakdown || {}),
+    rect.left + tooltip.caretX,
+    rect.top + tooltip.caretY,
+  );
+}
+
+// Draw each country's flag emoji at the right end of its line. Lines all reach
+// the right edge (tMax), so the flag sits at the line's final points height.
+// Ties are nudged apart vertically so stacked flags stay readable.
+const flagLabels = {
+  id: 'flagLabels',
+  afterDatasetsDraw(chart) {
+    const { ctx, chartArea } = chart;
+    const size = 20;     // base flag font size (px)
+    const gap = 18;      // min vertical spacing before flags are considered overlapping
+    const colW = 20;     // horizontal step between staggered lanes
+    const maxLanes = 6;  // cap so flags stay within the right margin
+    const items = [];
+    chart.data.datasets.forEach((ds, i) => {
+      const meta = chart.getDatasetMeta(i);
+      if (meta.hidden || !meta.data.length) return;
+      const flag = TEAM_FLAGS[ds.label];
+      if (!flag) return;
+      const last = meta.data[meta.data.length - 1];
+      const raw = ds.data[ds.data.length - 1];
+      items.push({ y: last.y, flag, owner: raw.owner, label: ds.label, pts: raw.y, breakdown: raw.breakdown });
+    });
+    // Keep each flag at its true height (points) and resolve overlaps
+    // horizontally: place each flag in the leftmost lane whose previous flag is
+    // far enough above it, spilling further right only when it must.
+    items.sort((a, b) => a.y - b.y);
+    const laneY = []; // last (lowest) y placed in each lane
+    for (const it of items) {
+      let lane = laneY.findIndex((y) => it.y - y >= gap);
+      if (lane === -1) {
+        if (laneY.length < maxLanes) {
+          lane = laneY.length; // open a new lane further right
+        } else {
+          // All lanes full: reuse the one with the most room (highest above).
+          lane = 0;
+          for (let i = 1; i < laneY.length; i++) if (laneY[i] < laneY[lane]) lane = i;
+        }
+      }
+      laneY[lane] = it.y;
+      it.x = chartArea.right + 4 + lane * colW;
+    }
+
+    ctx.save();
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'left';
+    flagBoxes = [];
+    for (const it of items) {
+      const hovered = hoverTeam === it.label;
+      const fs = hovered ? size + 8 : size;
+      ctx.font = `${fs}px "Apple Color Emoji","Segoe UI Emoji",system-ui,sans-serif`;
+      const dim = !hovered && ((focus && it.owner !== focus) || (hoverTeam && it.label !== hoverTeam));
+      ctx.globalAlpha = dim ? 0.15 : 1;
+      const w = ctx.measureText(it.flag).width;
+      ctx.fillText(it.flag, it.x, it.y);
+      flagBoxes.push({ x: it.x, y: it.y, w, h: fs, label: it.label, owner: it.owner, pts: it.pts, flag: it.flag, breakdown: it.breakdown });
+    }
+    ctx.restore();
+  },
+};
+
+function makeChart(datasets) {
+  // Pin the x-axis to the exact data range so it starts at the first event
+  // (tournament opener, ~June 11) with no padding on either side.
+  let xMin = Infinity, xMax = -Infinity;
+  for (const ds of datasets) for (const pt of ds.data) {
+    if (pt.x < xMin) xMin = pt.x;
+    if (pt.x > xMax) xMax = pt.x;
+  }
+  const chart = new Chart(document.getElementById('chart'), {
+    type: 'line',
+    data: { datasets },
+    plugins: [flagLabels],
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: { right: 132 } }, // room for staggered flag emoji lanes past the right edge
+      interaction: { mode: 'nearest', intersect: false },
+      scales: {
+        x: {
+          type: 'linear',
+          min: xMin, max: xMax,
+          title: { display: true, text: 'Time', color: tick },
+          grid: { color: grid },
+          ticks: {
+            color: tick, maxRotation: 0, autoSkip: true, maxTicksLimit: 8,
+            callback: (v) => fmt.format(new Date(v)),
+          },
+        },
+        y: {
+          type: 'linear', beginAtZero: true,
+          title: { display: true, text: 'Total points', color: tick },
+          grid: { color: grid }, ticks: { color: tick },
+        },
+      },
+      plugins: {
+        legend: { display: false }, // 48 teams — a color key by player is clearer.
+        tooltip: { enabled: false, external: externalTooltip },
+      },
+    },
+  });
+  attachFlagHover(chart);
+  return chart;
+}
+
+// Mouseover for the canvas-drawn flags: highlight the country's line, enlarge
+// its flag, and show a small tooltip. Uses the hit-boxes recorded on each draw.
+function attachFlagHover(chart) {
+  const canvas = chart.canvas;
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    let hit = null;
+    for (const b of flagBoxes) {
+      if (mx >= b.x - 2 && mx <= b.x + b.w + 2 && my >= b.y - b.h / 2 - 2 && my <= b.y + b.h / 2 + 2) { hit = b; break; }
+    }
+    const next = hit ? hit.label : null;
+    if (next !== hoverTeam) { hoverTeam = next; chart.update('none'); }
+    if (hit) {
+      // Flag hover takes over the shared tooltip; the line tooltip yields to it.
+      showTip(
+        `<div style="font-weight:700;margin-bottom:3px">${hit.flag} ${hit.label} — ${hit.pts} pts</div>` +
+        breakdownRows(hit.breakdown),
+        e.clientX, e.clientY);
+      canvas.style.cursor = 'pointer';
+    } else {
+      canvas.style.cursor = '';
+    }
+  });
+  canvas.addEventListener('mouseleave', () => {
+    getTip().style.display = 'none';
+    canvas.style.cursor = '';
+    if (hoverTeam) { hoverTeam = null; chart.update('none'); }
+  });
+}
+
+// A color key of players; clicking one highlights the teams they owned.
+function renderLegend(chart, players) {
+  const el = document.getElementById('legend');
+  el.innerHTML = '';
+  for (const name of players) {
+    const item = document.createElement('span');
+    item.style.cssText = 'cursor:pointer;user-select:none;display:inline-flex;align-items:center;gap:5px;';
+    item.innerHTML =
+      `<span style="width:12px;height:12px;border-radius:3px;background:${colorForOwner(name)};display:inline-block"></span>${name}`;
+    item.onclick = () => {
+      focus = (focus === name) ? null : name;
+      for (const child of el.children) child.style.opacity = (!focus || child === item) ? '1' : '0.4';
+      chart.update();
+    };
+    el.appendChild(item);
+  }
+}
+
+const loadJSON = (path) =>
+  fetch(path, { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+
+Promise.all([loadJSON('data/gamestate.json'), loadJSON('data/draft.json')])
+  .then(([gamestate, draft]) => {
+    const players = draft.players.map((p) => p.name).sort((a, b) => a.localeCompare(b));
+    players.forEach((name, i) => { colorOf[name] = COLORS[i % COLORS.length]; });
+
+    const datasets = buildCountrySeries(gamestate, draft);
+    const chart = makeChart(datasets);
+    renderLegend(chart, players);
+  })
+  .catch((err) => {
+    document.getElementById('status').textContent =
+      'Could not load match data (' + err.message + '). ' +
+      'Serve this page over HTTP (e.g. `python3 -m http.server`) rather than opening the file directly.';
+  });
+</script>
+</body>
+</html>
