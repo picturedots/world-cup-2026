@@ -1,11 +1,11 @@
 {
   "points": {
-    "p1779936707998": 41,
+    "p1779936707998": 45,
     "p1779936725338": 75,
-    "p1779936796017": 69,
+    "p1779936796017": 76,
     "p1779936803050": 60,
-    "p1779936810074": 36,
-    "p1779936817378": 59,
+    "p1779936810074": 40,
+    "p1779936817378": 63,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -535,6 +535,26 @@
     {
       "time": 1782948458131,
       "msg": "Belgium beat Senegal (3-2) → +3 pts for Tessa"
+    },
+    {
+      "time": 1782975537848,
+      "msg": "United States beat Bosnia and Herzegovina (2-0) → +3 pts for Mildred"
+    },
+    {
+      "time": 1782975537850,
+      "msg": "Mexico reached Round of 16 → +4 pts for Liz"
+    },
+    {
+      "time": 1782975537850,
+      "msg": "England reached Round of 16 → +4 pts for Bryce"
+    },
+    {
+      "time": 1782975537850,
+      "msg": "United States reached Round of 16 → +4 pts for Mildred"
+    },
+    {
+      "time": 1782975537850,
+      "msg": "Belgium reached Round of 16 → +4 pts for Tessa"
     }
   ],
   "bonusesAwarded": {
@@ -575,7 +595,11 @@
     "r16:Paraguay": true,
     "r16:Brazil": true,
     "r16:France": true,
-    "r16:Norway": true
+    "r16:Norway": true,
+    "r16:Mexico": true,
+    "r16:England": true,
+    "r16:United States": true,
+    "r16:Belgium": true
   },
   "processedMatchIds": [
     537327,
@@ -658,7 +682,8 @@
     537416,
     537425,
     537426,
-    537422
+    537422,
+    537421
   ],
   "eliminated": [
     "Qatar",
@@ -685,7 +710,8 @@
     "Sweden",
     "Ecuador",
     "DR Congo",
-    "Senegal"
+    "Senegal",
+    "Bosnia and Herzegovina"
   ],
-  "lastUpdated": "2026-07-02T02:04:23.928Z"
+  "lastUpdated": "2026-07-02T06:58:57.850Z"
 }
