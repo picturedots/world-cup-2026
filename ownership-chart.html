@@ -136,6 +136,10 @@ function buildCountrySeries(gamestate, draft) {
   // Extend every line to the latest timestamp so all reach the right edge.
   for (const t of teams) pushPoint(t, tMax);
 
+  // Record every player who ever owned each team (across all switcheroos), so
+  // focusing a player can highlight teams they held at any point — not just now.
+  for (const t of teams) teamOwners[t] = new Set(series[t].map((v) => v.owner).filter(Boolean));
+
   return teams.map((team) => ({
     label: team,
     data: series[team],
@@ -167,6 +171,10 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' })
 let focus = null;
 let hoverTeam = null;
 
+// team -> Set of every player who ever owned it (filled by buildCountrySeries).
+let teamOwners = {};
+const everOwned = (team, player) => !!(teamOwners[team] && teamOwners[team].has(player));
+
 // Flag hit-boxes from the most recent draw, for mouseover detection.
 let flagBoxes = [];
 
@@ -174,7 +182,9 @@ let flagBoxes = [];
 // different country's flag is being hovered.
 const styleColor = (owner, team) => {
   const c = colorForOwner(owner);
-  const dim = (focus && owner !== focus) || (hoverTeam && team !== hoverTeam);
+  // Show a team's whole line if the focused player ever owned it (their tenure
+  // is still emphasized via segment width below); dim teams they never held.
+  const dim = (focus && !everOwned(team, focus)) || (hoverTeam && team !== hoverTeam);
   return dim ? c + '14' : c;
 };
 
@@ -282,7 +292,7 @@ const flagLabels = {
       const hovered = hoverTeam === it.label;
       const fs = hovered ? size + 8 : size;
       ctx.font = `${fs}px "Apple Color Emoji","Segoe UI Emoji",system-ui,sans-serif`;
-      const dim = !hovered && ((focus && it.owner !== focus) || (hoverTeam && it.label !== hoverTeam));
+      const dim = !hovered && ((focus && !everOwned(it.label, focus)) || (hoverTeam && it.label !== hoverTeam));
       ctx.globalAlpha = dim ? 0.15 : 1;
       const w = ctx.measureText(it.flag).width;
       ctx.fillText(it.flag, it.x, it.y);
