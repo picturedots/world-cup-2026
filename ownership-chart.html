@@ -14,9 +14,14 @@
 <body>
 <div class="container">
   <h1><a href="index.html" style="color:inherit;text-decoration:none"><span class="logo-ball">⚽</span>World C(hack)UP 2026</a></h1>
+
+  <div class="tab-bar">
+    <a class="tab" href="scores-chart.html" style="text-decoration:none">By Player</a>
+    <button class="tab active">By Country</button>
+  </div>
+
   <p class="sub" style="text-align:center;">
-    Each line is a country, climbing in <b>points</b> (up) over <b>time</b> (right).
-    A line's color is whoever owned that country at the time — so a color change marks a switcheroo.
+    Points generated per country per player over time.  Switcheroos contribute to each user's totals but are singly counted in country totals.
   </p>
   <div class="chart-wrap"><canvas id="chart"></canvas></div>
   <div id="legend" class="sub" style="display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;margin-top:.5rem;"></div>
