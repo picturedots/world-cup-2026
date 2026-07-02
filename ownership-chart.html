@@ -216,8 +216,19 @@ function showTip(html, clientX, clientY) {
   const tip = getTip();
   tip.innerHTML = html;
   tip.style.display = 'block';
-  tip.style.left = (clientX + 12) + 'px';
-  tip.style.top = (clientY + 12) + 'px';
+  // Measure now that content is set, then keep the box inside the viewport:
+  // flip to the other side of the cursor when it would spill off an edge, and
+  // clamp as a fallback so it never hides past the window.
+  const pad = 12, margin = 4;
+  const { width, height } = tip.getBoundingClientRect();
+  let left = clientX + pad;
+  let top = clientY + pad;
+  if (left + width > window.innerWidth - margin) left = clientX - pad - width;
+  if (left < margin) left = margin;
+  if (top + height > window.innerHeight - margin) top = clientY - pad - height;
+  if (top < margin) top = margin;
+  tip.style.left = left + 'px';
+  tip.style.top = top + 'px';
 }
 
 // Chart.js external tooltip: show the hovered vertex's cumulative breakdown up
