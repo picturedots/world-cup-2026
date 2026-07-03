@@ -3,7 +3,7 @@
     "p1779936707998": 45,
     "p1779936725338": 75,
     "p1779936796017": 76,
-    "p1779936803050": 60,
+    "p1779936803050": 66,
     "p1779936810074": 40,
     "p1779936817378": 63,
     "p1779936822308": 39,
@@ -555,6 +555,14 @@
     {
       "time": 1782975537850,
       "msg": "Belgium reached Round of 16 → +4 pts for Tessa"
+    },
+    {
+      "time": 1783043303224,
+      "msg": "Spain beat Austria (3-0) → +3 pts for Emily"
+    },
+    {
+      "time": 1783043303224,
+      "msg": "Portugal beat Croatia (2-1) → +3 pts for Emily"
     }
   ],
   "bonusesAwarded": {
@@ -683,7 +691,9 @@
     537425,
     537426,
     537422,
-    537421
+    537421,
+    537420,
+    537419
   ],
   "eliminated": [
     "Qatar",
@@ -711,7 +721,9 @@
     "Ecuador",
     "DR Congo",
     "Senegal",
-    "Bosnia and Herzegovina"
+    "Bosnia and Herzegovina",
+    "Austria",
+    "Croatia"
   ],
-  "lastUpdated": "2026-07-02T20:51:19.105Z"
+  "lastUpdated": "2026-07-03T01:48:23.226Z"
 }
