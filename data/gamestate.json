@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 45,
-    "p1779936725338": 75,
+    "p1779936725338": 78,
     "p1779936796017": 76,
     "p1779936803050": 66,
     "p1779936810074": 40,
@@ -563,6 +563,10 @@
     {
       "time": 1783043303224,
       "msg": "Portugal beat Croatia (2-1) → +3 pts for Emily"
+    },
+    {
+      "time": 1783061576109,
+      "msg": "Switzerland beat Algeria (2-0) → +3 pts for Mark"
     }
   ],
   "bonusesAwarded": {
@@ -693,7 +697,8 @@
     537422,
     537421,
     537420,
-    537419
+    537419,
+    537429
   ],
   "eliminated": [
     "Qatar",
@@ -723,7 +728,8 @@
     "Senegal",
     "Bosnia and Herzegovina",
     "Austria",
-    "Croatia"
+    "Croatia",
+    "Algeria"
   ],
-  "lastUpdated": "2026-07-03T01:48:23.226Z"
+  "lastUpdated": "2026-07-03T06:52:56.110Z"
 }
