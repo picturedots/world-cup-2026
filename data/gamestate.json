@@ -2,10 +2,10 @@
   "points": {
     "p1779936707998": 45,
     "p1779936725338": 78,
-    "p1779936796017": 76,
+    "p1779936796017": 79,
     "p1779936803050": 66,
     "p1779936810074": 40,
-    "p1779936817378": 63,
+    "p1779936817378": 66,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -567,6 +567,14 @@
     {
       "time": 1783061576109,
       "msg": "Switzerland beat Algeria (2-0) → +3 pts for Mark"
+    },
+    {
+      "time": 1783128436598,
+      "msg": "Egypt beat Australia (1-1, won on penalties) → +3 pts for Mildred"
+    },
+    {
+      "time": 1783128436599,
+      "msg": "Argentina beat Cape Verde (3-2) → +3 pts for Liz"
     }
   ],
   "bonusesAwarded": {
@@ -698,7 +706,9 @@
     537421,
     537420,
     537419,
-    537429
+    537429,
+    537428,
+    537427
   ],
   "eliminated": [
     "Qatar",
@@ -729,7 +739,9 @@
     "Bosnia and Herzegovina",
     "Austria",
     "Croatia",
-    "Algeria"
+    "Algeria",
+    "Australia",
+    "Cape Verde"
   ],
-  "lastUpdated": "2026-07-03T20:50:58.419Z"
+  "lastUpdated": "2026-07-04T01:27:16.599Z"
 }
