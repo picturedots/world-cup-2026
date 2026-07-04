@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537430,
-      "utcDate": "2026-07-04T01:30:00Z",
-      "stage": "LAST_32",
-      "group": null,
-      "home": "Colombia",
-      "away": "Ghana",
-      "city": "Kansas City"
-    },
-    {
       "id": 537376,
       "utcDate": "2026-07-04T17:00:00Z",
       "stage": "LAST_16",
@@ -50,8 +41,8 @@
       "utcDate": "2026-07-06T19:00:00Z",
       "stage": "LAST_16",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Portugal",
+      "away": "Spain",
       "city": "Dallas"
     },
     {
@@ -68,8 +59,8 @@
       "utcDate": "2026-07-07T16:00:00Z",
       "stage": "LAST_16",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Argentina",
+      "away": "Egypt",
       "city": "Atlanta"
     },
     {
@@ -77,8 +68,8 @@
       "utcDate": "2026-07-07T20:00:00Z",
       "stage": "LAST_16",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Switzerland",
+      "away": "Colombia",
       "city": "Vancouver"
     },
     {
@@ -154,5 +145,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-04T01:48:15.214Z"
+  "lastUpdated": "2026-07-04T06:38:50.181Z"
 }

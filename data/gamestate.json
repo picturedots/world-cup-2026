@@ -1,11 +1,11 @@
 {
   "points": {
     "p1779936707998": 45,
-    "p1779936725338": 78,
-    "p1779936796017": 79,
-    "p1779936803050": 66,
+    "p1779936725338": 82,
+    "p1779936796017": 83,
+    "p1779936803050": 74,
     "p1779936810074": 40,
-    "p1779936817378": 66,
+    "p1779936817378": 77,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -575,6 +575,34 @@
     {
       "time": 1783128436599,
       "msg": "Argentina beat Cape Verde (3-2) → +3 pts for Liz"
+    },
+    {
+      "time": 1783147130198,
+      "msg": "Colombia beat Ghana (1-0) → +3 pts for Liz"
+    },
+    {
+      "time": 1783147130199,
+      "msg": "Portugal reached Round of 16 → +4 pts for Emily"
+    },
+    {
+      "time": 1783147130199,
+      "msg": "Spain reached Round of 16 → +4 pts for Emily"
+    },
+    {
+      "time": 1783147130199,
+      "msg": "Argentina reached Round of 16 → +4 pts for Liz"
+    },
+    {
+      "time": 1783147130199,
+      "msg": "Egypt reached Round of 16 → +4 pts for Mildred"
+    },
+    {
+      "time": 1783147130199,
+      "msg": "Switzerland reached Round of 16 → +4 pts for Mark"
+    },
+    {
+      "time": 1783147130199,
+      "msg": "Colombia reached Round of 16 → +4 pts for Liz"
     }
   ],
   "bonusesAwarded": {
@@ -619,7 +647,13 @@
     "r16:Mexico": true,
     "r16:England": true,
     "r16:United States": true,
-    "r16:Belgium": true
+    "r16:Belgium": true,
+    "r16:Portugal": true,
+    "r16:Spain": true,
+    "r16:Argentina": true,
+    "r16:Egypt": true,
+    "r16:Switzerland": true,
+    "r16:Colombia": true
   },
   "processedMatchIds": [
     537327,
@@ -708,7 +742,8 @@
     537419,
     537429,
     537428,
-    537427
+    537427,
+    537430
   ],
   "eliminated": [
     "Qatar",
@@ -741,7 +776,8 @@
     "Croatia",
     "Algeria",
     "Australia",
-    "Cape Verde"
+    "Cape Verde",
+    "Ghana"
   ],
-  "lastUpdated": "2026-07-04T01:48:15.216Z"
+  "lastUpdated": "2026-07-04T06:38:50.199Z"
 }
