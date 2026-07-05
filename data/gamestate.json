@@ -2,7 +2,7 @@
   "points": {
     "p1779936707998": 45,
     "p1779936725338": 90,
-    "p1779936796017": 83,
+    "p1779936796017": 86,
     "p1779936803050": 82,
     "p1779936810074": 40,
     "p1779936817378": 77,
@@ -619,6 +619,10 @@
     {
       "time": 1783234709289,
       "msg": "Morocco reached Round of 8 → +5 pts for Emily"
+    },
+    {
+      "time": 1783294117521,
+      "msg": "Norway beat Brazil (1-2) → +3 pts for Mildred"
     }
   ],
   "bonusesAwarded": {
@@ -763,7 +767,8 @@
     537427,
     537430,
     537376,
-    537375
+    537375,
+    537377
   ],
   "eliminated": [
     "Qatar",
@@ -799,7 +804,8 @@
     "Cape Verde",
     "Ghana",
     "Canada",
-    "Paraguay"
+    "Paraguay",
+    "Brazil"
   ],
-  "lastUpdated": "2026-07-05T20:44:53.547Z"
+  "lastUpdated": "2026-07-05T23:28:37.522Z"
 }
