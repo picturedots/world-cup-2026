@@ -59,8 +59,8 @@
       "utcDate": "2026-07-09T20:00:00Z",
       "stage": "QUARTER_FINALS",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "France",
+      "away": "Morocco",
       "city": "Boston"
     },
     {
@@ -127,5 +127,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-05T01:53:25.157Z"
+  "lastUpdated": "2026-07-05T06:58:29.287Z"
 }
