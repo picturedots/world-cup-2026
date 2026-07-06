@@ -2,9 +2,9 @@
   "points": {
     "p1779936707998": 45,
     "p1779936725338": 90,
-    "p1779936796017": 86,
+    "p1779936796017": 91,
     "p1779936803050": 82,
-    "p1779936810074": 40,
+    "p1779936810074": 48,
     "p1779936817378": 77,
     "p1779936822308": 39,
     "p1779936827805": 37
@@ -623,6 +623,18 @@
     {
       "time": 1783294117521,
       "msg": "Norway beat Brazil (1-2) → +3 pts for Mildred"
+    },
+    {
+      "time": 1783325308298,
+      "msg": "England beat Mexico (2-3) → +3 pts for Bryce"
+    },
+    {
+      "time": 1783325308299,
+      "msg": "Norway reached Round of 8 → +5 pts for Mildred"
+    },
+    {
+      "time": 1783325308299,
+      "msg": "England reached Round of 8 → +5 pts for Bryce"
     }
   ],
   "bonusesAwarded": {
@@ -675,7 +687,9 @@
     "r16:Switzerland": true,
     "r16:Colombia": true,
     "qf:France": true,
-    "qf:Morocco": true
+    "qf:Morocco": true,
+    "qf:Norway": true,
+    "qf:England": true
   },
   "processedMatchIds": [
     537327,
@@ -768,7 +782,8 @@
     537430,
     537376,
     537375,
-    537377
+    537377,
+    537378
   ],
   "eliminated": [
     "Qatar",
@@ -805,7 +820,8 @@
     "Ghana",
     "Canada",
     "Paraguay",
-    "Brazil"
+    "Brazil",
+    "Mexico"
   ],
-  "lastUpdated": "2026-07-06T02:00:20.697Z"
+  "lastUpdated": "2026-07-06T08:08:28.299Z"
 }

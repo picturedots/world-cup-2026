@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537378,
-      "utcDate": "2026-07-06T01:00:00Z",
-      "stage": "LAST_16",
-      "group": null,
-      "home": "Mexico",
-      "away": "England",
-      "city": "Mexico City"
-    },
-    {
       "id": 537379,
       "utcDate": "2026-07-06T19:00:00Z",
       "stage": "LAST_16",
@@ -68,8 +59,8 @@
       "utcDate": "2026-07-11T21:00:00Z",
       "stage": "QUARTER_FINALS",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Norway",
+      "away": "England",
       "city": "Miami"
     },
     {
@@ -118,5 +109,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-06T02:00:20.695Z"
+  "lastUpdated": "2026-07-06T08:08:28.297Z"
 }
