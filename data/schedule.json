@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537379,
-      "utcDate": "2026-07-06T19:00:00Z",
-      "stage": "LAST_16",
-      "group": null,
-      "home": "Portugal",
-      "away": "Spain",
-      "city": "Dallas"
-    },
-    {
       "id": 537380,
       "utcDate": "2026-07-07T00:00:00Z",
       "stage": "LAST_16",
@@ -109,5 +100,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-06T18:03:17.580Z"
+  "lastUpdated": "2026-07-06T21:18:53.742Z"
 }
