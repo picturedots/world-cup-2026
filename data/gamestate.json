@@ -1,9 +1,9 @@
 {
   "points": {
-    "p1779936707998": 48,
+    "p1779936707998": 53,
     "p1779936725338": 90,
     "p1779936796017": 91,
-    "p1779936803050": 85,
+    "p1779936803050": 90,
     "p1779936810074": 48,
     "p1779936817378": 77,
     "p1779936822308": 39,
@@ -643,6 +643,14 @@
     {
       "time": 1783391856515,
       "msg": "Belgium beat United States (1-4) → +3 pts for Tessa"
+    },
+    {
+      "time": 1783409192175,
+      "msg": "Spain reached Round of 8 → +5 pts for Emily"
+    },
+    {
+      "time": 1783409192175,
+      "msg": "Belgium reached Round of 8 → +5 pts for Tessa"
     }
   ],
   "bonusesAwarded": {
@@ -697,7 +705,9 @@
     "qf:France": true,
     "qf:Morocco": true,
     "qf:Norway": true,
-    "qf:England": true
+    "qf:England": true,
+    "qf:Spain": true,
+    "qf:Belgium": true
   },
   "processedMatchIds": [
     537327,
@@ -835,5 +845,5 @@
     "Portugal",
     "United States"
   ],
-  "lastUpdated": "2026-07-07T02:37:36.516Z"
+  "lastUpdated": "2026-07-07T07:26:32.175Z"
 }

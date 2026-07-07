@@ -32,8 +32,8 @@
       "utcDate": "2026-07-10T19:00:00Z",
       "stage": "QUARTER_FINALS",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Spain",
+      "away": "Belgium",
       "city": "Los Angeles"
     },
     {
@@ -91,5 +91,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-07T02:37:36.514Z"
+  "lastUpdated": "2026-07-07T07:26:32.172Z"
 }
