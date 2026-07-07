@@ -5,7 +5,7 @@
     "p1779936796017": 91,
     "p1779936803050": 90,
     "p1779936810074": 48,
-    "p1779936817378": 77,
+    "p1779936817378": 80,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -651,6 +651,10 @@
     {
       "time": 1783409192175,
       "msg": "Belgium reached Round of 8 → +5 pts for Tessa"
+    },
+    {
+      "time": 1783458792084,
+      "msg": "Argentina beat Egypt (3-2) → +3 pts for Liz"
     }
   ],
   "bonusesAwarded": {
@@ -803,7 +807,8 @@
     537377,
     537378,
     537379,
-    537380
+    537380,
+    537381
   ],
   "eliminated": [
     "Qatar",
@@ -843,7 +848,8 @@
     "Brazil",
     "Mexico",
     "Portugal",
-    "United States"
+    "United States",
+    "Egypt"
   ],
-  "lastUpdated": "2026-07-07T17:49:54.371Z"
+  "lastUpdated": "2026-07-07T21:13:12.085Z"
 }
