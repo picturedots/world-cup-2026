@@ -1,6 +1,6 @@
 {
   "points": {
-    "p1779936707998": 45,
+    "p1779936707998": 48,
     "p1779936725338": 90,
     "p1779936796017": 91,
     "p1779936803050": 85,
@@ -639,6 +639,10 @@
     {
       "time": 1783372733743,
       "msg": "Spain beat Portugal (0-1) → +3 pts for Emily"
+    },
+    {
+      "time": 1783391856515,
+      "msg": "Belgium beat United States (1-4) → +3 pts for Tessa"
     }
   ],
   "bonusesAwarded": {
@@ -788,7 +792,8 @@
     537375,
     537377,
     537378,
-    537379
+    537379,
+    537380
   ],
   "eliminated": [
     "Qatar",
@@ -827,7 +832,8 @@
     "Paraguay",
     "Brazil",
     "Mexico",
-    "Portugal"
+    "Portugal",
+    "United States"
   ],
-  "lastUpdated": "2026-07-07T01:55:41.690Z"
+  "lastUpdated": "2026-07-07T02:37:36.516Z"
 }
