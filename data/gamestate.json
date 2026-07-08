@@ -1,11 +1,11 @@
 {
   "points": {
     "p1779936707998": 53,
-    "p1779936725338": 93,
+    "p1779936725338": 98,
     "p1779936796017": 91,
     "p1779936803050": 90,
     "p1779936810074": 48,
-    "p1779936817378": 80,
+    "p1779936817378": 85,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -659,6 +659,14 @@
     {
       "time": 1783470267633,
       "msg": "Switzerland beat Colombia (0-0, won on penalties) → +3 pts for Mark"
+    },
+    {
+      "time": 1783491633812,
+      "msg": "Argentina reached Round of 8 → +5 pts for Liz"
+    },
+    {
+      "time": 1783491633812,
+      "msg": "Switzerland reached Round of 8 → +5 pts for Mark"
     }
   ],
   "bonusesAwarded": {
@@ -715,7 +723,9 @@
     "qf:Norway": true,
     "qf:England": true,
     "qf:Spain": true,
-    "qf:Belgium": true
+    "qf:Belgium": true,
+    "qf:Argentina": true,
+    "qf:Switzerland": true
   },
   "processedMatchIds": [
     537327,
@@ -857,5 +867,5 @@
     "Egypt",
     "Colombia"
   ],
-  "lastUpdated": "2026-07-08T01:26:02.094Z"
+  "lastUpdated": "2026-07-08T06:20:33.812Z"
 }

@@ -32,8 +32,8 @@
       "utcDate": "2026-07-12T01:00:00Z",
       "stage": "QUARTER_FINALS",
       "group": null,
-      "home": null,
-      "away": null,
+      "home": "Argentina",
+      "away": "Switzerland",
       "city": "Kansas City"
     },
     {
@@ -73,5 +73,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-08T01:26:02.092Z"
+  "lastUpdated": "2026-07-08T06:20:33.810Z"
 }
