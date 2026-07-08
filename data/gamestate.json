@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 53,
-    "p1779936725338": 90,
+    "p1779936725338": 93,
     "p1779936796017": 91,
     "p1779936803050": 90,
     "p1779936810074": 48,
@@ -655,6 +655,10 @@
     {
       "time": 1783458792084,
       "msg": "Argentina beat Egypt (3-2) → +3 pts for Liz"
+    },
+    {
+      "time": 1783470267633,
+      "msg": "Switzerland beat Colombia (0-0, won on penalties) → +3 pts for Mark"
     }
   ],
   "bonusesAwarded": {
@@ -808,7 +812,8 @@
     537378,
     537379,
     537380,
-    537381
+    537381,
+    537382
   ],
   "eliminated": [
     "Qatar",
@@ -849,7 +854,8 @@
     "Mexico",
     "Portugal",
     "United States",
-    "Egypt"
+    "Egypt",
+    "Colombia"
   ],
-  "lastUpdated": "2026-07-07T21:13:12.085Z"
+  "lastUpdated": "2026-07-08T00:24:27.634Z"
 }

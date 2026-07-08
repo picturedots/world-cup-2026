@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537382,
-      "utcDate": "2026-07-07T20:00:00Z",
-      "stage": "LAST_16",
-      "group": null,
-      "home": "Switzerland",
-      "away": "Colombia",
-      "city": "Vancouver"
-    },
-    {
       "id": 537383,
       "utcDate": "2026-07-09T20:00:00Z",
       "stage": "QUARTER_FINALS",
@@ -82,5 +73,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-07T21:13:12.077Z"
+  "lastUpdated": "2026-07-08T00:24:27.632Z"
 }
