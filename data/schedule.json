@@ -32,7 +32,7 @@
       "utcDate": "2026-07-14T19:00:00Z",
       "stage": "SEMI_FINALS",
       "group": null,
-      "home": null,
+      "home": "France",
       "away": null,
       "city": "Dallas"
     },
@@ -64,5 +64,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-10T01:46:31.209Z"
+  "lastUpdated": "2026-07-10T07:25:28.542Z"
 }

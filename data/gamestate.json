@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 53,
-    "p1779936725338": 101,
+    "p1779936725338": 107,
     "p1779936796017": 91,
     "p1779936803050": 90,
     "p1779936810074": 48,
@@ -671,6 +671,10 @@
     {
       "time": 1783647991209,
       "msg": "France beat Morocco (2-0) → +3 pts for Mark"
+    },
+    {
+      "time": 1783668328544,
+      "msg": "France reached Semis → +6 pts for Mark"
     }
   ],
   "bonusesAwarded": {
@@ -729,7 +733,8 @@
     "qf:Spain": true,
     "qf:Belgium": true,
     "qf:Argentina": true,
-    "qf:Switzerland": true
+    "qf:Switzerland": true,
+    "sf:France": true
   },
   "processedMatchIds": [
     537327,
@@ -873,5 +878,5 @@
     "Colombia",
     "Morocco"
   ],
-  "lastUpdated": "2026-07-10T01:46:31.211Z"
+  "lastUpdated": "2026-07-10T07:25:28.544Z"
 }
