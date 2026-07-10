@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537383,
-      "utcDate": "2026-07-09T20:00:00Z",
-      "stage": "QUARTER_FINALS",
-      "group": null,
-      "home": "France",
-      "away": "Morocco",
-      "city": "Boston"
-    },
-    {
       "id": 537384,
       "utcDate": "2026-07-10T19:00:00Z",
       "stage": "QUARTER_FINALS",
@@ -73,5 +64,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-09T21:09:35.696Z"
+  "lastUpdated": "2026-07-10T01:46:31.209Z"
 }

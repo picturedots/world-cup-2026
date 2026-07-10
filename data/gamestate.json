@@ -1,7 +1,7 @@
 {
   "points": {
     "p1779936707998": 53,
-    "p1779936725338": 98,
+    "p1779936725338": 101,
     "p1779936796017": 91,
     "p1779936803050": 90,
     "p1779936810074": 48,
@@ -667,6 +667,10 @@
     {
       "time": 1783491633812,
       "msg": "Switzerland reached Round of 8 → +5 pts for Mark"
+    },
+    {
+      "time": 1783647991209,
+      "msg": "France beat Morocco (2-0) → +3 pts for Mark"
     }
   ],
   "bonusesAwarded": {
@@ -823,7 +827,8 @@
     537379,
     537380,
     537381,
-    537382
+    537382,
+    537383
   ],
   "eliminated": [
     "Qatar",
@@ -865,7 +870,8 @@
     "Portugal",
     "United States",
     "Egypt",
-    "Colombia"
+    "Colombia",
+    "Morocco"
   ],
-  "lastUpdated": "2026-07-09T21:09:35.698Z"
+  "lastUpdated": "2026-07-10T01:46:31.211Z"
 }
