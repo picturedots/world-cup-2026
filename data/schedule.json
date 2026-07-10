@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537384,
-      "utcDate": "2026-07-10T19:00:00Z",
-      "stage": "QUARTER_FINALS",
-      "group": null,
-      "home": "Spain",
-      "away": "Belgium",
-      "city": "Los Angeles"
-    },
-    {
       "id": 537385,
       "utcDate": "2026-07-11T21:00:00Z",
       "stage": "QUARTER_FINALS",
@@ -64,5 +55,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-10T20:58:09.458Z"
+  "lastUpdated": "2026-07-10T22:57:24.748Z"
 }
