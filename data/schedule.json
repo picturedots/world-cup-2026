@@ -24,7 +24,7 @@
       "stage": "SEMI_FINALS",
       "group": null,
       "home": "France",
-      "away": null,
+      "away": "Spain",
       "city": "Dallas"
     },
     {
@@ -55,5 +55,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-11T01:25:48.497Z"
+  "lastUpdated": "2026-07-11T06:05:34.513Z"
 }

@@ -3,7 +3,7 @@
     "p1779936707998": 53,
     "p1779936725338": 107,
     "p1779936796017": 91,
-    "p1779936803050": 93,
+    "p1779936803050": 99,
     "p1779936810074": 48,
     "p1779936817378": 85,
     "p1779936822308": 39,
@@ -679,6 +679,10 @@
     {
       "time": 1783724244749,
       "msg": "Spain beat Belgium (2-1) → +3 pts for Emily"
+    },
+    {
+      "time": 1783749934515,
+      "msg": "Spain reached Semis → +6 pts for Emily"
     }
   ],
   "bonusesAwarded": {
@@ -738,7 +742,8 @@
     "qf:Belgium": true,
     "qf:Argentina": true,
     "qf:Switzerland": true,
-    "sf:France": true
+    "sf:France": true,
+    "sf:Spain": true
   },
   "processedMatchIds": [
     537327,
@@ -884,5 +889,5 @@
     "Morocco",
     "Belgium"
   ],
-  "lastUpdated": "2026-07-11T01:25:48.499Z"
+  "lastUpdated": "2026-07-11T06:05:34.515Z"
 }
