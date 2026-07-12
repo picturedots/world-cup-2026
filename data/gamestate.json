@@ -4,8 +4,8 @@
     "p1779936725338": 107,
     "p1779936796017": 91,
     "p1779936803050": 99,
-    "p1779936810074": 51,
-    "p1779936817378": 85,
+    "p1779936810074": 57,
+    "p1779936817378": 94,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -687,6 +687,18 @@
     {
       "time": 1783819651159,
       "msg": "England beat Norway (1-2) → +3 pts for Bryce"
+    },
+    {
+      "time": 1783837495302,
+      "msg": "Argentina beat Switzerland (3-1) → +3 pts for Liz"
+    },
+    {
+      "time": 1783837495303,
+      "msg": "England reached Semis → +6 pts for Bryce"
+    },
+    {
+      "time": 1783837495303,
+      "msg": "Argentina reached Semis → +6 pts for Liz"
     }
   ],
   "bonusesAwarded": {
@@ -747,7 +759,9 @@
     "qf:Argentina": true,
     "qf:Switzerland": true,
     "sf:France": true,
-    "sf:Spain": true
+    "sf:Spain": true,
+    "sf:England": true,
+    "sf:Argentina": true
   },
   "processedMatchIds": [
     537327,
@@ -848,7 +862,8 @@
     537382,
     537383,
     537384,
-    537385
+    537385,
+    537386
   ],
   "eliminated": [
     "Qatar",
@@ -893,7 +908,8 @@
     "Colombia",
     "Morocco",
     "Belgium",
-    "Norway"
+    "Norway",
+    "Switzerland"
   ],
-  "lastUpdated": "2026-07-12T01:27:31.160Z"
+  "lastUpdated": "2026-07-12T06:24:55.303Z"
 }
