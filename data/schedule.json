@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537387,
-      "utcDate": "2026-07-14T19:00:00Z",
-      "stage": "SEMI_FINALS",
-      "group": null,
-      "home": "France",
-      "away": "Spain",
-      "city": "Dallas"
-    },
-    {
       "id": 537388,
       "utcDate": "2026-07-15T19:00:00Z",
       "stage": "SEMI_FINALS",
@@ -37,5 +28,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-14T20:48:09.508Z"
+  "lastUpdated": "2026-07-14T21:38:44.058Z"
 }
