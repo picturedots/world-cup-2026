@@ -14,7 +14,7 @@
       "utcDate": "2026-07-18T21:00:00Z",
       "stage": "THIRD_PLACE",
       "group": null,
-      "home": null,
+      "home": "France",
       "away": null,
       "city": "Miami"
     },
@@ -23,10 +23,10 @@
       "utcDate": "2026-07-19T19:00:00Z",
       "stage": "FINAL",
       "group": null,
-      "home": null,
+      "home": "Spain",
       "away": null,
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-15T06:05:36.826Z"
+  "lastUpdated": "2026-07-15T09:47:56.121Z"
 }
