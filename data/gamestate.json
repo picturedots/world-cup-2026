@@ -5,7 +5,7 @@
     "p1779936796017": 91,
     "p1779936803050": 109,
     "p1779936810074": 57,
-    "p1779936817378": 97,
+    "p1779936817378": 104,
     "p1779936822308": 39,
     "p1779936827805": 37
   },
@@ -711,6 +711,10 @@
     {
       "time": 1784165047751,
       "msg": "Argentina beat England (1-2) → +3 pts for Liz"
+    },
+    {
+      "time": 1784182134116,
+      "msg": "Argentina reached Final → +7 pts for Liz"
     }
   ],
   "bonusesAwarded": {
@@ -774,7 +778,8 @@
     "sf:Spain": true,
     "sf:England": true,
     "sf:Argentina": true,
-    "final:Spain": true
+    "final:Spain": true,
+    "final:Argentina": true
   },
   "processedMatchIds": [
     537327,
@@ -926,5 +931,5 @@
     "Norway",
     "Switzerland"
   ],
-  "lastUpdated": "2026-07-16T01:24:07.752Z"
+  "lastUpdated": "2026-07-16T06:08:54.116Z"
 }

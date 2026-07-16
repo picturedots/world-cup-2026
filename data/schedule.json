@@ -6,7 +6,7 @@
       "stage": "THIRD_PLACE",
       "group": null,
       "home": "France",
-      "away": null,
+      "away": "England",
       "city": "Miami"
     },
     {
@@ -15,9 +15,9 @@
       "stage": "FINAL",
       "group": null,
       "home": "Spain",
-      "away": null,
+      "away": "Argentina",
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-16T01:24:07.750Z"
+  "lastUpdated": "2026-07-16T06:08:54.114Z"
 }
