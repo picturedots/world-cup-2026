@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537388,
-      "utcDate": "2026-07-15T19:00:00Z",
-      "stage": "SEMI_FINALS",
-      "group": null,
-      "home": "England",
-      "away": "Argentina",
-      "city": "Atlanta"
-    },
-    {
       "id": 537389,
       "utcDate": "2026-07-18T21:00:00Z",
       "stage": "THIRD_PLACE",
@@ -28,5 +19,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-15T20:48:05.419Z"
+  "lastUpdated": "2026-07-16T01:24:07.750Z"
 }
