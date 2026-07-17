@@ -115,8 +115,8 @@ function buildOriginalDatasets(gamestate, draft) {
   const teamOwner = {};
   for (const [team, id] of Object.entries(draft.ownership)) teamOwner[team] = idToName[id];
 
-  const reWin = /^(.+?) beat (.+?) \(\d+-\d+\) → \+(\d+) pts for/;
-  const reAdvance = /^(.+?) advanced to .+? → \+(\d+) pts for/;
+  const reWin = /^(.+?) beat (.+?) \(\d+-\d+[^)]*\) → \+(\d+) pts for/;
+  const reAdvance = /^(.+?) (?:advanced to|reached) .+? → \+(\d+) pts for/;
   const reDraw = /^SWITCHEROO! 🔄 (.+?) drew (.+?) \(\d+-\d+\)/;
 
   const events = []; // {time, name, delta}
