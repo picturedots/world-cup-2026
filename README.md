@@ -70,6 +70,12 @@ Viewers can see standings without a PAT. Only the person with the PAT can run th
 You can run the GitHub Action manually at any time:
 - Go to **Actions → Update World Cup Scores → Run workflow**
 
+Alternatively you run the API fetcher locally like
+
+```bash
+node .github/scripts/update-scores.mjs
+```
+
 ## Points system
 | Event | Points |
 |---|---|
@@ -83,3 +89,8 @@ You can run the GitHub Action manually at any time:
 | Advance to Semis | 6 |
 | Advance to Final | 7 |
 | Champion | 8 |
+
+## Notes for next time
+- the match log should contain more data besides `time` and `msg` so that it can be parsed without reading the text (for example, country and points for each award.)
+- knockout round penalty kicks are draws, so we should not award +3 points for victory, but +1 instead.  Should we also have a switcheroo at penalty kicks? There should definitely be something ridiculous that happens on penalty kicks.  Liz says we should switch after over time before penality kicks, so you would end up switching your allegiance as the team goes into penalty kicks.
+- the knockout bonus points are too high since they are awarded on top of 3 points for victory and thus give too much weight to the last few teams surviving.
