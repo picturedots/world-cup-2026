@@ -4,7 +4,7 @@
     "p1779936725338": 107,
     "p1779936796017": 91,
     "p1779936803050": 109,
-    "p1779936810074": 57,
+    "p1779936810074": 60,
     "p1779936817378": 104,
     "p1779936822308": 39,
     "p1779936827805": 37
@@ -715,6 +715,10 @@
     {
       "time": 1784182134116,
       "msg": "Argentina reached Final → +7 pts for Liz"
+    },
+    {
+      "time": 1784424303819,
+      "msg": "England beat France (4-6) → +3 pts for Bryce"
     }
   ],
   "bonusesAwarded": {
@@ -883,7 +887,8 @@
     537385,
     537386,
     537387,
-    537388
+    537388,
+    537389
   ],
   "eliminated": [
     "Qatar",
@@ -929,7 +934,9 @@
     "Morocco",
     "Belgium",
     "Norway",
-    "Switzerland"
+    "Switzerland",
+    "France",
+    "England"
   ],
-  "lastUpdated": "2026-07-18T20:36:10.025Z"
+  "lastUpdated": "2026-07-19T01:25:03.820Z"
 }

@@ -1,15 +1,6 @@
 {
   "matches": [
     {
-      "id": 537389,
-      "utcDate": "2026-07-18T21:00:00Z",
-      "stage": "THIRD_PLACE",
-      "group": null,
-      "home": "France",
-      "away": "England",
-      "city": "Miami"
-    },
-    {
       "id": 537390,
       "utcDate": "2026-07-19T19:00:00Z",
       "stage": "FINAL",
@@ -19,5 +10,5 @@
       "city": "New York/New Jersey"
     }
   ],
-  "lastUpdated": "2026-07-18T20:36:10.023Z"
+  "lastUpdated": "2026-07-19T01:25:03.818Z"
 }
