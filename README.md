@@ -91,6 +91,8 @@ node .github/scripts/update-scores.mjs
 | Champion | 8 |
 
 ## Notes for next time
-- the match log should contain more data besides `time` and `msg` so that it can be parsed without reading the text (for example, country and points for each award.) -- see [MATCHLOG.md](MATCHLOG.md)
+- the match log should contain more data besides `time` and `msg` so that it can be parsed without reading the text (for example, country and points for each award.) -- see [MATCHLOG.md](MATCHLOG.md) for design proposal
 - knockout round penalty kicks are draws, so we should not award +3 points for victory, but +1 instead.  Should we also have a switcheroo at penalty kicks? There should definitely be something ridiculous that happens on penalty kicks.  Liz says we should switch after over time before penality kicks, so you would end up switching your allegiance as the team goes into penalty kicks.
 - the knockout bonus points are too high since they are awarded on top of 3 points for victory and thus give too much weight to the last few teams surviving.
+- add extra bonus points for switcheroo-triggered events, for example reward a bonus based on the number of the total times a team has switched and an additional bonus if a team swithches enough times that it returns to original owner. 
+- Bryce suggested that if you swapped teams, you kept some ownership of your original team getting some percentage of their points  This would need some careful planning to avoid fractional points, and the scenario if oa team swapping multiple times must be thought out.
