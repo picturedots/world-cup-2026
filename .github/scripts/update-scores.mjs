@@ -156,7 +156,7 @@ async function main() {
 
   const now = new Date();
   const tournamentStart = new Date('2026-06-11');
-  const tournamentEnd = new Date('2026-07-20');
+  const tournamentEnd = new Date('2026-07-21');
   if (now < tournamentStart || now > tournamentEnd) {
     console.log('Outside tournament window (Jun 11 – Jul 20, 2026) — skipping API call.');
     return;

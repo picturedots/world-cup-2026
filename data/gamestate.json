@@ -3,7 +3,7 @@
     "p1779936707998": 53,
     "p1779936725338": 107,
     "p1779936796017": 91,
-    "p1779936803050": 109,
+    "p1779936803050": 120,
     "p1779936810074": 60,
     "p1779936817378": 104,
     "p1779936822308": 39,
@@ -719,6 +719,14 @@
     {
       "time": 1784424303819,
       "msg": "England beat France (4-6) → +3 pts for Bryce"
+    },
+    {
+      "time": 1784506140751,
+      "msg": "Spain beat Argentina (1-0) → +3 pts for Emily"
+    },
+    {
+      "time": 1784506140752,
+      "msg": "Spain are World Cup Champions → +8 pts for Emily"
     }
   ],
   "bonusesAwarded": {
@@ -783,7 +791,8 @@
     "sf:England": true,
     "sf:Argentina": true,
     "final:Spain": true,
-    "final:Argentina": true
+    "final:Argentina": true,
+    "champion:Spain": true
   },
   "processedMatchIds": [
     537327,
@@ -888,7 +897,8 @@
     537386,
     537387,
     537388,
-    537389
+    537389,
+    537390
   ],
   "eliminated": [
     "Qatar",
@@ -936,7 +946,8 @@
     "Norway",
     "Switzerland",
     "France",
-    "England"
+    "England",
+    "Argentina"
   ],
-  "lastUpdated": "2026-07-19T20:36:26.377Z"
+  "lastUpdated": "2026-07-20T00:09:00.752Z"
 }
