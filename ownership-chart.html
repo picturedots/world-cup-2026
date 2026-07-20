@@ -63,6 +63,7 @@ function parseAward(msg) {
   if ((m = msg.match(/^(.+?) beat .+? → \+(\d+) pts for (\w+)/)))       return { team: m[1], delta: +m[2], player: m[3] };
   if ((m = msg.match(/^(.+?) advanced to .+? → \+(\d+) pts for (\w+)/))) return { team: m[1], delta: +m[2], player: m[3] };
   if ((m = msg.match(/^(.+?) reached .+? → \+(\d+) pts for (\w+)/)))     return { team: m[1], delta: +m[2], player: m[3] };
+  if ((m = msg.match(/^(.+?) are World Cup Champions → \+(\d+) pts for (\w+)/))) return { team: m[1], delta: +m[2], player: m[3] };
   return null;
 }
 

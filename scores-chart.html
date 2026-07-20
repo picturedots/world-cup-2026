@@ -118,6 +118,7 @@ function buildOriginalDatasets(gamestate, draft) {
   const reWin = /^(.+?) beat (.+?) \(\d+-\d+[^)]*\) → \+(\d+) pts for/;
   const reAdvance = /^(.+?) (?:advanced to|reached) .+? → \+(\d+) pts for/;
   const reDraw = /^SWITCHEROO! 🔄 (.+?) drew (.+?) \(\d+-\d+\)/;
+  const reChampion = /^(.+?) are World Cup Champions → \+(\d+) pts for/;
 
   const events = []; // {time, name, delta}
   const credit = (time, team, delta) => {
@@ -135,6 +136,8 @@ function buildOriginalDatasets(gamestate, draft) {
     } else if ((m = reWin.exec(msg))) {
       credit(time, m[1], +m[3]);
     } else if ((m = reAdvance.exec(msg))) {
+      credit(time, m[1], +m[2]);
+    } else if ((m = reChampion.exec(msg))) {
       credit(time, m[1], +m[2]);
     }
   }

@@ -91,6 +91,6 @@ node .github/scripts/update-scores.mjs
 | Champion | 8 |
 
 ## Notes for next time
-- the match log should contain more data besides `time` and `msg` so that it can be parsed without reading the text (for example, country and points for each award.)
+- the match log should contain more data besides `time` and `msg` so that it can be parsed without reading the text (for example, country and points for each award.) -- see [MATCHLOG.md](MATCHLOG.md)
 - knockout round penalty kicks are draws, so we should not award +3 points for victory, but +1 instead.  Should we also have a switcheroo at penalty kicks? There should definitely be something ridiculous that happens on penalty kicks.  Liz says we should switch after over time before penality kicks, so you would end up switching your allegiance as the team goes into penalty kicks.
 - the knockout bonus points are too high since they are awarded on top of 3 points for victory and thus give too much weight to the last few teams surviving.
